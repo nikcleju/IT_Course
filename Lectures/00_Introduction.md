@@ -30,7 +30,7 @@ Time schedule
 1. Chapter I:   Discrete Information Sources
 2. Chapter II:  Discrete Transmission Channels
 3. Chapter III: Source Coding
-4. Chapter IV:  Channel Coding 
+4. Chapter IV:  Error Control Coding 
 
 ### Bibliography
 

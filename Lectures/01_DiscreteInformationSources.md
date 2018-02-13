@@ -21,12 +21,10 @@ Example:
 
 * Consider the following facts:
 
-    * the message carries information only because you didn't already know the result
+    * the message carries information only when you don't already know the result
     * if you already known the result, the message is useless (brings no information)
-    * since you didn't know the result, there were multiple results possible (win, equal or lose)
-    * the actual information in the message is that *lost* happened, and not *win* or *equal*
     * if the result was to be expected, there is little information. If the result
-is highly unusual, there is more information in this message
+is highly unusual, there is more information in this message (think betting)
 
 
 ### Information source
@@ -139,7 +137,7 @@ All the following interpretations of entropy are true:
 
 * H(S) is the *average uncertainty* of the source S
 
-* H(S) is the *average information* of messages from source S
+* H(S) is the *average information* of the messages from source S
 
 * A long sequence of $N$ messages from $S$ has total information $\approx N \cdot H(S)$
 
@@ -210,19 +208,9 @@ $$R = H_{max} - H(S)$$
 $$\rho = \frac{H_{max} - H(S)}{H_{max}} = 1 - \eta$$
 
 
-### Information flow of a DMS
-
-* Suppose that message $s_i$ takes time $t_i$ to be transmitted via some channel.
-
-* Definition: the **information flow** of a DMS $S$ is the average information transmitted
-per unit of time:
-$$H_\tau(S) = \frac{H(S)}{\overline{t}}$$
-where $\overline{t}$ is the average duration of transmitting a message:
-$$\overline{t} = \sum_{i} p_i t_i $$
-
 ### Extended DMS
 
-* Definition: the **$n$-th order extension** of a DMS $S$, $S^n$ is a source which
+* Definition: the **n-th order extension** of a DMS $S$, $S^n$ is a source which
 has as messages all the combinations of $n$ messages of $S$:
 $$\sigma_i = \underbrace{s_j s_k ... s_l}_{n}$$
 
@@ -244,8 +232,8 @@ $$0 1 0 0 1 1 0 0 1 1 1  0 0 1 0 1 0 0 ...$$
 
     * Can be grouped in bits, half-bytes, bytes, 16-bit words, 32-bit long words, and so on
 	* Can be considered:
-		* N messages from a binary source, or
-		* N/2 messages from a source with 4 messages ...
+		* N messages from a binary source (with 1 bit), or
+		* N/2 messages from a source with 4 messages (with 2 bits)...
 		* etc
 
 
@@ -302,8 +290,8 @@ $$\sIV{S_4}{0.1}{0.2}{0.3}{0.4}$$
 
 * When a new message is provided, the source **transitions** to a
 new state:
-$$\underbrace{s_i s_j s_k}_{\text{old state}} s_l$$
-$$s_i \underbrace{s_j s_k s_l}_{\text{new state}}$$
+$$...\underbrace{s_i s_j s_k}_{\text{old state}} s_l$$
+$$...s_i \underbrace{s_j s_k s_l}_{\text{new state}}$$
 
 * The message probabilities = the probabilities of transitions from
 some state $S_u$ to another state $S_v$
@@ -338,23 +326,21 @@ $$H(S_k) = - \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k))$$
 * Global entropy = average entropy
 $$H(S) = \sum_k p_k H(S_k)$$
 where $p_k$ = probability that the source is in state $S_i$
-(i.e. after a very long sequence of messages, how many times the source was in state $S_k$)
+    * (i.e. after a very long sequence of messages, the fraction of time when the source was in state $S_k$)
 
 ### Ergodic sources
 
-* Let $p_i^{(t)} =$ the probability that source $S$ is in state $S_i$ at time $t$.
+* Let $p_i^{(n)} =$ the probability that source $S$ is in state $S_i$ at time $n$.
 
-* In what state will it be at time $t+1$? (after one more message) (probabilities)
-
-$[p_1^{(t)}, p_2^{(t)}, ... p_N^{(t)}] \cdot [T] = [p_1^{(t+1)}, p_2^{(t+1)}, ... p_N^{(t+1)}]$
+* In what state will it be at time $n+1$? (after one more message) 
+    * i.e. what are the probabilities of the states at time $n+1$?
+$$[p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}] \cdot [T] = [p_1^{(n+1)}, p_2^{(n+1)}, ... , p_N^{(n+1)}]$$
 
 * After one more message:
+$$[p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}] \cdot [T] \cdot [T] = [p_1^{(n+2)}, p_2^{(n+2)}, ... , p_N^{(n+2)}]$$
 
-$[p_1^{(t)}, p_2^{(t)}, ... p_N^{(t)}] \cdot [T] \cdot [T] = [p_1^{(t+2)}, p_2^{(t+2)}, ... p_N^{(t+2)}]$
-
-* In general, after $n$ messages the probabilities that the source is in a certain state are:
-
-$[p_1^{(0)}, p_2^{(0)}, ... p_N^{(0)}] \cdot [T]^{n} = [p_1^{(n)}, p_2^{(n)}, ... p_N^{(n)}]$
+* In general, starting from time $0$, after $n$ messages the probabilities that the source is in a certain state are:
+$$[p_1^{(0)}, p_2^{(0)}, ... , p_N^{(0)}] \cdot [T]^{n} = [p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}]$$
 
 ### Ergodicity
 
@@ -365,11 +351,14 @@ $[p_1^{(0)}, p_2^{(0)}, ... p_N^{(0)}] \cdot [T]^{n} = [p_1^{(n)}, p_2^{(n)}, ..
 * After many messages, the probabilities of the states *become stationary* (converge to some fixed values), irrespective of the initial probabilities.
 $$\lim_{n \to \infty} [p_1^{(n)}, p_2^{(n)}, ... p_N^{(n)}] = [p_1, p_2, ... p_N]$$
 
+* These are the probabilities to be used in the entropy formula for memory sources
+
 ### Finding the stationary probabilties
 
-* After $n$ messages and after $n+1$ messages, the probabilties are the same:
+* How to find the stationary probabilities?
 
-$[p_1, p_2, ... p_N] \cdot [T] = [p_1, p_2, ... p_N]$
+* When $n$ is very large, after $n$ messages and after $n+1$ messages the probabilities are the same:
+$$[p_1, p_2, ... p_N] \cdot [T] = [p_1, p_2, ... p_N]$$
 
 * Also $p_1 + p_2 + ... + p_N = 1$.
 
