@@ -1,6 +1,6 @@
 ---
 title: Exercises Week1
-subtitle: IT
+subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
 ---
@@ -41,5 +41,3 @@ $$\sV{S}{\frac{1}{2}}{0}{\frac{1}{8}}{\frac{1}{4}}{\frac{1}{8}}$$
     a. Compute the information of message $s_1$, $s_2$ and $s_3$
     b. Compute the average information of a message
     c. Compute the efficiency, absolute redundancy and relative redundancy of the source
-
-4. 
