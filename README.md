@@ -3,19 +3,21 @@
 Here you will find all the materials for the class of Information Theory taught during 2017-2018
 spring semester at ETTI, TUIASI.
 
-**Lectures [pdf]** All lecture slides are available in the Lectures folder (soon)
+### Lectures
 
-**Laboratory**
+All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
+
+### Laboratory
  
-All the laboratory documents are in the Labs folder.
+All the laboratory documents are in the [Labs](Labs) folder.
 
-**Tests during semester**
+### Tests during semester
 
-All the tests given this semester will be available in the Tests folder: [Tests](Tests) 
+All the tests given this semester will be available in the [Tests](Tests) folder.
 
-**Exercises**
+### Exercises
 
-The exercises done throughout the lectures are available in the Exercises folder: [Exercises](Exercises) .
+The exercises done throughout the lectures are available in the [Exercises](Exercises) folder.
 
 Have fun!
 
