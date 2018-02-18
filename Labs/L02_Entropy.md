@@ -72,9 +72,9 @@ When the value `i` is read from the file, incrementing the corresponding counter
 
 * The following C functions may be used for file-based operations. 
 Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google search).
-  * `fopen(...)`, to open a file for reading;
-  * `fread(...)`, to read byte data from the file;
-  * `fclose()`, to close the file when finished.
+    * `fopen(...)`, to open a file for reading;
+    * `fread(...)`, to read byte data from the file;
+    * `fclose()`, to close the file when finished.
 
 * There is no function in C for computing $\log_2(x)$. You can compute this using the logarithm conversion formula:
 $$\log_2(x) = \frac{\log_b(x)}{\log_b(2)},$$
