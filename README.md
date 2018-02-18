@@ -15,7 +15,7 @@ All the tests given this semester will be available in the Tests folder: [Tests]
 
 **Exercises**
 
-The exercises done throughout the lectures are available in the Exercises folder (soon).
+The exercises done throughout the lectures are available in the Exercises folder: [Exercises](Exercises) .
 
 Have fun!
 
