@@ -208,6 +208,44 @@ $$R = H_{max} - H(S)$$
 $$\rho = \frac{H_{max} - H(S)}{H_{max}} = 1 - \eta$$
 
 
+### Information flow of a DMS
+
+* Suppose that message $s_i$ takes time $t_i$ to be transmitted via some channel.
+
+* Definition: the **information flow** of a DMS $S$ is the average information transmitted
+per unit of time:
+$$H_\tau(S) = \frac{H(S)}{\overline{t}}$$
+where $\overline{t}$ is the average duration of transmitting a message:
+$$\overline{t} = \sum_{i} p_i t_i $$
+
+* Measured in **bps** (bits per second)
+
+* Important for data communication
+
+### Distance between distributions
+
+* How to measure how similar / how different are two distributions?
+    * must have the same number of messages
+    * example: $p(s_1), ... p(s_n)$ and $q(s_1), ... q(s_n)$
+  
+**Definition**: the **Kullback–Leibler distance** of two distributions P and Q is
+$$D_{KL}(P || Q) = \sum_i p(s_i) \log(\frac{p(s_i)}{q(s_i)})$$
+
+* It is a way to measure the **distance (difference)** between two distributions
+
+* Also known as *relative entropy*, or the Kullback-Leibler *divergence*
+
+### Properties of Kullback-Leibler distance
+
+* Properties:
+    * $D_{KL}(P || Q)$ is always $\geq 0$, and is equal to 0 only when P and Q are the same
+    * the higher $D_{KL}(P || Q)$ is, the more different the distributions are
+    * it is **not commutative**: $D_{KL}(P || Q) \neq D_{KL}(Q || P)$
+
+* Example: at whiteboard
+
+* Example usage: classification systems (cross-entropy loss)
+
 ### Extended DMS
 
 * Definition: the **n-th order extension** of a DMS $S$, $S^n$ is a source which
