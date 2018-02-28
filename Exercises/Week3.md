@@ -1,5 +1,5 @@
 ---
-title: Exercises Week 2
+title: Exercises Week 3
 subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
@@ -40,6 +40,6 @@ $$P(x_i \cap y_j) =
     c. Compute the marginal entropies and the joint entropy, and verify that
 $$H(X,Y) = H(X) + H(Y)$$
 
-3. Give an example of a channel with $H(Y|X) = 0$ (write the channel matrix).
+3. Give an example of a channel having 3 inputs and 3 outputs, with $H(Y|X) = 0$ (write the channel matrix).
 
 3. Give an example of a channel with two inputs, such that $H(Y|x_1) \neq 0$ and $H(Y|x_2) = 0$ (write the channel matrix).
