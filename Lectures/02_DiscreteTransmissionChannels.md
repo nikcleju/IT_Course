@@ -330,14 +330,20 @@ Mutual information $I(X,Y)$ is:
 * non-negative: $I(X,Y) \geq 0$
 * a special case of the Kullback–Leibler distance (relative entropy distance)
 
-**Definition**: the Kullback–Leibler distance of two distributions is
-$$D_{KL}(P,Q) = \sum_i P(i) \log(\frac{P(i)}{Q(i)})$$
+### Relation to Kullback-Leibler distance
+
+* $I(X,Y)$ is a special case of the Kullback-Leibler distance
+$$D_{KL}(P||Q) = \sum_i p(s_i) \log(\frac{p(s_i)}{q(s_i)})$$
 
 * In our case, the distributions are:
-    * $P = p(x_i \cap y_j)$ (distribution of our system)
-    * $Q = p(x_i) \cdot p(y_j)$ (distribution of two independent variables)
+    * $p(s_i) = p(x_i \cap y_j)$  = joint distribution of $X$ and $Y$ our system
+    * $q(s_i) = p(x_i) \cdot p(y_j)$ = joint distribution when $X$ and $Y$ are independent
+$$I(X,Y) = D_{KL}(p(x_i \cap y_j) || p(x_i) \cdot p(y_j))$$
 
-$$I(X,Y) = D(p(x_i \cap y_j), p(x_i) \cdot p(y_j))$$
+* Interpretation
+    * When $X$ and $Y$ are independent, mutual information $I(X,Y) = 0$
+    * Our mutual information = how far away are from being independent
+    * Example: height of a point = how far is it from the point of 0 height
 
 
 ### Relations between the informational measures
@@ -439,16 +445,11 @@ on average, with one message
 
 ### Preview of the channel coding theorem
 
-* Even though some information $I(X,Y)$ is transmitted on the channel, 
-there still is the $H(X|Y)$ uncertainty on the input
-* We want error-free transmission, with no uncertainty
-* Solution: use error coding (see chapter IV)
-* How coding works:
-    * coder receives $k$ symbols (bits, usually) that we want to transmit
-    * coder appends additional $m$ symbols computed via some coding algorithm
-    * the total $k+m$ bits are transmitted over a noisy channel
-    * the decoding algorithm tries to detect and correct errors, based
-    on the additional $m$ bits that were appended
+* For transmission with no errors, we use **error coding** of data before transmission
+* How error coding usually works:
+    * For each $k$ symbols of data, coder appends additional $m$ symbols, computed via some coding algorithm
+    * All of them are sent on the channel
+    * The decoder detects/corrects errors based on the additional $m$ bits
 * Coding rate: $$R = \frac{k}{k+m}$$
     * stronger protection = bigger $m$ = less efficient
     * weaker protection = smaller $m$ = more efficient
