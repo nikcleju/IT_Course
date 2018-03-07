@@ -31,7 +31,7 @@ $$P(x_i \cap y_j) =
 \frac{1}{8} & \frac{1}{8} \\
 \end{bmatrix}$$
 
-    a. Find the noise matrix $P(Y|X)$ and the channel matrix P(X|Y)
+    a. Find the channel matrix $P(Y|X)$ and the equivocation matrix P(X|Y)
     b. Compute the average information obtained on the input $X$ when output symbol $y_2$ is received
     c. Compute the uncertainty remaining over the input $X$ when output symbol $y_2$ is received
   
@@ -44,12 +44,3 @@ $$P(y_j | x_i) =
 we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{3}{4}$ and $p(x_2) = \frac{1}{4}$.
     a. Draw the graph of the channel
     b. Find $H(X)$, $H(Y)$ and $I(X,Y)$
-
-4. Find the mutual information for a channel defined by
-$$P(y_j | x_i) = 
-\begin{bmatrix}
-\frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 & 0 \\
-0 & 0 & 0 & \frac{1}{3} & 0 & \frac{2}{3} \\
-0 & \frac{1}{6} & 0 & 0 & \frac{5}{6} & 0 \\
-\end{bmatrix}$$
-    if the input probabilities are $p(x_1) = \frac{1}{2}$, $p(x_2) = \frac{1}{4}$ and $p(x_3) = \frac{1}{4}$.
