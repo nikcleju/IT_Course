@@ -234,11 +234,12 @@ $$H(S) \leq \overline{l}$$
 
 ### Meaning of entropy
 
-* One can never represent messages, in general, with a code  having average length less than the entropy
+* One can never represent messages, on average, with a code  having average length less than the entropy
+
+* The **entropy** of a source = the **minimum average length required** to encode the messages
+    * e.g. the minimum number of bits required to represent the data in binary form
      
 * Truck analogy: at blackboard
-
-
 
 ### Non-optimal codes
 
