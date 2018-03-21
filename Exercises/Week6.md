@@ -21,6 +21,7 @@ fontsize: 12pt
     
     a. Verify the Kraft inequality
     b. Determine if the code is instantaneous / uniquely decodable
+    c. Draw the graph of code $C$ and of code $D$ 
 
 
 2. Consider a memoryless source with the following distribution:
