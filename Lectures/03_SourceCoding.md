@@ -54,9 +54,15 @@ $s_2$        $c_2 = x_1x_2x_2...$
 ...        ....
 $s_N$        $c_3 = x_2x_2x_2...$
 
-* Decoding: given a sequence of symbols, deduce the original sequence of messages
-
 * Codeword length $l_i$ = the number of symbols in $c_i$
+
+### Encoding and decoding 
+
+* **Encoding**: given a sequence of messages, replace each message with its codeword
+
+* **Decoding**: given a sequence of symbols, deduce the original sequence of messages
+
+* Example: at blackboard
 
 ### Example: ASCII code
 
@@ -107,8 +113,7 @@ Proof
     * There can't be a shorter codeword **c'**, since it would be prefix to **c**
     * There can't be a longer codeword **c''**, since **c** would be prefix to it
 * Remove first codeword from sequence
-* By the same argument, there is exactly one codeword matching the new beginning
-    * and so on ...
+* By the same argument, there is exactly one codeword matching the new beginning, and so on ...
 
 ### Graph-based decoding of instantaneous codes
 
@@ -192,10 +197,34 @@ $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 \textrm{subject to } &\sum_i D^{-l_i} \leq 1
 \end{aligned}$$
 
+### The method of Lagrange multipliers
+
+* To solve the following optimization problem:
+$$\begin{aligned} \textbf{minimize } & f(x) \\
+\textrm{subject to } & g(x) = 0
+\end{aligned}$$
+
+build a new function $L(x, \lambda)$ (the **Lagrangean function**):
+$$L(x, \lambda) = f(x) - \lambda g(x)$$
+
+and the solution $x$ is among the solutions of the system:
+
+$$\begin{aligned} & \frac{dL(x, \lambda)}{dx} = 0 \\
+& \frac{dL(x, \lambda)}{d\lambda} = 0
+\end{aligned}$$
+
+### Solving for minimum average length of code
+
+* In our case:
+    - The unknown $x$ are $l_i$
+    - The function is $f(x) = \overline{l} = \sum_i p(s_i) l_i$
+    - The constraint is $g(x) = \sum_i D^{-l_i} - 1$
+
+* (Solve at blackboard)
+
 * The optimal values are:
 $$\boxed{l_i = -\log(p(s_i))}$$
 
-* Rigorous proof: at blackboard (method of Lagrange multiplier)
 * Intuition: using $l_i = -\log(p(s_i))$ satisfies Kraft with equality,
 so the lengths cannot be any shorter, in general
 
