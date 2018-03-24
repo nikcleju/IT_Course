@@ -54,9 +54,15 @@ $s_2$        $c_2 = x_1x_2x_2...$
 ...        ....
 $s_N$        $c_3 = x_2x_2x_2...$
 
-* Decoding: given a sequence of symbols, deduce the original sequence of messages
-
 * Codeword length $l_i$ = the number of symbols in $c_i$
+
+### Encoding and decoding 
+
+* **Encoding**: given a sequence of messages, replace each message with its codeword
+
+* **Decoding**: given a sequence of symbols, deduce the original sequence of messages
+
+* Example: at blackboard
 
 ### Example: ASCII code
 
@@ -93,22 +99,20 @@ Example at blackboard
 
 ### Instantaneous codes are uniquely decodable
 
-Theorem
+* Theorem:
+    * An instantaneous code is uniquely decodable
+    
+* Proof:
+    * There is exactly one codeword matching the beginning of the sequence
+        * Suppose the true initial codeword is **c**
+        * There can't be a shorter codeword **c'**, since it would be prefix to **c**
+        * There can't be a longer codeword **c''**, since **c** would be prefix to it
+    * Remove first codeword from sequence
+    * By the same argument, there is exactly one codeword matching the new beginning, and so on ...
 
-* An instantaneous code is uniquely decodable
+* Note: the converse is not necessary true; there exist uniquely decodable codes which
+are not instantaneous
 
-* (The converse is not necessary true; there exist uniquely decodable codes which
-are not instantaneous)
-
-Proof
-
-* There is exactly one codeword matching the beginning of the sequence
-    * Suppose the true initial codeword is **c**
-    * There can't be a shorter codeword **c'**, since it would be prefix to **c**
-    * There can't be a longer codeword **c''**, since **c** would be prefix to it
-* Remove first codeword from sequence
-* By the same argument, there is exactly one codeword matching the new beginning
-    * and so on ...
 
 ### Graph-based decoding of instantaneous codes
 
@@ -124,20 +128,18 @@ Proof
 
 * When can an instantaneous code exist?
 
-Kraft inequality theorem:
-
-* There exists an instantaneous code with $D$ symbols and codeword lengths ${l_1, l_2, \ldots l_n}$
+* Kraft inequality theorem:
+    * There exists an instantaneous code with $D$ symbols and codeword lengths ${l_1, l_2, \ldots l_n}$
 if and only if the lengths satisfy the following inequality:
 $$ \sum_i D^{-l_i} \leq 1.$$
 
-Proof: At blackboard
+* Proof: At blackboard
 
-Comments:
-
-* If lengths do not satisfy this, no instantaneous code exists
-* If the lengths of a code satisfy this, that code can be instantaneous or not (there exists an instantaneous code,
- but not necessarily that one)
-* Kraft inequality means that the codewords lengths cannot be all very small
+* Comments:
+    * If lengths do not satisfy this, no instantaneous code exists
+    * If the lengths of a code satisfy this, that code can be instantaneous or not (there exists an instantaneous code,
+    but not necessarily that one)
+    * Kraft inequality means that the codewords lengths cannot be all very small
 
 ### Instantaneous codes with equality in Kraft
 
@@ -155,28 +157,23 @@ all the graph branches terminate with codewords (there are no unused branches)
 * Instantaneous codes must obey Kraft inequality
 * How about uniquely decodable codes?
 
-McMillan theorem:
-
-* Any uniquely decodable code **also** satisfies the Kraft inequality:
+* McMillan theorem (no proof given):
+    * Any uniquely decodable code **also** satisfies the Kraft inequality:
 $$ \sum_i D^{-l_i} \leq 1.$$
 
-Consequence:
-
-* For every uniquely decodable code, there exists in instantaneous code
-with the same lengths!
-
-* Even though the class of uniquely decodable codes is larger than that of
-instantaneous codes, it brings no benefit in codeword length
-
-* We can always use just instantaneous codes.
+* Consequence:
+    * For every uniquely decodable code, there exists in instantaneous code
+    with the same lengths!
+    * Even though the class of uniquely decodable codes is larger than that of
+    instantaneous codes, it brings no benefit in codeword length
+    * We can always use just instantaneous codes.
 
 ### Finding an instantaneous code for given lengths
 
 * How to find an instantaneous code with code lengths $\{l_i\}$
-
-1. Check that lengths satisfy Kraft relation
-2. Draw graph
-3. Assign nodes in a certain order (e.g. descending probability)
+    1. Check that lengths satisfy Kraft relation
+    2. Draw graph
+    3. Assign nodes in a certain order (e.g. descending probability)
 
 * Easy, standard procedure
 * Example: at blackboard
@@ -192,10 +189,33 @@ $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 \textrm{subject to } &\sum_i D^{-l_i} \leq 1
 \end{aligned}$$
 
+### The method of Lagrange multipliers
+
+* To solve the following optimization problem,
+$$\begin{aligned} \textbf{minimize } & f(x) \\
+\textrm{subject to } & g(x) = 0
+\end{aligned}$$
+	build a new function $L(x, \lambda)$ (the **Lagrangean function**):
+$$L(x, \lambda) = f(x) - \lambda g(x)$$
+	and the solution $x$ is among the solutions of the system:
+$$\begin{aligned} & \frac{\partial L(x, \lambda)}{\partial x} = 0 \\
+& \frac{\partial L(x, \lambda)}{\partial \lambda} = 0
+\end{aligned}$$
+
+* If there are multiple variables $x_i$, derivation is done for each one
+
+### Solving for minimum average length of code
+
+* In our case:
+    - The unknown $x$ are $l_i$
+    - The function is $f(x) = \overline{l} = \sum_i p(s_i) l_i$
+    - The constraint is $g(x) = \sum_i D^{-l_i} - 1$
+
+* (Solve at blackboard)
+
 * The optimal values are:
 $$\boxed{l_i = -\log(p(s_i))}$$
 
-* Rigorous proof: at blackboard (method of Lagrange multiplier)
 * Intuition: using $l_i = -\log(p(s_i))$ satisfies Kraft with equality,
 so the lengths cannot be any shorter, in general
 
@@ -214,11 +234,12 @@ $$H(S) \leq \overline{l}$$
 
 ### Meaning of entropy
 
-* One can never represent messages, in general, with a code  having average length less than the entropy
+* One can never represent messages, on average, with a code  having average length less than the entropy
+
+* The **entropy** of a source = the **minimum average length required** to encode the messages
+    * e.g. the minimum number of bits required to represent the data in binary form
      
 * Truck analogy: at blackboard
-
-
 
 ### Non-optimal codes
 

@@ -32,16 +32,17 @@ $$P(Y | X) =
 	[see on whiteboard]
 	
 	a. Find $q$ such that the equivalent channel is a binary symmetric channel;
-	b. Find the channel capacity of the equivalent channel from a).
-	
-4. A logical AND gate with two inputs can be considered a transmission channel, 
+	b. *Not done: Find the channel capacity of the equivalent channel from a).*
+
+
+4. *Not done: A logical AND gate with two inputs can be considered a transmission channel, 
 with four input symbols $x_1 = 00$, $x_2 = 01$, $x_3 = 10$, $x_4 = 11$, 
-and two output symbols $y_1 = 0$, $y_2 = 1$.
+and two output symbols $y_1 = 0$, $y_2 = 1$.*
     
-    a. If $p(x_1) = p(x_2) = p(x_3) = p(x_4) = \frac{1}{4}$, find the average
-    information transmitted on this channel;
-    b. Find the channel capacity and the probabilities of the inputs 
-    required to reach it.
+    a. *If $p(x_1) = p(x_2) = p(x_3) = p(x_4) = \frac{1}{4}$, find the average
+    information transmitted on this channel;*
+    b. *Find the channel capacity and the probabilities of the inputs 
+    required to reach it.*
 
 
     
