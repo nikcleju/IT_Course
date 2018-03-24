@@ -19,13 +19,22 @@ typedef struct
 } Node;
 
 
-/* Struct definition for representing a node */
+/* Struct definition for representing a codeword as array -- old style 2017*/
 typedef struct
 {
-	int len; /* The length of the codeword */
-	int* code ; /* A vector of size 'len' containing the codeword 
-				For example, if len is 5, then code[] might be {1,0,1,1,0}*/
+	int len;      /* The length of the codeword */
+	int* code ;   /* A vector of size 'len' containing the codeword 
+				     For example, if len is 5, then code[] might be {1,0,1,1,0}*/
 } Codeword;
+
+
+/* Struct definition for representing a codeword with bits -- new style 2018*/
+typedef struct 
+{
+  int len;                /* length of code, in bits */
+  unsigned long code;     /* the first "len" bits are the codeword (assuming len < 32). The other, don't care. */
+} CODE32BIT;
+
 
 /* Function headers*/
 
@@ -77,13 +86,17 @@ void make_huffman_tree();
 void make_codewords();
 
 
-/* A function to save the codebook to a file */
+/* A function to save the old-style codebook to a file */
 void save_codebook(const char* filename);
 
-/* A function to load the codebook from a file 
+/* A function to load the old-style codebook from a file 
    Returns 1 if success, 0 if something failed (file could not be opened)
 */
 int load_codebook(const char* filename);
 
+/* A function to convert from old-style codeword structure
+ * to new style codeword structure
+*/
+void to_new_codewords(CODE32BIT newcodebook[])
 
 #endif

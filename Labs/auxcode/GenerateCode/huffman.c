@@ -14,7 +14,7 @@ Node tree[TREESIZE];
 /* A counter indicating how many nodes from the vector are currently used */
 int numNodes = 0;
 
-/* A vector of the codewords which will be found for each character */
+/* A vector of the codewords (old-style) which will be found for each character */
 Codeword codebook[256];
 
 
@@ -197,6 +197,7 @@ void make_codewords()
 	}
 }
 
+
 /* A function to save the codebook to a file */
 void save_codebook(const char* filename)
 {
@@ -209,5 +210,24 @@ void save_codebook(const char* filename)
 int load_codebook(const char* filename)
 {
 	
+}
+
+/* A function to convert from old-style codeword structure
+ * to new style codeword structure
+*/
+void to_new_codewords(CODE32BIT newcodebook[])
+{
+	for (int i = 0; i < 256; i++)
+	{
+		newcodebook[i].len = codebook[i].len;
+		
+		for (int j = 0; j < codebook[i].len; j++)
+		{
+			if (codebook[i].code[j])
+				SET_BIT(newcodebook[i].code, j);
+			else
+				CLEAR_BIT(newcodebook[i].code, j);
+		}
+	}
 }
 
