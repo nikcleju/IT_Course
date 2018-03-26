@@ -8,7 +8,7 @@ fontsize: 12pt
 # Objective
 
 Understand binary Huffman coding by implementing
-an applications in C for creating Huffman codes.
+an application in C for creating Huffman codes.
 
 # Theoretical notions
 
@@ -18,9 +18,9 @@ See lecture notes for details on the Huffman coding algorithm
 
 1. Study the structures and functions defined in the following files,
 in order to understand their purpose.
-    - huffman.h   : header file for Huffman coding functions
-    - huffman.c   : source file for Huffman coding functions
-    - bitmacros.h : header file for bitwise operation macros
+    - `huffman.h`   : header file for Huffman coding functions
+    - `huffman.c`   : source file for Huffman coding functions
+    - `bitmacros.h` : header file for bitwise operation macros
 
 2. Write a C program that creates a Huffman code from an input data file.
 The program shall be called as follows: 
@@ -50,7 +50,7 @@ The program shall be called as follows:
 ## Program design
 
 * All the basic Huffman-related functions are already declared 
-in `huufman.c` and defined in `huufman.c`. You must only create
+in `huffman.c` and defined in `huffman.c`. You must only create
 the main program and call the Huffman functions.
 
 * A node in the Huffman tree is of a structure type `Node`, which

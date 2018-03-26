@@ -1,5 +1,5 @@
 ---
-title: Linear Block Codes - Encoding
+title: Source Coding - Encoding
 subtitle: Information Theory Lab 5
 documentclass: scrartcl
 fontsize: 12pt
