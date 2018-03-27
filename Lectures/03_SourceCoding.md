@@ -195,7 +195,7 @@ $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 $$\begin{aligned} \textbf{minimize } & f(x) \\
 \textrm{subject to } & g(x) = 0
 \end{aligned}$$
-	build a new function $L(x, \lambda)$ (the **Lagrangean function**):
+	one must build a new function $L(x, \lambda)$ (the **Lagrangean function**):
 $$L(x, \lambda) = f(x) - \lambda g(x)$$
 	and the solution $x$ is among the solutions of the system:
 $$\begin{aligned} & \frac{\partial L(x, \lambda)}{\partial x} = 0 \\
@@ -219,7 +219,19 @@ $$\boxed{l_i = -\log(p(s_i))}$$
 * Intuition: using $l_i = -\log(p(s_i))$ satisfies Kraft with equality,
 so the lengths cannot be any shorter, in general
 
-### Entropy = minimal codeword lengths
+### Optimal lengths
+
+* The optimal codeword lengths are:
+$$\boxed{l_i = -\log(p(s_i))}$$
+
+* Higher probability => smaller codeword
+    * more efficient
+    * language examples: "da", "nu", "the", "le" ...
+* Smaller probability => longer codeword
+    * it appears rarely => no problem
+* Overall, we obtain the minimum average length
+
+### Entropy = minimal codeword average length
 
 * If the optimal values are:
 $$l_i = -\log(p(s_i))$$
@@ -227,33 +239,86 @@ $$l_i = -\log(p(s_i))$$
 * Then the minimal average length is:
 $$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log(p(s_i)) = H(S)$$
 
-#### Average length >= entropy
-The average length of an uniquely decodable code cannot be smaller than
-the source entropy
-$$H(S) \leq \overline{l}$$
+* The **entropy** of a source = the **minimum average length** necessary to encode the messages
+    * e.g. the minimum number of bits required to represent the data in binary form
 
 ### Meaning of entropy
 
+* This tells us something about entropy
+    * This is what entropy means in practice
+    * Small entropy => can be written (encoded) with few bits
+    * Large entropy => requires more bits for encoding
+
+* This tells us something about the average length of codes
+    * The average length of an uniquely decodable code must be at least as large
+    as the source entropy
+    $$H(S) \leq \overline{l}$$
+
 * One can never represent messages, on average, with a code  having average length less than the entropy
 
-* The **entropy** of a source = the **minimum average length required** to encode the messages
-    * e.g. the minimum number of bits required to represent the data in binary form
-     
-* Truck analogy: at blackboard
+### Analogy of entropy and codes     
+
+* Analogy: 1 liter of water 
+    * 1 liter of water = the quantity of water that can fit in any bottle
+    of size $\geq$ 1 liter, but not in any bottle $<$ 1 liter
+    $$Bottle \geq water$$
+    * Information of the source = the water
+    * The code used for representing the messages = the bottle that carries the water
+    $$\overline{l} \geq H(S)$$
+
+### Efficiency and redundancy of a code
+
+* **Efficiency** of a code ($M$ = size of code alphabet):
+$$\eta = \frac{H(S)}{\overline{l} \log{M}}$$
+
+    * usually $M$ = 2 so $\eta = \frac{H(S)}{\overline{l}}$
+    * but if $M>2$ a factor of $\log{M}$ is needed because $H(S)$ in bits (binary)
+    but $\overline{l}$ not in bits (M symbols)
+
+* **Redundancy** of a code:
+$$\rho = 1- \eta$$
+
+* These measures indicate how close is the average length to the 
+optimal value
+
+* When $\eta = 1$: **optimal code** 
+
+### Optimal codes
+
+* Problem: $l_i = -\log(p(s_i))$ might not be an integer number
+    * but the codeword lengths must be natural numbers
+
+* An **optimal code** = a code that attains the minimum average length
+$\overline{l} = H(S)$
+
+* An optimal code can always be found for a source where all $p(s_i)$ are powers of 2
+    * e.g. $1/2$, $1/4$, $1/2^n$, known as *dyadic distribution*
+    * the lengths $l_i = -\log(p(s_i))$ are all natural numbers => can be
+    attained
+    * the code with lengths $l_i$ can be found with the graph-based procedure
+
 
 ### Non-optimal codes
 
-* Problem: $-\log(p(s_i))$ might not be an integer number
-* $l_i = -\log(p(s_i))$ only when probabilities are power of 2 (*dyadic distribution*)
-* Shannon's solution: round to bigger integer
+* What if $-\log(p(s_i))$ is not a natural number?
+    i.e. $p(s_i)$ is not a power of 2
+    
+* Shannon's solution: round to next largest natural number
 $$l_i = \lceil -\log(p(s_i)) \rceil$$
+
+    i.e. $-\log(p(s_i)) = 2.15$ => $l_i = 3$
+
 
 ### Shannon coding
 
 * Shannon coding:
     1. Arrange probabilities in descending order
     2. Use codeword lengths $l_i = \lceil -\log(p(s_i)) \rceil$
-    3. Find an instantaneous code for these lengths
+    3. Find any instantaneous code for these lengths $^{*}$
+        * $^{*}$ Note: simplified version
+        * Shannon actually prescribed the way to compute the codewords
+
+* The code obtained = a "*Shannon code*"
 
 * Simple scheme, better algorithms are available
     * Example: compute lengths for $S: (0.9, 0.1)$
@@ -266,7 +331,9 @@ Theorem:
 * The average length of a Shannon code satisfies
 $$H(S) \leq \overline{l} < H(S) + 1$$
 
-* Proof:
+### Average length of Shannon code
+
+Proof:
 
 1. The first inequality is because H(S) is minimum length
 2. The second inequality:
@@ -274,121 +341,123 @@ $$H(S) \leq \overline{l} < H(S) + 1$$
 $$l_i = \lceil -\log(p(s_i)) \rceil = -\log(p(s_i)) + \epsilon_i$$ where $0 \leq \epsilon_i < 1$
 
     a. Compute average length:
-$$\overline{l} = \sum_i p(s_i) l_i = H(S) + \sum_i p(s_i) \epsilon_i$$
-    a. Since $\epsilon_i < 1$ => $\sum_i p(s_i) \epsilon_i < \sum_i p(s_i)  = 1$
+$$\overline{l} = \sum_i p(s_i) l_i = H(S) + \underbrace{\sum_i p(s_i) \epsilon_i}_{< 1}$$
+    a. Since $\epsilon_i < 1$ => $\sum_i p(s_i) \epsilon_i < \sum_i p(s_i)  = 1$ \qed
 
 ### Average length of Shannon code
 
-* Shannon code approaches minimum possible lengths up to at most 1 extra bit
-    * That's not bad at all
+* Average length of Shannon code is **at most 1 bit longer** than the minimum possible value
+    * That's quite efficient
     * There exist even better codes, in general
     
-* Can we get even closer to the minimum length?
-* Yes, as close as we want! See next slide.
+* Q: Can we get even closer to the minimum length?
+* A: Yes, as close as we want!
+    * In theory, at least ... :)
+    * See next slide.
 
 ### Shannon's first theorem
 
 Shannon's first theorem (coding theorem for noiseless channels):
 
-* One can always compress messages from a source S with an average length as
-close as desired to H(S), but never below H(S) (for infinitely long sequences of messages)
+* It is possible to encode an infinitely long sequences of messages 
+from a source S with an average length 
+as close as desired to H(S), 
+but never below H(S)
+
+\ 
+\
+
+Key points:
+
+  * we can always obtain $\overline{l} \to H(S)$
+  * for an infinitely long sequence
+
+### Shannon's first theorem
 
 Proof:
 
 * Average length can never go below H(S) because this is minimum
 * How can it get very close to H(S) (from above)?
-    1. Use $n$-th order extension $S^n$ of S
+    1. Use **$n$-th order extension** $S^n$ of S
     2. Use Shannon coding for $S^n$, so it satisfies
 $$H(S^n) \leq \overline{l_{S^n}} < H(S^n) + 1$$
-    3. But $H(S^n) = n H(S)$, and **average length per message of $S$ is**
+    3. But $H(S^n) = n H(S)$, and average length **per message of $S$** is
 $$\overline{l_{S}} = \frac{\overline{l_{S^n}}}{n}$$
 because messages of $S^n$ are just $n$ messages of $S$ glued together
-
-### Shannon's first theorem
-
-* Continuing:
     4. So, dividing by $n$:
 $$\boxed{H(S) \leq \overline{l_{S}} < H(S) + \frac{1}{n}}$$
     5. If extension order $n \to \infty$, then
-$$\overline{l_{S}} \to H(S)$$
+$$\overline{l_{S}} \to H(S)$$ \qed
+
+### Shannon's first theorem
+
+* Analogy: how to buy things online without paying for delivery :)
+    * FanCourier taxes 15 lei per delivery
+        * not efficient to buy something worth a few lei
+    * How to improve efficiency? Buy $n$ things bundled together!
+    * The delivery cost **per unit** is now $\frac{15}{n}$
+    * As $n \to \infty$, the delivery cost per unit $\to 0$
+        * What's 15 lei when you pay $\infty$ lei...
+
+### Shannon's first theorem
 
 Comments:
 
- * Shannon's first theorem says what entropy H(S) means:
- * The entropy H(S) means the minimum number of bits required to describe a message from $S$, in general
- * For any distribution we can approach H(S) to any desired accuracy using extensions
- of large order
-     * The complexity is too large for large $n$, so in practice we settle 
-     with a close enough value
-* Other codes are even better the Shannon coding
+ * Shannon's first theorem shows that we can approach H(S) 
+ to any desired accuracy using extensions of large order of the source
+     * This is not practical: the size of $S^n$ gets too large for large $n$
+     * Other (better) algorithms than Shannon coding are used in practice to approach $H(S)$
 
-### Meaning of entropy
- 
-Now we have a practical meaning of entropy:
 
-* **The entropy of an information source is the minimum number of bits
-required to represent the messages, on average**
-    * One can never use a code with average length smaller than the entropy
-    * We can use codes with average length bigger, but as close as desired to the entropy
-    * So entropy is the actual minimum number of bits needed
-    
-* Again the truck analogy
- 
- 
-### Efficiency and redundancy of a code
-
-* **Efficiency** of a code ($M$ = size of code alphabet):
-$$\eta = \frac{H(S)}{\overline{l} \log{M}}$$
-
-* **Redundancy** of a code:
-$$\rho = 1- \eta$$
-
-* These measures indicate how close is the average length to the 
-optimal value
-
-* When $\eta = 1$: **optimal code** 
-    * for example when $l_i = -\log(p(s_i))$
 
 ### Coding with the wrong code
 
 * Consider a source with probabilities $p(s_i)$
 * We use a code designed for a different source: $l_i = -\log(q(s_i))$
 * The message probabilities are $p(s_i)$ but the code is designed for $q(s_i)$
-* How much do we lose?
-* Example: different languages
-
 \ 
 
-* Codeword lengths are not optimal for this source => increased $\overline{l}$
+* Examples:
+    * design a code based on a sample data file (like in lab)
+    * but we use it to encode various other files => probabilities might differ slightly
+    * e.g. design a code based a Romanian text, but encode a text in English
+\ 
+
+* What happens?
+
+### Coding with the wrong code
+
+* We lose some efficiency:
+    * Codeword lengths $\overline{l_i}$ are not optimal for our source => increased $\overline{l}$
+
 * If code were optimal, best average length = entropy $H(S)$:
 $$\overline{l_{optimal}} = -\sum{p(s_i) \log{p(s_i)}}$$
-* The actual average length: 
+
+* But the actual average length we obtain is: 
 $$\overline{l_{actual}} = \sum{p(s_i) l_i} = -\sum{p(s_i) \log{q(s_i)}}$$
 
 ### The Kullback–Leibler distance
 
-* Difference is:
-$$\overline{l_{actual}} - \overline{l_{optimal}} = \sum_i{p(s_i) \log(\frac{p(s_i)}{q(s_i)})} = D_{KL}(p,q)$$
+* Difference between average lengths is:
 
+$$\overline{l_{actual}} - \overline{l_{optimal}} = \sum_i{p(s_i) \log(\frac{p(s_i)}{q(s_i)})} = D_{KL}(p || q)$$
 
-**Definition**: the Kullback–Leibler distance of two distributions is
-$$D_{KL}(p,q) = \sum_i p(i) \log(\frac{p(i)}{q(i)})$$
-
-Properties:
-
-* Always positive:
-$$D_{KL}(p,q) \geq 0, \forall p,q$$
-* Equals 0 only when the two distributions are identical
-$$D_{KL}(p,q) = 0 <=> p(s_i) = q(s_i), \forall i$$
+* The difference  = **the Kullback-Leibler distance** between the two distributions
+    * is always $\geq 0$ => improper code means increased $\overline{l}$ (bad)
+    * distributions more different => larger average length (worse)
+    
+* The KL distance between the distributions = the number of extra bits used because 
+of a code optimized for a different distribution $q(s_i)$ than the true distribution
+of our data $p(s_i)$
 
 ### The Kullback–Leibler distance
 
-Where is the Kullback–Leibler distance used:
+Reminder: where is the Kullback–Leibler distance used
 
-* Using a code for a different distribution:
-    * Average length is increased with $D_{KL}(p,q)$
+* Here: Using a code optimized for a different distribution:
+    * Average length is increased with $D_{KL}(p || q)$
 
-* Definition of mutual information:
+* Channels: Definition of mutual information:
     * Distance between $p(x_i \cap y_j)$ and the distribution of two independent variables $p(x_i) \cdot p(y_j)$
 $$I(X,Y) = \sum_{i,j} p(x_i \cap y_j) \log(\frac{p(x_i \cap y_j)}{p(x_i)p(y_j)})$$
 
@@ -408,7 +477,7 @@ Example: blackboard
 Comments:
 
 * Shannon-Fano coding does not always produce the shortest code lengths
-* Connection: yes-no answers (see example from source chapter)
+* Connection: yes-no answers (example from first chapter)
 
 ### Huffman coding (binary)
 
@@ -446,25 +515,25 @@ General Huffman coding procedure for codes with $M$ symbols:
     
 * Example : blackboard
 
-### Comparison of Huffman and Shannon-Fano coding
+### Example: compare Huffman and Shannon-Fano
 
-Comparison of binary Huffman and Shannon-Fano example:
+Example: compare binary Huffman and Shannon-Fano for:
 $$p(s_i) = \left\lbrace 0.35, 0.17, 0.17, 0.16, 0.15 \right\rbrace$$
 
 ### Coding followed by channel
 
-* For every symbol $x_i, i \in \left\lbrace 1, 2 ... M \right\rbrace$
-we can compute the average number of symbols $x_i$ in a codeword
+* For every symbol $x_i$
+we can compute the average number of symbols $x_i$ in a code
 $$\overline{l_{x_i}} = \sum_i p(s_i) l_{x_i}(s_i)$$
-
-* (here $l_{x_i}(s_i) =$ number of symbols $x_i$ in codeword of $s_i$)
-
-* Divide by average length => obtain probability (frequency) of symbol $x_i$
+    * $l_{x_i}(s_i) =$ number of symbols $x_i$ in the codeword of $s_i$
+    * e.g.: average number of 0's and 1's in a code
+* Divide by average length => probability (frequency) of symbol $x_i$
 $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 
-* These are the symbol probabilities at the input of the following channel
+* These are the probabilities of the input symbols for the channel
+    * assuming the encoder is followed by a channel (see Overview picture)
 
-* Example: binary code ($\overline{l_0}$, $\overline{l_1}$, $p(0)$, $p(1)$)
+* Example: binary code + binary channel: $\overline{l_0} = p(0)$, $\overline{l_1} = p(1)$
 
 ### Source coding as data compression
 
@@ -474,7 +543,7 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 * Source coding  = remapping the original codewords to other codewords 
     * The new codewords are shorter, on average
     
-* This means data compression
+* This means data **compression**
     * Just like the example in lab session
     
 * What does data compression remove?
@@ -484,18 +553,31 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
     * The compressed sequence looks like random data: impossible to guess, 
     no discernable patterns
 
+### Discussion: data compression with Huffman coding
+
+* Consider data compression with Huffman coding, like we did in lab
+    * What property do we *exploit* in order to obtain compression?
+    * How does *compressible data* look like?
+    * How does *incompressible data* look like?
+    * What are the limitation of our data compression method?
+    * How could it be improved?
+
+### Other codes: arithmetic coding
+
+* Arithmetic coding
+
 ### Chapter summary
 
 * Average length: $\overline{l} = \sum_i p(s_i) l_i$
 * Code types: instantaneous $\subset$ uniquely decodable $\subset$ non-singular
-* All instantaneous or uniqualy decodable code must obey Kraft inequality
+* All instantaneous or uniqualy decodable code must obey Kraft:
 $$ \sum_i D^{-l_i} \leq 1$$
 * Optimal codes: $l_i = -\log(p(s_i))$, $\overline{l_{min}} = H(S)$
 * Shannon's first theorem: use $n$-th order extension of $S$, $S^n$:
 $$\boxed{H(S) \leq \overline{l_{S}} < H(S) + \frac{1}{n}}$$
-    * average length can get as close as possible to $H(S)$
-    * average length can never be smaller than $H(S)$
+    * average length always larger, but as close as desired to $H(S)$
 * Coding techniques:
-    * Shannon: ceil optimal codeword lengths (round to upper)
+    * Shannon: ceil the optimal codeword lengths (round to upper)
     * Shannon-Fano: split in two groups approx. equal
-    * Huffman: best
+    * Huffman: best in class
+    * Arithmetic: even better, but different
