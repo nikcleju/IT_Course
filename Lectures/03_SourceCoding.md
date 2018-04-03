@@ -496,7 +496,7 @@ Properties of Huffman coding:
 
 * Produces a code with the **smallest average length** (better than Shannon-Fano)
 * Assigning $0$ and $1$ can be done in any order => different codes, same lengths
-* When inserting a sum into existing list, may be equal to another value => options
+* When inserting a sum into an existing list, may be equal to another value => options
     * we can insert above, below or in-between equal values
     * leads to codes with different *individual* lengths, but same *average* length
 * Some better algorithms exist which do not assign a codeword to every single message
@@ -511,7 +511,7 @@ General Huffman coding procedure for codes with $M$ symbols:
 * When assigning symbols, assign all $M$ symbols
 * **Important**: at the final step must have $M$ remaining values
     * May be necessary to add *virtual* messages with probability 0 at the end of the initial list,
-    to end up with exactly $M$ messages in the end
+    to end up with exactly $M$ messages in the last step
     
 * Example : blackboard
 
