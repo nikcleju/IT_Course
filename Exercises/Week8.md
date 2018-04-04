@@ -24,7 +24,7 @@ fontsize: 12pt
 1. For the following source, perform Huffman coding and obtain three 
 different codes with same average length, but different individual codeword length.
 
-    $$\sV{S}{0.05}{0.05}{0.15}{0.25}{0.25}{0.25}$$
+    $$\sVI{S}{0.05}{0.05}{0.15}{0.25}{0.25}{0.25}$$
     
     a. Compute the average length in all three cases and show it is the same
     b. Which code is better for sending over a binary channel which reaches its capacity
