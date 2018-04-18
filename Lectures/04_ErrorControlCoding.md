@@ -1,5 +1,16 @@
 ## Chapter IV: Error control coding
 
+### Chapter structure
+
+Chapter structure
+
+1. **General presentation**
+2. Analyzing linear block codes with the Hamming distance
+3. Analyzing linear block codes with matrix algebra
+4. Hamming codes
+5. Cyclic codes
+
+
 ### What is error control coding?
 
 ![Communication system](img/CommBlockDiagram.png){width=40%}
@@ -9,41 +20,39 @@
 
 ### Mutual information and error control
 
-* Mutual information $I(X,Y)$ = the information transmitted on the channel
-* Why do we still need error control?
-
-* Example: consider the following BSC channel (p = 0.01, $p(x_1) = 0.5$, $p(x_2)=0.5$):
+* Consider the following BSC channel ($p = 0.01$):
 
 ![Binary symmetric channel (BSC) ](img/BSC.png){width=25%}
 
-* The receiver would like to know the source messages 
-    * In absence of communication, the uncertainty is $H(X) = 1$ bit/msg
-    * With communication, the uncertainty is $H(X|Y) \approx 0.081$ bit/msg
+* There exists mutual information $I(X,Y)$ = average information transmitted on the channel
+    * Isn't this information enough? Why do we still need error control?
+
+* No! If $p(x_1) = p(x_2) = 0.5$, then:
+    * $I(X,Y) = H(X) - H(X|Y) = \approx 0.919$ bit
+    * $H(X) = 1$ bit
+    * $H(X|Y) \approx 0.081$ bit
 
 ### Mutual information and error control
 
-* The reduction in  uncertainty due to communication = mutual information
-    * $I(X,Y) = H(X) - H(X|Y) = \approx 0.919$ bit/msg
-    
-* Even though we have large I(X,Y), we still lose some information
-    * Imagine downloading a file, but having $1\%$ wrong bits
+* Even though we have large $I(X,Y)$, we still lose some information
+    * The receiver still has an uncertainy of $0.081$ for
+    each $1$ bit of information from the sender
+    *  Imagine downloading a file, but having $8.1\%$ wrong bits
 
-###  Why is error control needed?
+* Usually it is required that *all* bits are received correctly
+    * No errors are allowed
 
-* In most communications it is required that *all* bits are received correctly
-    * Not $1\%$ errors, not $0.1\%$, not $0.0001\%$. **None!**
-
-* But that is not possible unless the channel is ideal.
+* But that is not possible unless the channel is ideal
 
 * So what do to? **Error control coding**
 
 ### Modelling the errors on the channel
 
-* We consider only binary channels (symbols = $\left\lbrace 0,1 \right\rbrace$
-* An error = a bit is changed from 0 to 1 or viceversa
+* We consider only binary channels (symbols = $\left\lbrace 0,1 \right\rbrace$)
+* An **error** = a bit that has changed from 0 to 1 or viceversa while going through channel
 * Errors can appear:
-    * **independently**: each bit on its own
-    * in **packets of errors**: groups of errors 
+    * **independently**: sporadic errors, each bit has a random chance of error, independent of all the others
+    * in **packets of errors**: groups of consecutive errors 
 
 ### Modelling the errors on the channel
 
@@ -54,8 +63,15 @@
 
 * Channel model we use (simple):
     * The transmitted sequence is summed modulo-2 with an **error sequence**
+
+### Modelling the errors on the channel
+
+* Channel model we use (simple):
+    * The transmitted sequence is summed modulo-2 with an **error sequence**
+    * Error sequence has same length as the transmitted sequence
     * Where the error sequence is 1, there is a bit error
     * Where the error sequence is 0, there is no error
+
 $$\mathbf{r} = \mathbf{c} \oplus \mathbf{e}$$
 
 ### Mathematical properties of modulo-2 arithmetic
@@ -113,15 +129,24 @@ $$\hat{\mathbf{c}} = \hat{c_1}\hat{c_2}...\hat{c_n}$$
     
 * A code is **linear** if any linear combination of codewords is also a codeword
 
+### Definitions
+
+* A code is called **systematic** if the codeword contains all the information bits explicitly, unaltered
+    * coding merely adds supplementary bits besides the information bits
+    * codeword has two parts: the information bits and the parity bits
+    * example: parity bit added after the information bits
+    
+* Otherwise the code is called **non-systematic**
+    * the information bits are not explicitly visible in the codeword
+
 * The **coding rate** of a code is:
 $$R = k/n$$
 
-
 ### Definitions
 
-* A code $C$ is an **$t$-error-detecting** code if it is able to *detect* $t$ or less errors
+* A code $C$ is an **$t$-error-detecting** code if it is able to **detect** $t$ or less errors
 
-* A code $C$ is an **$t$-error-correcting** code if it is able to *correct* $t$ or less errors
+* A code $C$ is an **$t$-error-correcting** code if it is able to **correct** $t$ or less errors
 
 * Examples: at blackboard
 
@@ -153,11 +178,21 @@ $$R = k/n$$
 
 ### Redundancy
 
-* Because $k < n$, we introduce **redundancy**
+* Merriam-Webster: **"redundant"** definition:
+
+    a. *exceeding what is necessary or normal : superfluous*
+    b. *characterized by or containing an excess; specifically : using more words than necessary*
+
+* Because $k < n$, error control coding introduces **redundancy**
     * to transmit $k$ bits of information we actually send more bits ($n$) 
-    
-* Error control coding adds redundancy, while source coding aims to reduce redundancy --> Contradiction?
-    * but now redundancy is added in a controlled way, with a purpose
+
+### Redundancy
+
+* Error control coding adds redundancy, while source coding aims to reduce redundancy. Contradiction?
+
+* No:
+    * Source coding reduces existing redundancy from the data, which served no purpose
+    * Error control coding adds redundancy **in a controlled way**, with a purpose
     
 * Source coding and error control coding in practice: do sequentially, independently
     1. First perform source coding, eliminating redundancy in representation of data
@@ -180,12 +215,14 @@ In layman terms:
 all errors)
 * For all coding rates $R>C$, **there is no way** to recover the transmitted data perfectly
 
-Example:
+### Channel coding theorem example
 
-* Send binary digits on a BSC channel with capacity 0.7 bits/message
-* For any coding rate $R < 0.7$ there exist an error correction code that allow perfect recovery
-    * $R < 0.7$ = for every 7 bits of data, coding adds more than 3 bits, on average
-* With less than 3 bits for every 7 bits of data => impossible to recover all data
+* We send bits on a channel with capacity 0.7 bits/message
+* For any coding rate $R < 0.7$ there exists an error correction code that allows fixing of all errors
+    * $R < 0.7$ means we send more than 10 bits for every 7 information bits
+* With less than 10 bits for every 7 information bits  => no code exists that can fix all errors
+
+* The theorem makes it clear when it is possible to fix all errors, and guarantees that a code exists in this case
 
 ### Ideas behind channel coding theorem
 
@@ -197,13 +234,15 @@ Example:
     * If the average for all codes goes to 0, there exists at least on code better than the average
     * That is the code we should use
     
+### Ideas behind channel coding theorem
+
 * **The theorem does not tell what code to use**, only that some code exists
     * There is no clue of how to actually find the code in practice
     * Only some general principles:
         * using longer information words is better
         * random codewords are generally good
     
-* In practice, cannot use infinitely long codewords, so will only get a *good enough* code
+* In practice, we cannot use infinitely long codewords, so we will only get a *good enough* code
 
 ### Distance between codewords
 
@@ -213,6 +252,17 @@ Practical ideas for error correcting codes:
     * Receiver will think it received a correct codeword $c_2$ and the information word was $\mathbf{i_2}$, but actually it was $\mathbf{i_1}$
 * We want codewords as different as possible from each other
 * How to measure this difference? **Hamming distance**
+
+### Chapter structure
+
+Chapter structure
+
+1. General presentation
+2. **Analyzing linear block codes with the Hamming distance**
+3. Analyzing linear block codes with matrix algebra
+4. Hamming codes
+5. Cyclic codes
+
 
 ### Hamming distance
 
@@ -231,7 +281,6 @@ $$d_H(\mathbf{a}, \mathbf{b}) = \sum_{i=1}^N a_i \oplus b_i$$
 between any two codewords $\mathbf{c_1}$ and $\mathbf{c_2}$
 
 * Example at blackboard
-
 
 ### Nearest-neighbor decoding
 
@@ -282,24 +331,15 @@ Note: if the number of errors is higher, can fail:
 
 Example: blackboard
 
+### Chapter structure
 
-### Linear block codes
+Chapter structure
 
-* A code is a **block code** if it operates with words of *fixed size*
-    * Size of information word $\mathbf{i} = k$, size of codeword $\mathbf{c} = n$, $n > k$
-    * Otherwise it is a *non-block code*
-    
-* A code is **linear** if any linear combination of codewords is also a codeword
-
-* A code is called **systematic** if the codeword contains all the information bits explicitly, unaltered
-    * coding merely adds supplementary bits besides the information bits
-    * codeword has two parts: the information bits and the parity bits
-    * example: parity bit added after the information bits
-    
-* Otherwise the code is called **non-systematic**
-    * the information bits are not explicitly visible in the codeword
-
-* Example: at blackboard
+1. General presentation
+2. Analyzing linear block codes with the Hamming distance
+3. **Analyzing linear block codes with matrix algebra**
+4. Hamming codes
+5. Cyclic codes
 
 ### Generator matrix 
 
@@ -443,6 +483,17 @@ Conditions for syndrome-based error **correction**:
     * much more difficult to obtain than for decoding
 
 Rearranging the columns of $[H]$ (the order of bits in the codeword) does not affect performance
+
+
+### Chapter structure
+
+Chapter structure
+
+1. General presentation
+2. Analyzing linear block codes with the Hamming distance
+3. Analyzing linear block codes with matrix algebra
+4. **Hamming codes**
+5. Cyclic codes
 
 ### Hamming codes
 
@@ -620,6 +671,18 @@ $$\mathbf{z} = [H] \cdot \mathbf{r}^T$$
 * Syndrome-based error correction: lookup table
 * Hamming codes: $[H]$ contains all numbers $1 ... 2^r - 1$
 * SECDED Hamming codes: add an extra parity bit
+
+
+### Chapter structure
+
+Chapter structure
+
+1. General presentation
+2. Analyzing linear block codes with the Hamming distance
+3. Analyzing linear block codes with matrix algebra
+4. Hamming codes
+5. **Cyclic codes**
+
 
 ### Cyclic codes
 
