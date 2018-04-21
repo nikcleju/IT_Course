@@ -43,9 +43,9 @@ decoding is done by computing the **syndrome**:
 $$
 \begin{cases}
 z_0 &= r_0 \oplus r_1 \oplus r_2 \oplus r_3 \oplus r_4 \oplus r_5 \oplus r_6 \oplus r_7\\
-z_1 &= c_4 \oplus i_5 \oplus i_6 \oplus i_7\\
-z_2 &= c_2 \oplus i_3 \oplus i_6 \oplus i_7\\
-z_3 &= c_1 \oplus i_3 \oplus i_5 \oplus i_7\\
+z_1 &= r_4 \oplus r_5 \oplus r_6 \oplus r_7\\
+z_2 &= r_2 \oplus r_3 \oplus r_6 \oplus r_7\\
+z_3 &= r_1 \oplus r_3 \oplus r_5 \oplus r_7\\
 \end{cases}
 $$
 
