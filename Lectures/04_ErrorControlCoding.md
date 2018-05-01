@@ -331,6 +331,32 @@ Note: if the number of errors is higher, can fail:
 
 Example: blackboard
 
+### Computational complexity
+
+* **Computational complexity** = the amount of computational resources required 
+by an algorithm 
+    * only refers to the **order of magnitude of the dominant term**
+        * neglects the other terms
+        * neglects actual coefficient values in front
+    
+* Computational complexity with respect to number of information bits $k$,
+of the search-based nearest neighbor decoding
+(as presented earlier), is
+$$\mathcal{O}(k) = 2^k$$
+
+* Proof: Requires comparing with all codewords, and there are $2^k$ codewords 
+in total
+
+### Computational complexity
+
+* This implementation is **very inefficient**
+    * $k$ doubles => four times the computations
+    * $k$ increases 10 times => computation increases 1000 times
+    * $k$ increases 100 times => computation increases 1000000 times
+    * for $k = 256$ you'd need all the energy of the Sun
+    
+* Need to find ways to make it simpler
+
 ### Chapter structure
 
 Chapter structure
@@ -341,60 +367,173 @@ Chapter structure
 4. Hamming codes
 5. Cyclic codes
 
+### Review of basic algebra
+
+Informal definitions:
+
+* **Vector space** = a set such that one element + another element = remains in the set
+    * Examples: Euclidian vector spaces: a line, points in 2D, 3D
+    * Elements = "vectors"
+    
+* **Basis** = a set of $n$ independent vectors $\mathbf{e_1}, ...\mathbf{e_n}$
+    * Any vector $\mathbf{v}$ can be expressed as a linear combination of 
+    the basis elements
+    $$\mathbf{v} = \mathbf{e_1} \cdot \alpha_1 +  ... + \mathbf{e_n} \cdot \alpha_n$$
+
+### Review of basic algebra
+
+* **Subspace** = a smaller dimensional vector space inside a larger
+vector space
+    * Examples: a line in a plane
+        * sum of two vectors on a line = still on the line
+        * size of subspace = 1
+        * size of larger space = 2
+        
+    * A plane in 3D space
+        * sum of two vectors from the plane = still on the plane
+        * size of subspace = 2
+        * size of larger space = 3
+
+### Binary sequences form a vector space
+
+* The set of all binary sequences of size $n$ is a vector space
+    * sum of two sequences of size $n$ is still a sequence of size $n$
+
+* The sum operation = modulo-2 sum $\oplus$
+
+* Multiplication with $0$ and $1$ = as in usual arithmetic
+
+### How to look at matrix-vector multiplications
+
+* Matrix-vector multiplication
+    * Output vector = linear combination of the matrix columns
+
+* Vector-matrix multiplication
+    * Output vector = linear combination of the matrix rows
+    
+* Explain at the blackboard, draw picture
+
+### How to look at matrix-vector multiplications
+
+* Fits perfectly with vector space / basis / linear combination
+    * Matrix columns/rows = elements of the basis
+    * The output vector = the vector
+    * The multiplicated vector = the coefficients of the linear combination
+
+* Any vector $\mathbf{v}$ can be expressed as a linear combination of 
+the basis elements
+    $$\mathbf{v} = \mathbf{e_1} \cdot \alpha_1 +  ... + \mathbf{e_n} \cdot \alpha_n$$
+
+    $$\mathbf{v} = 
+    \begin{bmatrix}
+    \mathbf{e_1}  & \mathbf{e_2} & ... & \mathbf{e_n}
+    \end{bmatrix}
+    \begin{bmatrix}
+    \alpha_1  \\ \alpha_2 \\ ... \\ \alpha_n
+    \end{bmatrix}
+    $$
+
+* $\mathbf{e_1}, ... \mathbf{e_n}$ are **column vectors**
+
+* Equation can be transposed => all vectors become row vectors
+
+### Codewords form a vector space
+
+* The set of all binary codewords of a linear block code is a vector space
+of dimension $k$
+    * because sum (XOR) of two codewords = still a codeword (linear)
+    * total number of codewords is $2^k$ => dimension is $k$
+    * actual length of codewords is $n$, so actually it
+    is a subspace of the larger space of all binary sequences 
+    of length $n$
+    
+* Therefore, all codewords can be expressed as matrix-vector multiplications
+
+* Need to find a basis for the codewords
+
 ### Generator matrix 
 
-* All codewords for a linear block code can be generated via a **matrix multiplication**:
+* All codewords for a linear block code can be generated via a **matrix-vector multiplication**:
 $$\mathbf{i} \cdot [G] = \mathbf{c}$$
 
-![Codeword construction with generator matrix](img/GeneratorMatrix.png){width=50%}
+    ![Codeword construction with generator matrix](img/GeneratorMatrix.png){width=50%}
+    
+* $[G]$ = **generator matrix** of size $k \times n$ ("fat" matrix, $k < n$)
+    * it is fixed, it fully defines the whole code
 
-* $[G]$ = **generator matrix** of size $k \times n$
+### Generator matrix 
 
 * Row-wise interpretation:
-    * $\mathbf{c}$ = a linear combination of rows in $[G]$
-    * The rows of $[G]$ = a *basis* for the linear code
+    * Any codeword $\mathbf{c}$ = a linear combination of rows in $[G]$
+    * The rows of $[G]$ = a *basis* for the linear block code
+    * Could also be transposed, i.e. use column vectors
 
 * All operations are done in modulo-2 arithmetic
 
+* There exists a separate codeword for all possible information words $\mathbf{i}$
+
+### Proof of linearity
+
+* Prove that a codeword + another codeword = also codeword:
+$$\mathbf{i_1} \cdot [G] = \mathbf{c_1}$$
+$$\mathbf{i_2} \cdot [G] = \mathbf{c_2}$$
+$$\mathbf{c_1} \oplus \mathbf{c_2} = (\mathbf{i_1} \oplus \mathbf{i_2}) \cdot [G] = codeword$$
+
+
 ### Parity check matrix
 
-* Every generator matrix $[G]$ has a complementary **parity-check matrix** $[H]$ such that
-$$0 = [H] \cdot [G]^T$$
+* Every generator matrix $[G]$ has a related **parity-check matrix** $[H]$ such that
+$$\mathbf{0} = [H] \cdot [G]^T$$
+    * also known as **control matrix**
+    * size of $[H]$ is $(n-k) \times n$
+    * $[G]$ and $[H]$ are related, one can be deduced from the other
 
-* How to check if a binary word is a codeword or not?
+* $[H]$ is very useful to check if a binary word is a codeword or not 
+(i.e. for nearest neighbor error detection)
 
-* For every codeword $\mathbf{c}$ generated with $[G]$:
-$$\boxed{ 0 = [H] \cdot \mathbf{c}^T }$$
+### Using the parity check matrix
+
+* Theorem: every codeword $\mathbf{c}$ generated with $[G]$, $\mathbf{i_1} \cdot [G] = \mathbf{c_1}$,
+will produce a 0 vector when multiplied with the corresponding $[H]$ matrix:
+$$\mathbf{0} = [H] \cdot \mathbf{c}^T$$
 
 * Proof:
 $$\mathbf{i} \cdot [G] = \mathbf{c}$$
 $$[G]^T \cdot \mathbf{i}^T = \mathbf{c}^T$$
-$$[H] \cdot \mathbf{c}^T = [H] \cdot [G]^T \cdot \mathbf{i}^T = 0$$
+$$[H] \cdot \mathbf{c}^T = [H] \cdot [G]^T \cdot \mathbf{i}^T = \mathbf{0}$$
 
-### Parity check matrix
-
-* $[H]$ is the **parity-check matrix**, size = $(n-k) \times n$
-* $[G]$ and $[H]$ are related, one can be deduced from the other
-* The resulting vector $z = [H] \cdot [c]^T$ is the **syndrome**
 * All codewords generated with $[G]$ will produce $0$ when multiplied with $[H]$
 * All binary sequences that are not codewords will produce $\neq 0$ when multiplied with $[H]$
 
-* Column-wise interpretation of multiplication:
+### Relation between [G] and [H]
 
-![Codeword checking with parity-check matrix](img/ParityCheckMatrix.png){width=30%}
+* [G] and [H] are related
+    * The codewords form a $k$-dimensional subspace inside the larger $n$-dimensional 
+vector space
+    * The rows of $[H]$ are the "missing" dimensions of the subspace (the "orthogonal complement")
 
-### [G] and [H] for systematic codes
+* Together $[G]$ and $[H]$ form a full square matrix $n \times n$, which
+is a basis for the full $n$-dimensional vector space
+    * size of $[H]$ is $(n-k) \times n$
+    * size of $[G]$ is $k \times n$
 
-* For systematic codes, [G] and [H] have special forms
+* Examples:
+    * line in a 2D plane, has one orthogonal dimension
+    * plane in 3D space, has one orthogonal dimension
+    * line in 3D space, has 2 orthogonal dimension
+
+### Standard [G] and [H] for systematic codes
+
+* For systematic codes, [G] and [H] have special forms (known as **"standard"** forms)
 * Generator matrix
     * first part = identity matrix
     * second part = some matrix $Q$
-$$[G]_{k \times n} = [Q_{k \times (n-k)} \;\; I_{k \times k}s]$$
+$$[G]_{k \times n} = [I_{k \times k} \;\; Q_{k \times (n-k)}]$$
 
 * Parity-check matrix
-    * first part = identity matrix
-    * second part = same Q, transposed
-$$[H]_{(n-k) \times n} = [I_{(n-k) \times (n-k)} \;\; Q^T_{(n-k) \times k}]$$
+    * first part = same Q, but **transposed**
+    * second part = identity matrix
+$$[H]_{(n-k) \times n} = [Q^T_{(n-k) \times k} \;\; I_{(n-k) \times (n-k)}]$$
 
 * Can easily compute one from the other
 
@@ -402,26 +541,44 @@ $$[H]_{(n-k) \times n} = [I_{(n-k) \times (n-k)} \;\; Q^T_{(n-k) \times k}]$$
 
 ### Interpretation as parity bits
 
+* Multiplication with $G$ in standard form produces the codeword as
+    * first part = information bits (since first part of $[G]$ is identity matrix)
+    * additional bits = combinations of information bits = *parity bits*
+
 * The additional bits added by coding are actually just parity bits
     * Proof: write the generation equations (example)
 
-* Generator matrix $[G]$ creates the codeword as:
-    * first part = information bits (systematic code, first part of $[G]$ is identity matrix)
-    * additional bits = combinations of information bits = *parity bits*
-
-* Parity-check matrix $[H]$ checks if parity bits correspond to information bits
+* Parity-check matrix in standard form $[H]$ checks if parity bits correspond to information bits
      * Proof: write down the parity check equation (see example)
 
-* If all parity bits match the data, the syndrome $\mathbf{z} = 0$ 
-    * otherwise the syndrome $\mathbf{z} \neq 0$ 
+* If all parity bits match the data, the result of multiplying with $[H]$ is 0$ 
+    * otherwise the it is $\neq 0$ 
+
+### Interpretation as parity bits
 
 * **Generator & parity-check matrices are just mathematical tools
-for easy computation & checking of parity bits**
+for easy computation and checking of parity bits**
+
+* We're still just adding parity bits, but now we have matrices for easy
+computation and verification of codewords
+
+### Syndrome
+
+* Nearest neighbor error detection = check if received word
+$\mathbf{r}$ is a codeword
+
+* We do this easily by multiplying with $[H]$
+
+* The resulting vector $z = [H] \cdot [r]^T$ is known as **syndrome**
+
+* Column-wise interpretation of multiplication:
+
+![Codeword checking with parity-check matrix](img/ParityCheckMatrix.png){width=30%}
 
 
-### Syndrome-based error detection
+### Nearest neighbor error detection with matrices
 
-Syndrome-based error **detection** for linear block codes:
+Nearest neighbor error **detection** with matrices:
 
 1. generate codewords with generator matrix:
 $$\mathbf{i} \cdot [G] = \mathbf{c}$$
@@ -437,9 +594,9 @@ $$\mathbf{z} = [H] \cdot \mathbf{r}^T$$
     * If $\mathbf{z} = 0$ => $\mathbf{r}$ has no errors
     * If $\mathbf{z} \neq 0$ => $\mathbf{r}$ has errors
 
-### Syndrome-based error correction
+### Nearest neighbor error correction with matrices
 
-Syndrome-based error **correction** for linear block codes:
+Nearest neighbor error **correction** with matrices:
 
 * Syndrome $\mathbf{z} \neq 0$ => $\mathbf{r}$ has errors, we need to locate them
 
@@ -460,29 +617,42 @@ $$\mathbf{\hat{c}} = \mathbf{r}  \oplus \mathbf{\hat{e}}$$
 
 Example: at blackboard
 
+### Computational complexity
+
+* Computational complexity for error detection
+    * Error detection = multiplication with $[H]$
+    * Complexity is $\mathcal{O}(n^2)$ (size of $[H]$ is $(n-k) \times n$
+    * Much more efficient!
+
+* Computational complexity for error correction
+    * Need to check all possible error words => bad performance
+    * In practice, other tricks are used to make it much faster (see Hamming codes
+    for example)
+
+
 ### Conditions on [H] for error detection and correction
 
-Conditions for syndrome-based error **detection**:
+* How to design a good matrix $[H]$?
 
-* We can detect errors if the syndrome is **non-zero**
-
-* To detect a single error: every column of $[H]$ must be non-zero
-* To detect two error: sum of any two columns of $[H]$ cannot be zero
-    * that means all columns are different
-* To detect $n$ errors: sum of any $n$ or less columns of $[H]$ cannot be zero
+* Conditions on [H] for successful error **detection**:
+    * We can detect errors if the syndrome is **non-zero**
+    * To detect a single error: every column of $[H]$ must be non-zero
+    * To detect two error: sum of any two columns of $[H]$ cannot be zero
+        * that means all columns are different
+    * To detect $n$ errors: sum of any $n$ or less columns of $[H]$ cannot be zero
 
 ### Conditions on [H] for error detection and correction
 
-Conditions for syndrome-based error **correction**:
+* Conditions for syndrome-based error **correction**:
+    * We can correct errors if the syndrome is **unique**
+    * To correct a single error: all columns of $[H]$ are different
+        * so the syndromes, for a single error, are all different
+    * To correct $n$ errors: sum of any $n$ or less columns of $[H]$ are all different
+        * much more difficult to obtain than for decoding
 
-* We can correct errors if the syndrome is **unique**
+* Conditions for error correction are more demanding than for detection
 
-* To correct a single error: all columns of $[H]$ are different
-    * so the syndromes, for a single error, are all different
-* To correct $n$ errors: sum of any $n$ or less columns of $[H]$ are all different
-    * much more difficult to obtain than for decoding
-
-Rearranging the columns of $[H]$ (the order of bits in the codeword) does not affect performance
+* Note: Rearranging the columns of $[H]$ (the order of bits in the codeword) does not affect performance
 
 
 ### Chapter structure
