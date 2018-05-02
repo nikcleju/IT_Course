@@ -371,7 +371,10 @@ Chapter structure
 
 Informal definitions:
 
-* **Vector space** = a set such that one element + another element = remains in the set
+* **Vector space** = a set such that:
+
+    one element + another element = still an element from the set
+
     * Examples: Euclidian vector spaces: a line, points in 2D, 3D
     * Elements = "vectors"
     
@@ -415,7 +418,7 @@ vector space
 
 ### How to look at matrix-vector multiplications
 
-* Fits perfectly with vector space / basis / linear combination
+* Vector spaces can be perfectly described with matrix-vector multiplications
     * Matrix columns/rows = elements of the basis
     * The output vector = the vector
     * The multiplicated vector = the coefficients of the linear combination
@@ -466,7 +469,7 @@ $$\mathbf{i} \cdot [G] = \mathbf{c}$$
 * Row-wise interpretation:
     * Any codeword $\mathbf{c}$ = a linear combination of rows in $[G]$
     * The rows of $[G]$ = a *basis* for the linear block code
-    * Could also be transposed, i.e. use column vectors
+    * Could also be transposed, i.e. use column vectors instead
 
 * All operations are done in modulo-2 arithmetic
 
@@ -493,7 +496,7 @@ $$\mathbf{0} = [H] \cdot [G]^T$$
 
 ### Using the parity check matrix
 
-* Theorem: every codeword $\mathbf{c}$ generated with $[G]$, $\mathbf{i_1} \cdot [G] = \mathbf{c_1}$,
+* Theorem: every codeword $\mathbf{c}$ generated with $[G]$ ($\mathbf{i} \cdot [G] = \mathbf{c}$)
 will produce a 0 vector when multiplied with the corresponding $[H]$ matrix:
 $$\mathbf{0} = [H] \cdot \mathbf{c}^T$$
 
