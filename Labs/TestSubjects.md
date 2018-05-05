@@ -1,6 +1,6 @@
 ---
 title: Subjects for Laboratory Test
-subtitle: DRAFT - Not final!!
+subtitle: Information Theory 2017-2018
 documentclass: scrartcl
 fontsize: 12pt
 ---
@@ -8,53 +8,20 @@ fontsize: 12pt
 ### Lab 2
 
 1. Write a C program to compute the entropy of a file. 
-  * The program shall receive the name of the file as a command-line argument:
-  `entropy.exe myfile.txt`
+    * The program shall receive the name of the file as a command-line argument:
+    `entropy.exe myfile.txt`
   
-  * The program should follow the following steps:
-    * Open the file for reading (in binary format)
-    * Count the number of apparitions of every byte value:
-        * hold an array of 256 counters, one for every possibly byte value
-        * repeatedly read one byte from the file
-        * increment the counter corresponding to the byte read
-	    * also store and increment a counter for the total number of bytes
-    * Compute the probability of every byte value: divide each byte counter to the global counter
-    * Compute the entropy, based on the probabilities
-    * Show the result
+    * The program should follow the following steps:
+        * Open the file for reading (in binary format)
+        * Count the number of apparitions of every byte value:
+            * hold an array of 256 counters, one for every possibly byte value
+            * repeatedly read one byte from the file
+            * increment the counter corresponding to the byte read
+	        * also store and increment a counter for the total number of bytes
+        * Compute the probability of every byte value: divide each byte counter to the global counter
+        * Compute the entropy, based on the probabilities
+        * Show the result
 
-### Lab 5
-
-1. Write a C program to perform a linear block encoding of every byte from a given data file.
-The program shall be called as follows: 
-
-	`Encode.exe code.dat input.txt output.txt`
-	
-  * The arguments are:
-    * `code.dat`: a file containing the code to be used (known as the "codebook" file)
-	* `input.txt`: the file to encode
-	* `output.txt`: the output (encoded) file
-
-  The codebook file contains a vector of 256 elements of the following structure type:
-  
-```
-typedef struct 
-{
-    int len;                /* length of code, in bits */
-    unsigned long code;     /* the first "len" bits are the codeword */
-} CODE32BIT;
-```
-	
-  * The program will follow the following steps:
-    * Read the full vector from the codebook file;
-    * Allocate an array named `out` of `unsigned char` of max size 10MB (i.e. 10000000 bytes);
-    * The, open the input file and read every byte in a loop. For each byte do the following:
-	* Write the code for the byte, bit by bit, in the `out` vector. You need to keep track of the number of bits written,
-        in order to continue writing from where the previous code stopped.
-    * Write the output data to the output file, as follows:
-        * Open the second file for writing
-        * Write first the total number of bits
-        * Write afterwards the vector `out`, but not more than the number of bytes actually used for coding
-        * *Note: when decoding the file, we will read back the data in the same order*.
 
 ### Lab 8
 
@@ -67,7 +34,7 @@ The program shall be called as follows:
     * The arguments are:
         * `input.dat`: the input file
         * `output.dat`: the output file 
-        produced by the program (12.5% larger than the input) 
+        produced by the program (will be 12.5% larger than the input) 
     
     * The program should consist of the following steps:
         * declare two large vectors of `unsigned char`, for input
@@ -122,8 +89,7 @@ $$
 
 ### Lab 11
 
-1. Write a C program that computes the CRC-16 value of a data file
-and appends it to the file.
+1. 1. Write a C program that performs CRC-16 computation and checking.
 
     The program shall be called in two possible ways:
         
@@ -146,8 +112,7 @@ and appends it to the file.
         * declare one large vector of `unsigned char` for input bits
         * open the input file and read everything into the input vector
         * for every bit in the input vector
-            * if the bit is 1:
-                * do XOR of the next 17 bits with the bits in $g$
+            * if the bit is 1, do XOR starting from this bit with the 17 bits in $g$
         * there will be 16 bits remaining at the end of the original
         input vector (the CRC-16 value)
         * then:
