@@ -89,7 +89,7 @@ $$
 
 ### Lab 11
 
-1. 1. Write a C program that performs CRC-16 computation and checking.
+1. Write a C program that performs CRC-16 computation and checking.
 
     The program shall be called in two possible ways:
         
