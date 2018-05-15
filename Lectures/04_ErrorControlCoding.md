@@ -898,33 +898,29 @@ $$10010111 \rightarrow 1 \oplus x^3 \oplus x^5 \oplus x^6 \oplus x^7$$
 
 **Theorem**: 
 
-All the codewords of a cyclic code are multiples of a certain polynomial $g(x)$,
+* All the codewords of a cyclic code are multiples of a certain polynomial $g(x)$,
 known as **generator polynomial**. 
 
-\ 
 
-Properties of generator polynomial $g(x)$:
+### Properties of generator polynomial
 
-* The generator polynomial has first and last coefficient equal to 1.
-* The generator polynomial is a factor of $X^n \oplus 1$
+The generator polynomial $g(x)$ must satisfy the following:
+
+* $g(x)$ must have first and last coefficient equal to 1
+* $g(x)$ must be a factor of $X^n \oplus 1$
 * The *degree* of $g(x)$ is $n-k$, where:
-    * The codeword = polynomial of degree $n-1$ ($n$ coefficients)
-    * The information polynomial = polynomial of degree $k-1$ ($k$ coefficients)
+    * n = the size of codeword (codeword polynomial has degree $n-1$)
+    * k = the size of the information word (information polynomial has degree $k-1$)
 $$ (k-1) + (n-k) = n-1$$
 * **The degree of $g(x)$ is the number of parity bits of the code.**
 
-### Finding a generator polynomial
-
-**Theorem**: 
-
-If $g(x)$ is a polynomial of degree $(n-k)$ and is a factor of $X^n \oplus 1$, 
-then $g(x)$ generates a $(n,k)$ cyclic code.
+### Example of generator polynomials
 
 Example:
 
 $$1 \oplus x^7 = (1 \oplus x)(1 \oplus x + \oplus x^3)(1 \oplus x^2 \oplus x^3)$$
 
-Each factor generates a code:
+Each factor can generate a code:
 
 * $1 \oplus x$ generates a (7,6) cyclic code
 * $1 \oplus x \oplus x^3$ generates a (7,4) cyclic code
@@ -936,7 +932,7 @@ Each factor generates a code:
 
 * Image from *http://www.ross.net/crc/download/crc_v3.txt*
 
-* Your turn: Write the polynomials in mathematical form!
+* Your turn: write the polynomials in mathematical form
 
 ### Proving the cyclic property
 
@@ -946,7 +942,7 @@ Theorem:
 
 Proof:
 
-* Enough to consider a cyclic shift by 1 position
+* It is enough to consider a cyclic shift by 1 position
 
 * Original codeword
 $$c_0c_1c_2...c_{n-1} \rightarrow \mathbf{c(x)} = c_0 \oplus c_1x \oplus ... \oplus c_{n-1}x^{n-1}$$
@@ -971,13 +967,10 @@ Proof (continued):
 
 QED
 
-* Note that we relied on two key facts:
+* Note that we relied on two properties mentioned before:
     * that a codeword $\mathbf{c(x)}$ is always a multiple of $g(x)$
     * that $g(x)$ is a factor of $(x^n \oplus 1)$
     
-* Therefore a cyclic code = a code where the codewords are multiples
-of some $g(x)$ which is a factor of $(x^n \oplus 1)$
-
 ### Coding and decoding of cyclic codes
 
 * Cyclic codes can be used for detection or correction
@@ -995,73 +988,118 @@ of some $g(x)$ which is a factor of $(x^n \oplus 1)$
 
 ### 1. Coding and decoding - The mathematical way
 
+Reminder: polynomial multiplication and division
+
+* Two polynomials $a(x)$ and $b(x)$ can be multiplied 
+    * the result has degree = degree of $a(x)$ + degree of $b(x)$
+* A polynomials $a(x)$ can be divided to another polynomial $b(x)$:
+$$a(x) = b(x) q(x) \oplus r(x)$$
+    * $q(x)$ = the quotient ("câtul")
+    * $r(x)$ = the remainder ("restul")
+    * the degree of $r(x)$ is strictly smaller than the degree of $b(x)$
+
+
+### 1. Coding and decoding - The mathematical way
+
 Coding
 
-* We want to encode the **information polynomial** with $k$ bits 
-$$i(x) = i_0 \oplus i_1x \oplus ... \oplus i_{k-1}x^{k-1}$$
+* We want to encode the **information word** with $k$ bits 
+$$i_0i_1i_2...i_{k-1} \rightarrow i(x) = i_0 \oplus i_1x \oplus ... \oplus i_{k-1}x^{k-1}$$
 
 * **Non-systematic** codeword generation:
 $$\boxed{c(x) = i(x) \cdot g(x)}$$
 
-* The resulting codeword is non-systematic
+* The degrees match:
+    - $i(x)$ has degree $k-1$ ($k$ bits)
+    - $g(x)$ has degree $n-k$ ($n-k+1$ bits)
+    - $c(x)$ has degree $n-1 = (n-k) + (k-1)$ ($n$ bits)
 
 ### Systematic coding - The mathematical way
 
 * **Systematic** codeword generation:
-$$\boxed{c(x) = b(x) \oplus i(x) \cdot x^{n-k}}$$
+$$\boxed{c(x) = x^{n-k} \cdot i(x) \oplus b(x)}$$
 
 * $b(x)$ is the remainder of dividing $x^{n-k} i(x)$ to $g(x)$:
 $$x^{n-k} i(x) = a(x) g(x) \oplus b(x)$$
+    * $b(x)$ is known as "the CRC value"
 
-* Proof: $c(x) = b(x) \oplus i(x) \cdot x^{n-k} = b(x) \oplus a(x) g(x) \oplus b(x) = a(x) g(x)$
-    * the codeword is indeed a multiple of $g(x)$
-    * that's because we add the remainder a second time, which cancels it
+* Is this $c(x)$ really a multiple of $g(x)$? Yes, because:
+$$c(x) = x^{n-k} \cdot i(x) \oplus b(x) = a(x) g(x) \oplus b(x) \oplus b(x) = a(x) g(x)$$
 
 ### Interpretation
 
-* Note that the systematic code is composed of two parts:
-    * right part: $i(x) \cdot x^{n-k}$ = $i(x)$ shifted to the right by (n-k) positions
-        * Multipling with $x^k$ = right shifting by $k$
-    * left part: the remainder $b(x)$, which is of degree less than (n-k)
-    * the two parts are non-overlapping
-    * therefore the code is systematic (the information bits are to the right)
+* Why is the code systematic? 
 
-* The important part is $b(x)$ (the remainder) = the **CRC value**
+* Let's analyze the systematic codeword generation step by step
 
-* Examples: at blackboard
+* Consider the information word/polynomial
+$$\mathbf{i} = [\underbrace{i_0i_1...i_{k-1}}_k] \rightarrow i(x) = i_0 \oplus i_1 x \oplus ... \oplus i_{k-1} x^{k-1}$$
+
+* Multiplying $x^{n-k} \cdot i(x)$ shifts all bits to the right with $(n-k)$ positions
+$$[\underbrace{00...0}_{n-k} \underbrace{i_0i_1...i_{k-1}}_k] \rightarrow i(x) = i_0 x^{n-k} \oplus i_1 x^{n-k+1} \oplus ... \oplus i_{k-1} x^{n-1}$$
+
+### Interpretation (continued)
+
+* The remainder $b(x)$ has degree strictly less than $n-k$ (degree of $g(x)$), so at most $n-k$ bits
+
+* Therefore adding $b(x)$ will not overlap with $x^{n-k} \cdot i(x)$
+    * the $(n-k)$ bits of $b(x)$ will fit in the first $n-k$ locations
+$$\begin{aligned}
+&\mathbf{c} =  [\underbrace{b_0b_1...b_{n-k}}_{n-k} \underbrace{i_0i_1...i_{k-1}}] \rightarrow \\
+&\rightarrow c(x) = b_0 \oplus b_1 x \oplus ... \oplus b_{n-k-1} x^{n-k-1} \oplus i_0 x^{n-k} \oplus i_1 x^{n-k+1} \oplus ... \oplus i_{k-1} x^{n-1}
+\end{aligned}$$
+    
+* Hence the code is systematic: the information bits are in the codeword
+
+* The code adds $b(x)$ (the remainder) = the **CRC value**
+
+### Interpretation
+
+* Systematic cyclic codeword = compute a CRC value and append it to the data
+
+* Different writing conventions:
+
+    * when writing the codewords from LSB -> MSB (increasing order of degrees), the CRC appears in front
+        * like in lecture slides
+    * when writing the codewords from MSB -> LSB (decreasing order of degrees), the CRC appears at the end
+        * like in laboratory
+    * same thing, just bit ordering is reversed
+    * (LSB = Least Significant Bit, MSB = Most Significant Bit)
+
 
 ### Decoding - The mathematical way
 
-* Any codeword $\mathbf{c(x)}$ is a multiple of $g(x)$
-* We need to check if the received $\mathbf{r(x)}$ still is a multiple of $g(x)$
-of dividing $x^{n-k} i(x)$ to $g(x)$:
-* Error detection:
+Decoding 
+
+* We receive $\mathbf{r} = r_0r_1r_2...r_{n-1} \rightarrow \mathbf{r(x)} = r_0 \oplus r_1x \oplus ... \oplus r_{n-1}x^{n-1}$$
+
+* Error **detection**: check if $r(x)$ is a codeword or not
+
+* Check if the received $\mathbf{r(x)}$ still is a multiple of $g(x)$
     * Divide $\mathbf{r(x)}$ to $g(x)$:
         * If remainder of $r(x) : g(x)$ is 0 => it is a codeword, no errors present
         * If remainder is non-zero => it's not a true codeword, **errors detected**
 
-* Error correction: use a lookup table
+* Computing the remainder = computing the CRC of the received data
+    * Remember lab: decoding = compute CRC of all coded data, if 0 => OK, if non-zero => NOK
+
+### Decoding - The mathematical way
+
+* Error correction: use a lookup table (just like with matrices)
     * build a lookup table for all possible error words (same as with matrix codes)
     * for each error code, divide by $g(x)$ and compute the remainder
     * when the remainder is identical to the remainder obtained with $\mathbf{r(x)}$, we found the error word => correct errors
     
 * Example: at blackboard
+
     
 ### 2. Coding and decoding - The programming way
 
-* We will do it only for systematic codes
+* Only for systematic codes (mostly used)
 
-* We want to compute the remainder $b(x)$ of of dividing $x^{n-k} i(x)$ to $g(x)$
-    * the remainder will be put alongside the information word, that's easy with programming
+* We need to compute the CRC = $b(x)$ = remainder of $x^{n-k} i(x)$ divided to $g(x)$
+    * the remainder will be put alongside the information word
     
-* We want **an efficient algorithm to compute the remainder of a polynomial division**
-
-* Different bit ordering:
-    * we wrote polynomials with largest power to the right
-    * but in binary, most significant bit (MSB) is to the right, LSB to the left
-    * The ordering is right-to-left here, it was left-to-right in the polynomials
-    * It's just a convention
-
 * Good reference: *"A Painless Guide to CRC Error Detection Algorithms"*, Ross N. Williams
     * http://www.ross.net/crc/download/crc_v3.txt
 
@@ -1072,59 +1110,27 @@ of dividing $x^{n-k} i(x)$ to $g(x)$:
     * XOR the sequences
     * repeat
 
+* Best seen by example at blackboard
+
 ### Example
 
 ![Polynomial division = XORing succesively with $g(x)$](img/CRCAlgoXORing.png){height=60%}
 
-### Algorithm SIMPLE
-
-* This algorithm = "Algorithm SIMPLE"
-    * Use a binary register of size $W = n-k$ bits
-
-![CRC Algorithm SIMPLE](img/CRCAlgoSIMPLE.png){widht=50%}
-
-
-### Algorithm TABLE - on whole bytes, use precomputed table
-
-* Succesive XORing with shifted $g(x)$'s = XORing with just one combined sequence 
-    * ((a XOR b) XOR c) XOR d = a XOR (b XOR d XOR c)
-    
-* Given the first byte of $i(x)$, we can compute the combined XOR of the $g(x)$'s
-aligned under it (size increases with 1 byte to the right)
-
-* The first resulting byte will be completely zero => can ignore it
-
-### Algorithm TABLE - on whole bytes, use precomputed table
-*  The first byte of $i(x)$ determines the combined $g(x)$'s sequence; from it we can ignore first byte;
-the rest of the bytes must be XORed with the next part of the message $i(x)$
-
-* Can use a precomputed table of 256 values, each value having $W = k$ bytes,
-equal to the combined sequence of $g(x)$'s, first byte skipped
-
-### Algorithm TABLE - on whole bytes, use precomputed table
-
-* Example for a CRC of 32 bits ($g(x)$ of degree 32)
-
-![CRC Algorithm TABLE](img/CRCAlgoTABLE.png){widht=50%}
-
-### Algorithm TABLE - on whole bytes, use precomputed table
-
-* Algorithm implementation (pseudocode):
-
-![CRC Algorithm TABLE](img/CRCAlgoTABLECboth.png){widht=50%}
 
 ### Decoding
 
-* Error detection: two possibilities:
-    * recompute the CRC value from the received $i(x)$, check if CRC is the same:
-        * If the same => no errors
-        * If different => errors detected!
-    * OR, equivalently, divide the whole sequence $r(x) = [i(x), b(x)]$ to $g(x)$:
+* We receive $\mathbf{r} = r_0r_1r_2...r_{n-1} \rightarrow \mathbf{r(x)} = r_0 \oplus r_1x \oplus ... \oplus r_{n-1}x^{n-1}$$
+
+* Error detection: 
+    * compute the CRC of all sequence $\mathbf{r}$
         * If the remainder is 0 => no errors
         * If the remainder is non-zero => errors detected!
-    
+
 * Error correction:
-    * Not used in practice, won't do here
+    * use a lookup table (just like with matrices)
+        * build a lookup table for all possible error words (same as with matrix codes)
+        * for each error code, compute the CRC for the error word
+        * when the resulting remainder is identical to the remainder obtained with $\mathbf{r}$, we found the error word => correct errors
     
 ### 3. Coding and encoding - The hardware way
 
