@@ -7,6 +7,12 @@ spring semester at ETTI, TUIASI.
 
 All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
 
+### Laboratory Test
+
+The entry time for the laboratory test on 21.05.2018 are here: [Labs/TestEntryTime.pdf](Labs/TestEntryTime.pdf)
+
+The test lasts 1h.
+
 ### Laboratory
  
 All the laboratory documents are in the [Labs](Labs) folder.
