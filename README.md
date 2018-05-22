@@ -19,6 +19,8 @@ To access the files, download and enter the password: the group number of the fi
 
 All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
 
+Open the *.pdf* files, not the raw *.md* text files.
+
 ### Laboratory
  
 All the laboratory documents are in the [Labs](Labs) folder.
