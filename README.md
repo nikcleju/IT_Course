@@ -1,4 +1,4 @@
-# IT20172018
+# IT20172018 - Information Theory 2017-2018 class
 
 Here you will find all the materials for the class of Information Theory taught during 2017-2018
 spring semester at ETTI, TUIASI.
