@@ -1131,6 +1131,12 @@ Decoding
         * build a lookup table for all possible error words (same as with matrix codes)
         * for each error code, compute the CRC for the error word
         * when the resulting remainder is identical to the remainder obtained with $\mathbf{r}$, we found the error word => correct errors
+
+### STOP HERE FOR IT20172018
+
+**This is where the lectures end for the class of 2017-2018.**
+
+**You only have to study until this point.**
     
 ### 3. Coding and encoding - The hardware way
 
