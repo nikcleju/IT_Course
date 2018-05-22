@@ -9,7 +9,7 @@ geometry: margin=2.5cm
 
 \vspace{-2cm}
 
-# Exercises (14p)
+# Exercises (15p)
 
 1. A discrete, complete and memoryless source has the following distribution: 
 $$S: \begin{pmatrix}
@@ -47,7 +47,7 @@ $$S: \begin{pmatrix}
 2. (2p) Design a block code consisting of 4 codewords which is able to detect 2 errors in a codeword. 
 Justify that it is able to detect 2 errors.
 
-1. (2p) Consider a systematic code with parity-check matrix 
+1. (3p) Consider a systematic code with parity-check matrix 
 	$$[H] = 
 	\begin{bmatrix}
 	1 & 1 & 1 & 0 & 1 & 0 & 0 \\
@@ -60,13 +60,13 @@ Justify that it is able to detect 2 errors.
 	transmitted information bits.
 
   
-### Theory questions (13p)
+### Theory questions (15p)
 
 1. (4p) Prove that the entropy of any second-order extension, $H(S^2)$, is $2$ times larger than $H(S)$:
 	$$H(S^2) = 2 \cdot H(S)$$
 
-2. (1p) Consider two different joint probability matrices $P_A(X,Y)$ and $P_B(X,Y)$.
-Which one is better for a communication process? Justify (in words).
+2. (2p) Consider two different joint probability matrices $P_A(X,Y)$ and $P_B(X,Y)$.
+Which one do you think is better for a communication process? Justify (in words).
 
 $$P_A(X,Y) = \begin{bmatrix}
     0.8 & 0 \\
@@ -82,7 +82,7 @@ P_B(X,Y) = \begin{bmatrix}
   
 4. (4p) State and prove the Kraft inequality theorem
   
-5. (1p) The family of Hamming codes contains many possible Hamming codes. What are the next two Hamming codes in the following sequence? Justify the answers.
+5. (2p) The family of Hamming codes contains many possible Hamming codes. What are the next two Hamming codes in the following sequence? Justify the answers.
 
         Hamming(7,4), Hamming(15,11), Hamming(?,?), Hamming(?,?), ...
 
@@ -99,5 +99,6 @@ P_B(X,Y) = \begin{bmatrix}
 
 ## Notes
 
-- 3p are awarded from start. 30p in total. 
+- You start with 3p ("punctul din oficiu"). 
+- Grade = total points / 3 (e.g. 30p = grade 10, 15p = grade 5 etc).
 - Time available: 2h
