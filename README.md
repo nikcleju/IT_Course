@@ -26,8 +26,6 @@ The test lasts 1h.
  
 All the laboratory documents are in the [Labs](Labs) folder.
 
-Tha labora
-
 ### Tests during semester
 
 All the tests given this semester will be available in the [Tests](Tests) folder.
