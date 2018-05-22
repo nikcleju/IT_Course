@@ -7,6 +7,15 @@ spring semester at ETTI, TUIASI.
 
 All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
 
+
+## Grades for Laboratory and Tests##
+
+The Laboratory grades are here: [Grades\NoteLab_Passwd.pdf](Grades/NoteLab_Passwd.pdf)
+
+The Test grades are here: (not yet).
+
+To access the files, download and enter the password: the group number of the first group (**xxxx**).
+
 ### Laboratory Test
 
 The entry time for the laboratory test on 21.05.2018 are here: [Labs/TestEntryTime.pdf](Labs/TestEntryTime.pdf)
@@ -16,6 +25,8 @@ The test lasts 1h.
 ### Laboratory
  
 All the laboratory documents are in the [Labs](Labs) folder.
+
+Tha labora
 
 ### Tests during semester
 
