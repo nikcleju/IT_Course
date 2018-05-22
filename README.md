@@ -3,21 +3,21 @@
 Here you will find all the materials for the class of Information Theory taught during 2017-2018
 spring semester at ETTI, TUIASI.
 
-### Lectures
-
-All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
-
 ### Exam
 
 A sample exam sheet is here: [SampleExam\SampleExam.pdf](SampleExam/SampleExam.pdf)
 
-## Grades for Laboratory and Tests##
+### Grades for Laboratory and Tests
 
 The Laboratory grades are here: [Grades\NoteLab_Passwd.pdf](Grades/NoteLab_Passwd.pdf)
 
 The Test grades are here: (not yet).
 
 To access the files, download and enter the password: the group number of the first group (**xxxx**).
+
+### Lectures
+
+All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
 
 ### Laboratory
  
