@@ -9,11 +9,9 @@ A sample exam sheet is here: [SampleExam\SampleExam.pdf](SampleExam/SampleExam.p
 
 ### Grades for Laboratory and Tests
 
-The Laboratory grades are here: [Grades\NoteLab_Passwd.pdf](Grades/NoteLab_Passwd.pdf)
+The Laboratory grades are here: on Faculty's Moodle page.
 
-The Test grades are here: (not yet).
-
-To access the files, download and enter the password: the group number of the first group (**xxxx**).
+The Test grades are here: on the Faculty's Moodle site.
 
 ### Lectures
 
