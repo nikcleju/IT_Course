@@ -1,6 +1,6 @@
 
 # Source md filenames, excluding macros.md and slides_header.md
-SOURCE_MD = $(filter-out macros.md slides_header.md, $(wildcard *.md))
+SOURCE_MD = $(filter-out macros.md slides_header.md Feedback.md, $(wildcard *.md))
 
 # Source mdw filenames
 SOURCE_MDW = $(wildcard *.mdw)
@@ -48,7 +48,7 @@ RM=/bin/rm
 # What is this?
 .PHONY: all clean
 
-all : tex odt pdf
+all : pdf
 
 odt : $(EXPORTED_DOCS_ODT)
 

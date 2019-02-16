@@ -1,7 +1,8 @@
-# IT20172018 - Information Theory 2017-2018 class
+# IT_Course - Information Theory class, ETTI, TUIASI
 
-Here you will find all the materials for the class of Information Theory taught during 2017-2018
-spring semester at ETTI, TUIASI.
+Here you will find all the materials for the class of Information Theory taught during spring semester at ETTI, TUIASI.
+
+Currently the 2018-2019 class is underway.
 
 ### Exam
 
@@ -9,9 +10,9 @@ A sample exam sheet is here: [SampleExam\SampleExam.pdf](SampleExam/SampleExam.p
 
 ### Grades for Laboratory and Tests
 
-The Laboratory grades are here: on Faculty's Moodle page.
+The Laboratory grades are posted on the Faculty's Moodle site
 
-The Test grades are here: on the Faculty's Moodle site.
+The Test grades are posted on the Faculty's Moodle site.
 
 ### Lectures
 
