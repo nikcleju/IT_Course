@@ -26,25 +26,77 @@ Example:
     * if the result was to be expected, there is little information. If the result
 is highly unusual, there is more information in this message (think betting)
 
+### Information and events
+
+* We define the notion of **information** for a **probabilistic event**
+   * the happening of a probabilistic event = creation of information
+
+* Information brought by an event depends on the **probability** of the event
+
+* Rule of thumb: if you can guess something most of the times, it has little information
+
+* Questions:
+	* does a sure event (p = 1) bring any information?
+	* does an almost sure event (e.g. P = 0.9999)  bring little or much information?
+	* does a rare event (e.g. P = 0.0001) bring a little or much information?
+
+### Information
+
+* The information attached to a particular event (known as "message") $s_i$ is rigorously defined as:
+$$i(s_i) = -\log_2(p(s_i))$$
+
+* Properties:
+
+    * $i(s_i) \geq 0$
+    * lower probability (rare events) means higher information
+    * higher probability (frequent events) means lower information
+    * a certain event brings no information: $-\log(1) = 0$
+    * an event with probability 0 brings infinite information (but it never happens...)
+    * for two independent events, their information gets added 
+    $$i(p(s_i) \cdot p(s_j)) = i(s_i) + i(s_j)$$
+
+### The choice of logarithm
+
+* Any base of logarithm can be used in the definition.
+
+* Usual convention: use binary logarithm $\log_2()$
+
+* In this case, the information $i(s_i)$ is measured in **bits**
+
+* If using natural logarithm $ln()$, it is measured in *nats*.
+
+* Logarithm bases can be converted to/from one another:
+$$ \log_b(x) = \frac{\log_a(x)}{\log_a(b)} $$
+
+* Information defined using different logarithms differ only in scaling:
+$$ i_b(s_i) =\frac{i_a(s_i)}{\log_a(b)}  $$
+
 
 ### Information source
 
-* Information is related to probability theory:
-
-    * there is a *probabilistic source* that can produce a number of different *events*
-    * each event has a certain probability. All probabilities are known beforehand
-    * at one time, an event is randomly selected according to its probability
+* A probabilistic event is always part of a set of multiple events (options)
+   * e.g: a football team can win/lose/draw a match (3 possible events)
+   * each event has a certain probability. All probabilities are known beforehand
+   * at a given time, only one of the events can happen
     
-* The source is called an **information source** and the selected event is a **message**
+* An **information source**  = the set of all events together with their probabilities
 
-* A message carries the information that **it** happened, and not the other possible message events that could have also happened
+* One event is called a **message**
 
-* The quantity of information is dependent on its probability
+* Each message carries the information that **it** happened, the quantity of information is dependent on its probability
 
+### Sequence of messages
+
+* An information source creates a sequence of messages
+   * e.g. like throwing a coin or a dice several times in a row
+
+\smallskip 
+
+* Each time, a new message is randomly selected according to some probabilities
 
 ### Discrete memoryless source
 
-* A discrete memoryless source (DMS) is an information source which produces a sequence of **independent** messages
+* A **discrete memoryless source** (DMS) is an information source which produces a sequence of **independent** messages
     * i.e. the choice of a message at one time does not depend on the previous messages
 
 * Each message has a fixed probability. The set of probabilities is the **distribution** of the source
@@ -78,25 +130,21 @@ $$\sII{S}{1}{0}$$
 * Receiving an unknown *bit* (0 or 1) with equal probabilities:
 $$\snII{S}{0}{\fIoII}{1}{\fIoII}$$
 
-### Information 
-* When a DMS provides a new message, it **creates information**: the
-information that a particular message took place
+### Sequence of messages from DMS
 
-* The information attached to a particular event (message) is rigorously defined as:
-$$i(s_i) = -\log_2(p(s_i))$$
+* A DMS produces a sequence of messages by randomly selecting a message every time,
+with the same fixed probabilities
+   * throwing a dice several times in a row you can get a sequence $4, 2, 3, 2, 1, 6, 1, 5, 4, 5$
 
-* Properties:
+\smallskip 
 
-    * $i(s_i) \geq 0$
-    * lower probability (rare events) means higher information
-    * higher probability (frequent events) means lower information
-    * a certain event brings no information: $-\log(1) = 0$
-    * an event with probability 0 brings infinite information (but it never happens...)
-
+* If the sequence is very long (has $N$ messages, $N$ very large), 
+each message $s_i$ appears approximately $p(s_i) * N$ times in the sequence
+    * gets more precise as $N \to \infty$
 
 ### Entropy of a DMS
 
-* We usually don't care about a single message. We are interested in a large number of them
+* We usually don't care about a single message. We are interested in long sequences of messages
 (think millions of bits of data)
 
 * We are interested in the *average* information of a message from a DMS
@@ -105,21 +153,11 @@ $$i(s_i) = -\log_2(p(s_i))$$
 $$H(S) = \sum_{k} p(s_k) i(s_k) = -\sum_{k} p(s_k) \log_2(p_k)$$
 where $p(s_k)$  is the probability of message $k$
 
+### Entropy of a DMS
 
-### The choice of logarithm
-
-* Any base of logarithm can be used in the definition.
-
-* Usual convention: use binary logarithm $\log_2()$
-
-* In this case, H(S) is measured in **bits** (**bits / message**)
-
-* If using natural logarithm $ln()$, H(S) is measured in *nats*.
-
-* Logarithm bases can be converted to/from one another:
-$$ \log_b(x) = \frac{\log_a(x)}{\log_a(b)} $$
-
-* Entropies using different logarithms differ only in scaling:
+* Since information of a message is measured in bits, entropy is measured in **bits** (or **bits / message**, to indicate it is an average value)
+ 
+* Entropies using information defined with different logarithms differ only in scaling:
 $$ H_b(S) =\frac{H_a(S)}{\log_a(b)}  $$
 
 

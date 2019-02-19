@@ -22,15 +22,15 @@ Time schedule
 
 * 3rd hour of each lecture = exercises
 
-* There will be 3 semester tests, approximately in 5th, 8th and 11th week
+* There will be 3 semester tests, approximately in 4th, 7th and 10th week
    - more precisely, after the first, second and third chapters
 
 * Exam: half exercises, half theory questions
 
 ### Course structure
 1. Chapter I:   Discrete Information Sources
-2. Chapter II:  Discrete Transmission Channels
-3. Chapter III: Source Coding
+2. Chapter II: Source Coding
+3. Chapter III:  Discrete Transmission Channels
 4. Chapter IV:  Error Control Coding 
 
 ### Bibliography
