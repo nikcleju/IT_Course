@@ -1,45 +1,55 @@
 ---
-title: Exercises Week 3
+title: Exercises Week 6
 subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
 ---
 
-\newcommand{\snII}[5]{#1: \left( \begin{matrix} {#2} & {#4} \\ #3 & #5 \end{matrix} \right)}
-\newcommand{\snIV}[9]{#1: \left( \begin{matrix} {#2} & {#4} & {#6} & {#8} \\ #3 & #5 & #7 & #9 \end{matrix} \right)}
-\newcommand{\sII}[3] {#1: \left( \begin{matrix} s_1 & s_2 \\ #2 & #3 \end{matrix} \right)}
-\newcommand{\sIII}[4] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 \\ #2 & #3 & #4 \end{matrix} \right)}
 \newcommand{\sIV}[5] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 \\ #2 & #3 & #4  & #5 \end{matrix} \right)}
-\newcommand{\sV}[6] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 \\ #2 & #3 & #4  & #5 & #6 \end{matrix} \right)}
-\newcommand{\sVI}[7] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 & s_6 \\ #2 & #3 & #4 & #5 & #6 & #7\end{matrix} \right)}
-\newcommand{\sVIII}[9] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 & s_6 & s_7 & s_8\\ #2 & #3 & #4 & #5 & #6 & #7 & #8 & #9 \end{matrix} \right)}
-\newcommand{\fIoII}{\frac{1}{2}}
-\newcommand{\fIoIII}{\frac{1}{3}}
-\newcommand{\fIoIV}{\frac{1}{4}}
-\newcommand{\fIoV}{\frac{1}{5}}
-\newcommand{\fIoVI}{\frac{1}{6}}
-\newcommand{\fIoVII}{\frac{1}{7}}
-\newcommand{\fIoVIII}{\frac{1}{8}}
 
-1. Consider a communication process defined by the following **joint probability matrix**:
-$$P(x_i \cap y_j) = 
-\begin{bmatrix}
-\frac{1}{2} & 0 & 0 \\
-0 & \frac{1}{4} & \frac{1}{4} \\
-\end{bmatrix}$$
 
-	a. compute the marginal probabilities and the marginal entropies $H(X)$ and $H(Y)$
-	b. what is the uncertainty of the output when the input symbol is $x_2$?
-	c. draw the graph of the channel (together with the probabilities)
-	c. compute the joint entropy $H(X,Y)$ and the mean error $H(Y|X)$
+1. Consider the binary codes below:
+
+     Message     Code A		   Code B		  Code C	  Code D	  Code E	  Code F
+    ---------   --------     -----------	----------	----------	----------	----------
+      $s_1$        $00$			$0$			  $0$		  $0$		  $0$		  $0$
+      $s_2$        $01$			$10$		  $01$		  $100$		  $110$		  $10$
+      $s_3$        $10$			$110$		  $011$		  $11$		  $10$		  $11$
+      $s_4$        $11$			$1110$		  $0111$	  $110$		  $111$		  $110$
+    
+    For each code:
+    
+    a. Verify the Kraft inequality
+    b. Determine if the code is instantaneous / uniquely decodable
+    c. Draw the graph
+
+
+2. Consider a memoryless source with the following distribution:
+$$\sIV{S}{\frac{1}{2}}{\frac{1}{4}}{\frac{1}{8}}{\frac{1}{8}}$$
+	For this source we use two separate codes:
+
+	  Message      Code A	   Code B
+	-----------  ----------  ----------
+	  $s_1$        $00$			$0$
+	  $s_2$        $01$			$10$
+	  $s_3$        $10$			$110$
+	  $s_4$        $11$			$111$
 	
-2. Consider a communication process with 2 inputs and 3 outputs. The inputs and output events have equal probabilities, and are independent. 
+	Requirements:
+	a. Compute the average lengths of the two codes
+	b. Compute the efficienty and redundancy of the two codes
+	c. Encode the sequence `s_2s_4s_3s_3s_1` with each code
+	d. Decode the sequence `0110101010101111000010101` with each code
 
-    a. Write the joint probability matrix
-    b. draw the graph of the channel (together with the probabilities)
-    c. Compute the marginal entropies and the joint entropy, and verify that
-$$H(X,Y) = H(X) + H(Y)$$
+1. Fill in the missing bits (marked with ?) such that the resulting code is instantaneous.
 
-3. Give an example of a channel having 3 inputs and 3 outputs, with $H(Y|X) = 0$ (write the channel matrix).
+	  Message       Codeword
+	----------- -------------------
+		$s_1$       ??
+		$s_2$       1??
+		$s_3$       11?
+		$s_4$       0?
+		$s_5$       ??
 
-3. Give an example of a channel with two inputs, such that $H(Y|x_1) \neq 0$ and $H(Y|x_2) = 0$ (write the channel matrix).
+	(just replace the '?'; do not add additional bits)
+    

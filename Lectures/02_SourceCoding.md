@@ -1,4 +1,4 @@
-## Chapter III: Source coding
+## Chapter II: Source coding
 
 ### What does coding do?
 
@@ -9,7 +9,7 @@
 1. Source coding
     * Convert source messages to channel symbols (for example 0,1)
     * Minimize number of symbols needed
-    * Adapt probabilities of symbols to maximize mutual information
+    * (Adapt probabilities of symbols to maximize mutual information)
 
 2. Error control
     * Protection against channel errors / Adds new (redundant) symbols
@@ -52,7 +52,7 @@ Message    Codeword
 $s_1$        $c_1 = x_1x_2x_1...$
 $s_2$        $c_2 = x_1x_2x_2...$
 ...        ....
-$s_N$        $c_3 = x_2x_2x_2...$
+$s_N$        $c_N = x_2x_2x_2...$
 
 * Codeword length $l_i$ = the number of symbols in $c_i$
 
@@ -89,7 +89,6 @@ A code can be:
     * i.e. there is never a confusion at decoding
 * **instantaneous** (also known as **prefix-free**): no codeword is prefix to another code
     * A *prefix* = a codeword which is the beginning of another codeword    
-    
 
 Examples: at the blackboard
 
@@ -112,6 +111,19 @@ Example at blackboard
 
 * Note: the converse is not necessary true; there exist uniquely decodable codes which
 are not instantaneous
+
+### Uniquely decodable codes are non-singular
+
+* Theorem: 
+    * An uniquely decodable code is non-singular
+    
+* Proof:
+    * If the code is singular, some codewords are not unique (different messages, same codeword)
+    * Don't know which of those messages was there => not uniquely decodable
+    * So if the code is uniquely-decodable, it must also be non-singular ($A \rightarrow B \Leftrightarrow \overline{B} \rightarrow \overline{A}$)
+
+* Relation between code types:
+   * Instantaneous $\subset$ uniquely decodable $\subset$ non-singular
 
 
 ### Graph-based decoding of instantaneous codes
@@ -183,7 +195,9 @@ $$ \sum_i D^{-l_i} \leq 1.$$
 * We want to **minimize the average length** of a code:
 $$\overline{l} = \sum_i p(s_i) l_i$$
 
-* But the lengths must obey the Kraft inequality (for uniquely decodable), so:
+* But the lengths must obey the Kraft inequality (for uniquely decodable)
+
+* So we reach the following **constrained optimization problem**:
 
 $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 \textrm{subject to } &\sum_i D^{-l_i} \leq 1
@@ -191,7 +205,9 @@ $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 
 ### The method of Lagrange multipliers
 
-* To solve the following optimization problem,
+* Method of Lagrange multipliers: standard mathematical tool
+
+* To solve the following constrained optimization problem
 $$\begin{aligned} \textbf{minimize } & f(x) \\
 \textrm{subject to } & g(x) = 0
 \end{aligned}$$

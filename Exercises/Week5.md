@@ -1,48 +1,51 @@
 ---
-title: Exercises Week 5
+title: Exercises Week 8
 subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
 ---
 
-1. For the following channels, compute the channel capacity and the input probabilities required to reach it:
+\newcommand{\sII}[3] {#1: \left( \begin{matrix} s_1 & s_2 \\ #2 & #3 \end{matrix} \right)}
+\newcommand{\sIII}[4] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 \\ #2 & #3 & #4 \end{matrix} \right)}
+\newcommand{\sV}[6] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 \\ #2 & #3 & #4 & #5 & #6 \end{matrix} \right)}
+\newcommand{\sVI}[7] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 & s_6 \\ #2 & #3 & #4 & #5 & #6 & #7 \end{matrix} \right)}
+\newcommand{\sVIII}[9] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 & s_6 & s_7 & s_8 \\ #2 & #3 & #4 & #5 & #6 & #7 & #8 & #9  \end{matrix} \right)}
 
-    a. Noiseless binary channel
-    b. Noisy binary non-overlapping channel
-    c. "Noisy typewriter"
-    d. Binary symmetric channel
-    e. Binary erasure channel
-    f. Symmetric channel of order $n$
 
-2. Consider a discrete transmission channel with the following channel matrix:
-$$P(Y | X) = 
-\begin{bmatrix}
-\frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 & 0 \\
-0 & 0 & 0 & \frac{1}{3} & 0 & \frac{2}{3} \\
-0 & \frac{1}{6} & 0 & 0 & \frac{5}{6} & 0 \\
-\end{bmatrix}$$
+1. A discrete memoryless source has the following distribution:
+
+    $$\sV{S}{0.05}{0.4}{0.1}{0.25}{0.2}$$
     
-    a. Draw the graph of the channel, and compute the equivocation $H(X|Y)$;
-    b. If $p(x_1) = \frac{1}{2}$, $p(x_2) = \frac{1}{4}$ and $p(x_3) = \frac{1}{4}$,
-    compute the average information transmitted on the channel $I(X,Y)$;
-    c. Compute the redundancy and the efficiency of the channel.
-    
-3. Two binary channels are connected in series, as in the picture below:
+    a. Encode the source with Shannon, Shannon-Fano coding and Huffman
+    coding and compute the average length in every case.
+    b. Find the efficiency and redundancy of the Huffman code
+    c. Compute the probabilities of the symbols $0$ and $1$, for the Huffman code
 
-	[see on whiteboard]
+1. For the following source, perform Huffman coding and obtain three 
+different codes with same average length, but different individual codeword length.
+
+    $$\sVI{S}{0.05}{0.05}{0.15}{0.25}{0.25}{0.25}$$
+    
+    a. Compute the average length in all three cases and show it is the same
+    b. Which code is better for sending over a binary channel which reaches its capacity
+    when $p(0) = 0.9$ and $p(1) = 0.1$?
+    c. Which code is better for sending over a binary symmetric channel?
+
+    
+1. A discrete memoryless source has the following distribution:
+
+    $$\sIII{S}{0.1}{0.7}{0.2}$$
+    
+    a. Find the average code length obtained with Huffman coding on the
+    original source and on its second order extension.
+    b. Encode the sequence $s_7 s_7 s_3 s_7 s_7 s_7 s_1 s_3 s_7 s_7$
+    with both codes.
+
+1. A discrete memoryless source has the following distribution
+
+	$$\sVIII{S}{0.4}{0.3}{0.2}{0.04}{0.03}{0.02}{0.009}{0.001}$$
 	
-	a. Find $q$ such that the equivalent channel is a binary symmetric channel;
-	b. *Not done: Find the channel capacity of the equivalent channel from a).*
-
-
-4. *Not done: A logical AND gate with two inputs can be considered a transmission channel, 
-with four input symbols $x_1 = 00$, $x_2 = 01$, $x_3 = 10$, $x_4 = 11$, 
-and two output symbols $y_1 = 0$, $y_2 = 1$.*
-    
-    a. *If $p(x_1) = p(x_2) = p(x_3) = p(x_4) = \frac{1}{4}$, find the average
-    information transmitted on this channel;*
-    b. *Find the channel capacity and the probabilities of the inputs 
-    required to reach it.*
-
-
-    
+	Find the Huffman code for a code with 4 symbols,
+	$x_1$, $x_2$, $x_3$ and $x_4$, and encode the sequence
+	
+	$$s_1 s_7 s_8 s_3 s_3 s_1$$
