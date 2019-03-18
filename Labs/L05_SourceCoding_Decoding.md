@@ -78,10 +78,14 @@ Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google sea
     * change the value of bit *i* from a number *x* (i.e. if 0 make 1, if 1 make 0).
     
 ~~~
-#define READ_BIT(x,i)     ((x) & (1U << (i)))
-#define SET_BIT(x,i)      ((x) = (x) | (1U << (i)))
-#define CLEAR_BIT(x,i)    ((x) = (x) & ~(1U << (i)))
-#define TOGGLE_BIT(x,i)   ((x) = (x) ^ (1U << (i)))
+#define READ_BIT(x,i)       (((x) & (1U << (i))) != 0)
+#define SET_BIT(x,i)        ((x) = (x) | (1U << (i)))
+#define CLEAR_BIT(x,i)      ((x) = (x) & ~(1U << (i)))
+#define TOGGLE_BIT(x,i)     ((x) = (x) ^ (1U << (i)))
+#define WRITE_BIT(x,i,val)  ((val) ? SET_BIT((x),(i)) : CLEAR_BIT((x),(i)))
+
+#define VECREAD_BIT(v,i)       (READ_BIT((v[(i)/8]),(i)%8))
+#define VECWRITE_BIT(v,i,val)  (WRITE_BIT((v[(i)/8]),
 ~~~
 
 * When writing the i-th bit in a large vector of bytes, `i/8` is the index of the byte and `i%8` is the bit inside that byte.
