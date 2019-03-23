@@ -47,7 +47,7 @@ RM=/bin/rm
 # What is this?
 .PHONY: all clean
 
-all : tex odt pdf
+all : pdf
 
 odt : $(EXPORTED_DOCS_ODT)
 
