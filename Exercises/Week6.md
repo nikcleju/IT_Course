@@ -27,10 +27,6 @@ different codes with same average length, but different individual codeword leng
     $$\sVI{S}{0.05}{0.05}{0.15}{0.25}{0.25}{0.25}$$
     
     a. Compute the average length in all three cases and show it is the same
-    b. Which code is better for sending over a binary channel which reaches its capacity
-    when $p(0) = 0.9$ and $p(1) = 0.1$?
-    c. Which code is better for sending over a binary symmetric channel?
-
     
 1. A discrete memoryless source has the following distribution:
 
@@ -38,10 +34,11 @@ different codes with same average length, but different individual codeword leng
     
     a. Find the average code length obtained with Huffman coding on the
     original source and on its second order extension.
-    b. Encode the sequence $s_7 s_7 s_3 s_7 s_7 s_7 s_1 s_3 s_7 s_7$
+    
+    b. *Not done:* Encode the sequence $s_7 s_7 s_3 s_7 s_7 s_7 s_1 s_3 s_7 s_7$
     with both codes.
 
-1. A discrete memoryless source has the following distribution
+1. *Not done:* A discrete memoryless source has the following distribution
 
 	$$\sVIII{S}{0.4}{0.3}{0.2}{0.04}{0.03}{0.02}{0.009}{0.001}$$
 	
