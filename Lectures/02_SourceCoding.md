@@ -473,7 +473,7 @@ Reminder: where is the Kullback–Leibler distance used
 * Here: Using a code optimized for a different distribution:
     * Average length is increased with $D_{KL}(p || q)$
 
-* Channels: Definition of mutual information:
+* In chapter IV (Channels): Definition of mutual information:
     * Distance between $p(x_i \cap y_j)$ and the distribution of two independent variables $p(x_i) \cdot p(y_j)$
 $$I(X,Y) = \sum_{i,j} p(x_i \cap y_j) \log(\frac{p(x_i \cap y_j)}{p(x_i)p(y_j)})$$
 
@@ -536,7 +536,7 @@ General Huffman coding procedure for codes with $M$ symbols:
 Example: compare binary Huffman and Shannon-Fano for:
 $$p(s_i) = \left\lbrace 0.35, 0.17, 0.17, 0.16, 0.15 \right\rbrace$$
 
-### Coding followed by channel
+### Probability of symbols
 
 * For every symbol $x_i$
 we can compute the average number of symbols $x_i$ in a code
@@ -546,10 +546,8 @@ $$\overline{l_{x_i}} = \sum_i p(s_i) l_{x_i}(s_i)$$
 * Divide by average length => probability (frequency) of symbol $x_i$
 $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 
-* These are the probabilities of the input symbols for the channel
-    * assuming the encoder is followed by a channel (see Overview picture)
-
-* Example: binary code + binary channel: $\overline{l_0} = p(0)$, $\overline{l_1} = p(1)$
+* These are the probabilities of the input symbols for the transmission channel
+    * they play an important role in Chapter IV (transmission channels)
 
 ### Source coding as data compression
 
@@ -569,9 +567,9 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
     * The compressed sequence looks like random data: impossible to guess, 
     no discernable patterns
 
-### Discussion: data compression with Huffman coding
+### Discussion: data compression with coding
 
-* Consider data compression with Huffman coding, like we did in lab
+* Consider data compression with Shannon or Huffman coding, like we did in lab
     * What property do we *exploit* in order to obtain compression?
     * How does *compressible data* look like?
     * How does *incompressible data* look like?
@@ -580,7 +578,10 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 
 ### Other codes: arithmetic coding
 
-* Arithmetic coding
+* Other types of coding do exist (info only)
+	* Arithmetic coding
+	* Adaptive schemes
+	* etc.
 
 ### Chapter summary
 
@@ -595,5 +596,4 @@ $$\boxed{H(S) \leq \overline{l_{S}} < H(S) + \frac{1}{n}}$$
 * Coding techniques:
     * Shannon: ceil the optimal codeword lengths (round to upper)
     * Shannon-Fano: split in two groups approx. equal
-    * Huffman: best in class
-    * Arithmetic: even better, but different
+    * Huffman: group last two. Is best of all.

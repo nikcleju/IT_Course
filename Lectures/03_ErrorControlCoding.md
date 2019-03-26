@@ -1,4 +1,4 @@
-## Chapter IV: Error control coding
+## Chapter III: Error control coding
 
 ### Chapter structure
 
@@ -18,37 +18,17 @@ Chapter structure
 * The second main task of coding: error control 
 * Protect information against channel errors
 
-### Mutual information and error control
+### The need for error control coding
 
-* Consider the following BSC channel ($p = 0.01$):
-
-![Binary symmetric channel (BSC) ](img/BSC.png){width=25%}
-
-* There exists mutual information $I(X,Y)$ = average information transmitted on the channel
-    * Isn't this information enough? Why do we still need error control?
-
-* No! If $p(x_1) = p(x_2) = 0.5$, then:
-    * $I(X,Y) = H(X) - H(X|Y) = \approx 0.919$ bit
-    * $H(X) = 1$ bit
-    * $H(X|Y) \approx 0.081$ bit
-
-### Mutual information and error control
-
-* Even though we have large $I(X,Y)$, we still lose some information
-    * The receiver still has an uncertainy of $0.081$ for
-    each $1$ bit of information from the sender
-    *  Imagine downloading a file, but having $8.1\%$ wrong bits
-
-* Usually it is required that *all* bits are received correctly
-    * No errors are allowed
-
-* But that is not possible unless the channel is ideal
+* In a transmission, the bits go through a **transmission channel**
+	* The transmission channel is not ideal, it introduces some bit errors
+    * Usually it is required that *all* bits are received correctly, no errors are allowed
 
 * So what do to? **Error control coding**
 
 ### Modelling the errors on the channel
 
-* We consider only binary channels (symbols = $\left\lbrace 0,1 \right\rbrace$)
+* We consider only binary codes/ channels (symbols = $\left\lbrace 0,1 \right\rbrace$)
 * An **error** = a bit that has changed from 0 to 1 or viceversa while going through channel
 * Errors can appear:
     * **independently**: sporadic errors, each bit has a random chance of error, independent of all the others
