@@ -178,6 +178,17 @@ $$R = k/n$$
     1. First perform source coding, eliminating redundancy in representation of data
     2. Then perform error control coding, adding redundancy for protection
 
+### Transmission channels preview
+
+* In Chapter IV we will study Transmission Channels = mathematical model of how information
+is handled from the sender to the receiver
+
+* Each channel has a certain **capacity** value = the maximum amount of information
+than can be sent over the channel
+    * e.g. a channel may have capacity $C = 0.8$ bits
+
+* More about this in Chapter IV
+
 ### Shannon's noisy channel theorem (second theorem, channel coding theorem)
 
 * A coding rate is called **achievable** for a channel if, for that rate, there exists a coding and decoding
@@ -199,7 +210,7 @@ all errors)
 
 * We send bits on a channel with capacity 0.7 bits/message
 * For any coding rate $R < 0.7$ there exists an error correction code that allows fixing of all errors
-    * $R < 0.7$ means we send more than 10 bits for every 7 information bits
+    * $R < 0.7$ means we send more than 10 bits for every 7 information bits, on average
 * With less than 10 bits for every 7 information bits  => no code exists that can fix all errors
 
 * The theorem makes it clear when it is possible to fix all errors, and guarantees that a code exists in this case
@@ -224,15 +235,6 @@ all errors)
     
 * In practice, we cannot use infinitely long codewords, so we will only get a *good enough* code
 
-### Distance between codewords
-
-Practical ideas for error correcting codes:
-
-* If a codeword $\mathbf{c_1}$ is received with errors and becomes identical to another codeword $\mathbf{c_2}$ ==> cannot detect any errors
-    * Receiver will think it received a correct codeword $c_2$ and the information word was $\mathbf{i_2}$, but actually it was $\mathbf{i_1}$
-* We want codewords as different as possible from each other
-* How to measure this difference? **Hamming distance**
-
 ### Chapter structure
 
 Chapter structure
@@ -243,6 +245,14 @@ Chapter structure
 4. Hamming codes
 5. Cyclic codes
 
+### Distance between codewords
+
+Practical ideas for error correcting codes:
+
+* If a codeword $\mathbf{c_1}$ has errors and thus becomes identical to another codeword $\mathbf{c_2}$ ==> cannot detect any errors
+    * Receiver will think it received a correct codeword $\mathbf{c_2}$, but actually it was $\mathbf{c_1}$
+* We want codewords **as different as possible** from each other
+* How to measure this difference? **Hamming distance**
 
 ### Hamming distance
 
@@ -252,17 +262,21 @@ $$d_H(\mathbf{a}, \mathbf{b}) = \sum_{i=1}^N a_i \oplus b_i$$
 
 * We need at least $d_H(a, b)$ bit changes to convert one sequence into another
 
+* Example at blackboard
+
+### Hamming distance
+
 * It satisfies the 3 properties of a metric function:
     1. $d_H(\mathbf{a},\mathbf{b}) \geq 0 \;\;\; \forall \mathbf{a},\mathbf{b}$, with $d_H(\mathbf{a},\mathbf{b}) = 0 \Leftrightarrow \mathbf{a} = \mathbf{b}$
     2. $d_H(\mathbf{a},\mathbf{b}) = d_H(\mathbf{b},\mathbf{a}), \forall \mathbf{a},\mathbf{b}$
     3. $d_H(\mathbf{a},\mathbf{c}) \leq d_H(\mathbf{a},\mathbf{b}) + d_H(\mathbf{b},\mathbf{c}), \forall \mathbf{a},\mathbf{b},\mathbf{c}$
 
+\smallskip 
+
 * The **minimum Hamming distance of a code**, ${d_H}_{min}$ = the minimum Hamming distance
 between any two codewords $\mathbf{c_1}$ and $\mathbf{c_2}$
 
-* Example at blackboard
-
-### Nearest-neighbor decoding
+### Nearest-neighbor decoding scheme
 
 Coding:
 
@@ -334,6 +348,8 @@ in total
     * $k$ increases 10 times => computation increases 1000 times
     * $k$ increases 100 times => computation increases 1000000 times
     * for $k = 256$ you'd need all the energy of the Sun
+    
+\smallskip
     
 * Need to find ways to make it simpler
 
