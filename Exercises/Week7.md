@@ -21,12 +21,19 @@ fontsize: 12pt
     
     b. Encode the sequence $s_7 s_7 s_3 s_7 s_7 s_7 s_1 s_3 s_7 s_7$
     with both codes.
+    
+    c. Decode the binary sequence $011100101000101110100$ with both codes
 
 1. A discrete memoryless source has the following distribution
 
 	$$\sVIII{S}{0.4}{0.3}{0.2}{0.04}{0.03}{0.02}{0.009}{0.001}$$
 	
-	Find the Huffman code for a code with 4 symbols,
+	a. Do Huffman coding of the source for a code with 4 symbols,
 	$x_1$, $x_2$, $x_3$ and $x_4$, and encode the sequence
-	
 	$$s_1 s_7 s_8 s_3 s_3 s_1$$
+	
+	b. Draw the graph of the code and compute the average length of the code
+	
+	c. Do binary Huffman coding of the same source (2 symbols, 0 and 1) and compute the average length. Which code is more efficient, the binary or the quaternary one?
+	
+	
