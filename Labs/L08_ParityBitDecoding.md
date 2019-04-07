@@ -1,5 +1,5 @@
 ---
-title: Error Detection With Parity Bits - Encoding
+title: Error Detection With Parity Bits - Checking (Decoding)
 subtitle: Information Theory Lab 8
 documentclass: scrartcl
 fontsize: 12pt
@@ -33,37 +33,23 @@ In the C language, modulo-2 sum is done by the bitwise `XOR` operation (`^`).
 
 # Exercises
 
-1. Write a C program that computes and appends the parity bit for every byte
+1. Write a C program that checks the parity bit for every byte
 in a data file.
-The program shall be called as follows:
 
-    `Parity.exe input.dat output.dat`
-    
-    * The arguments are:
-        * `input.dat`: the input file
-        * `output.dat`: the output file 
-        produced by the program (12.5% larger than the input) 
-    
-    * The program should consist of the following steps:
-        * declare two large vectors of `unsigned char`, for input
-        and output bits
-        * open the input file and read everything into the input vector
-        * for every group of 8 bits from the input vector:
-            * copy them to the output vector
-            * compute the parity bit
-            * append it to the output vector
-        * write the output vector to the output data file
+The input file is the file produced by the previous program, which has a parity bit inserted after every 8 bits of data.
 
-1. Write a second C program that checks the parity bit for every byte
-in a data file.
+The output file should contain only the data, with the parity bits removed.
+
+The program checks the parity bits and, whenever it detects a mismatch, it prints a message in the console:
+"Error detected ad byte number X", where X is the byte position in the file.
+
 The program shall be called as follows:
 
     `ParityCheck.exe input.dat output.dat`
     
     * The arguments are:
-        * `input.dat`: the input file, which should be the output of the 
-        first program
-        * `output.dat`: the output file 
+        * `input.dat`: the input file produced by the program in the previous lab
+        * `output.dat`: the output file, containing only the data (parity bits removed)
     
     * The program should consist of the following steps:
         * declare two large vectors of `unsigned char`, for input
@@ -71,28 +57,15 @@ The program shall be called as follows:
         * open the input file and read everything into the input vector
         * for every group of 9 bits from the input vector:
             * copy the first 8 bits to the output vector
-            * compute the parity bit of all the 9 bits
-                * if result is 0, all OK, do nothing
-                * if result is 1, display a message 
-                "Error detected in group number %d"
+            * compute the parity bit of these 8 bits
+            * check if the parity bit is the same as the 9th bit (parity bit) from the input vector
+            * if not, print a message
         * write the output vector to the output data file
 
-3. Run the first program to produce the output file, for some input
-file. Use the `Frhed` program supplied to introduce 1 error into
+3. Take an output file produced by the last week's program. 
+Use the `Frhed` program supplied in the zip file to introduce 1 error into
 some locations in the output file (just 1 error every 9 bits). Call the
 second program and observe if the errors are detected.
-
-## Program design
-
-1. The bit operation macro definitions are available in `bitmacros.h`.
-
-	For quick access to a bit number $i$ in a large array, use the
-	following macros:
-	
-```
-#define VECREAD_BIT(v,i) (READ_BIT((v[(i)/8]),(i)%8))
-#define VECWRITE_BIT(v,i,val) (WRITE_BIT((v[(i)/8]),(i)%8, val))
-```
 
 # Final questions
 
