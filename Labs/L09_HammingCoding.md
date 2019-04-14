@@ -32,8 +32,6 @@ $$
 
 The coding is done for every group of 4 bits in the data.
 
-In the C language, modulo-2 sum is done by the bitwise `XOR` operation (`^`).
-
 ### Decoding
 
 Considering the received 8-bit block
