@@ -344,9 +344,9 @@ in total
 ### Computational complexity
 
 * This implementation is **very inefficient**
-    * $k$ doubles => four times the computations
-    * $k$ increases 10 times => computation increases 1000 times
-    * $k$ increases 100 times => computation increases 1000000 times
+    * $k$ doubles => the amount of computations is squared
+    * $k$ increases 10 times => computations are raised to a power of 10
+    * $k$ increases 100 times => computations are raised to a power of 1000 
     * for $k = 256$ you'd need all the energy of the Sun
     
 \smallskip
@@ -369,10 +369,11 @@ Informal definitions:
 
 * **Vector space** = a set such that:
 
-    one element + another element = still an element from the set
+    a. one element + another element = still an element from the set
+    a. one element $\times$ a constant = still an element from the set
 
     * Examples: Euclidian vector spaces: a line, points in 2D, 3D
-    * Elements = "vectors"
+    * Elements are called "vectors"
     
 * **Basis** = a set of $n$ independent vectors $\mathbf{e_1}, ...\mathbf{e_n}$
     * Any vector $\mathbf{v}$ can be expressed as a linear combination of 
@@ -395,7 +396,7 @@ vector space
 
 ### Binary sequences form a vector space
 
-* The set of all binary sequences of size $n$ is a vector space
+* The set of all binary sequences of size $n$ is a vector space of size $n$
     * sum of two sequences of size $n$ is still a sequence of size $n$
 
 * The sum operation = modulo-2 sum $\oplus$
@@ -407,8 +408,12 @@ vector space
 * Matrix-vector multiplication
     * Output vector = linear combination of the matrix columns
 
+\smallskip 
+
 * Vector-matrix multiplication
     * Output vector = linear combination of the matrix rows
+
+\smallskip 
     
 * Explain at the blackboard, draw picture
 
@@ -438,15 +443,23 @@ the basis elements
 
 ### Codewords form a vector space
 
-* The set of all binary codewords of a linear block code is a vector space
+* The set of all binary codewords of a linear block code is a vector subspace
 of dimension $k$
-    * because sum (XOR) of two codewords = still a codeword (linear)
+
+* Proof:
+    * code is linear => because sum (XOR) of two codewords is still a codeword
+    * codeword $\times$ a constant (0 or 1) => still a codeword
     * total number of codewords is $2^k$ => dimension is $k$
-    * actual length of codewords is $n$, so actually it
-    is a subspace of the larger space of all binary sequences 
+
+* Length of codewords is $n$, but size of space is $k$ =>
+ they form a **subspace** of the larger space of all binary sequences 
     of length $n$
     
-* Therefore, all codewords can be expressed as matrix-vector multiplications
+### Codewords form a vector space
+    
+* Since all codewords form a (sub)space => all codewords can be expressed as matrix-vector multiplications
+
+\smallskip
 
 * Need to find a basis for the codewords
 
