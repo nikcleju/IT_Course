@@ -557,22 +557,27 @@ $$[H]_{(n-k) \times n} = [Q^T_{(n-k) \times k} \;\; I_{(n-k) \times (n-k)}]$$
     * first part = information bits (since first part of $[G]$ is identity matrix)
     * additional bits = combinations of information bits = *parity bits*
 
+\smallskip
+
 * The additional bits added by coding are actually just parity bits
     * Proof: write the generation equations (example)
+
+\smallskip
 
 * Parity-check matrix in standard form $[H]$ checks if parity bits correspond to information bits
      * Proof: write down the parity check equation (see example)
 
-* If all parity bits match the data, the result of multiplying with $[H]$ is 0$ 
-    * otherwise the it is $\neq 0$ 
+\smallskip
+
+* If all parity bits match the data, the result of multiplying with $[H]$ is 0
+    * otherwise it is $\neq 0$ 
 
 ### Interpretation as parity bits
 
-* **Generator & parity-check matrices are just mathematical tools
-for easy computation and checking of parity bits**
+* Generator & parity-check matrices are just mathematical tools
+for easy computation and checking of parity bits
 
-* We're still just adding parity bits, but now we have matrices for easy
-computation and verification of codewords
+* We're still just computing and checking parity bits, but we do it easier with matrices
 
 ### Syndrome
 
@@ -635,6 +640,8 @@ Example: at blackboard
     * Error detection = multiplication with $[H]$
     * Complexity is $\mathcal{O}(n^2)$ (size of $[H]$ is $(n-k) \times n$
     * Much more efficient!
+
+\smallskip
 
 * Computational complexity for error correction
     * Need to check all possible error words => bad performance
@@ -699,6 +706,8 @@ $$c_1c_2i_3c_4i_5i_6i_7$$
     1. Codeword has length $n = 2^r - 1$
     2. $r$ bits are parity bits (also known as ***control bits***)
     3. $k = 2^r-r-1$ bits are information bits
+
+\smallskip 
 
 * Notation: **(n,k) Hamming code**
     * n = codeword length = $2^r-1$, 
