@@ -1,5 +1,5 @@
 ---
-title: Exercises Week 13
+title: Exercises Week 11
 subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
