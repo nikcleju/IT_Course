@@ -39,34 +39,15 @@ The program shall be called as follows:
 	* `output.txt`: the output file
 	
   * The program will follow the following steps:
-    * Open the first file for reading, and the second file for writing
-	* Read every byte value from the input file
-	* For every single bit of the byte read, decide whether to change it or not:
+    * declare one large vector of `unsigned char` for input bits
+    * open the input file and read everything into the input vector
+	* for every bit in the input vector
 	    * generate a random number `x`, and based on `x` do the following:
 	    * toggle the bit, with probability $p$
 	    * leave the bit unchanged, with probability $1-p$
-    * Write the resulting byte to the output file
-    
+    * write the vector to the output data file
+        
 ## Implementation hints
-
-* The following C functions may be used for file-based operations. 
-Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google search).
-    * `fopen(...)`, to open a file for reading;
-    * `fread(...)`, to read byte data from the file;
-    * `fclose()`, to close the file when finished.
-
-* The following macros implement the basic bit operations:
-    * reading a single bit *i* from a number *x*;
-    * set bit *i* from a number *x* to 1;
-    * clear bit *i* from a number *x* (i.e. set to value 0);
-    * change the value of bit *i* from a number *x* (i.e. if 0 make 1, if 1 make 0).
-    
-```
-#define READ_BIT(x,i)     ((x) & (1U << (i)))
-#define SET_BIT(x,i)      ((x) = (x) | (1U << (i)))
-#define CLEAR_BIT(x,i)    ((x) = (x) & ~(1U << (i)))
-#define TOGGLE_BIT(x,i)   ((x) = (x) ^ (1U << (i)))
-```
 
 * For randomly deciding when to make an error, with error probability $p$:
     * use `srand()` once, at the beginning of the program, to seed the random number generator
