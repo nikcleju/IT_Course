@@ -1,6 +1,6 @@
 ---
 title: Simulating a Binary Symmetric Channel
-subtitle: Information Theory Lab 7
+subtitle: Information Theory Lab 12
 documentclass: scrartcl
 fontsize: 12pt
 ---
