@@ -1103,10 +1103,12 @@ Decoding
 
 ### Decoding - The mathematical way
 
-* Error correction: use a lookup table (just like with matrices)
-    * build a lookup table for all possible error words (same as with matrix codes)
+* Error **correction**: use a lookup table (just like with matrices)
+    * build a lookup table for all possible error words (like with matrix codes)
     * for each error code, divide by $g(x)$ and compute the remainder
     * when the remainder is identical to the remainder obtained with $\mathbf{r(x)}$, we found the error word => correct errors
+    
+\smallskip    
     
 * Example: at blackboard
 
@@ -1115,9 +1117,12 @@ Decoding
 
 * Only for systematic codes (mostly used)
 
-* We need to compute the CRC = $b(x)$ = remainder of $x^{n-k} i(x)$ divided to $g(x)$
-    * the remainder will be put alongside the information word
-    
+* Steps:
+
+    * 1. Compute the CRC = $b(x)$ = remainder of $x^{n-k} i(x)$ divided to $g(x)$
+   
+    * 2. Put the CRC in front of the information word, mirrored
+        
 * Good reference: *"A Painless Guide to CRC Error Detection Algorithms"*, Ross N. Williams
     * http://www.ross.net/crc/download/crc_v3.txt
 
@@ -1127,8 +1132,11 @@ Decoding
     * align the binary sequence of $g(x)$ under the leftmost 1
     * XOR the sequences
     * repeat
+    * just like in the lab
 
-* Best seen by example at blackboard
+\smallskip
+
+* See example at blackboard / lab
 
 ### Example
 
@@ -1137,7 +1145,9 @@ Decoding
 
 ### Decoding
 
-* We receive $\mathbf{r} = r_0r_1r_2...r_{n-1} \rightarrow \mathbf{r(x)} = r_0 \oplus r_1x \oplus ... \oplus r_{n-1}x^{n-1}$$
+* We receive $\mathbf{r} = r_0r_1r_2...r_{n-1} \rightarrow \mathbf{r(x)} = r_0 \oplus r_1x \oplus ... \oplus r_{n-1}x^{n-1}$
+
+* Step 1: Mirror the sequence $\mathbf{r}$ (CRC must be at the end!)
 
 * Error detection: 
     * compute the CRC of all sequence $\mathbf{r}$
@@ -1147,15 +1157,13 @@ Decoding
 * Error correction:
     * use a lookup table (just like with matrices)
         * build a lookup table for all possible error words (same as with matrix codes)
-        * for each error code, compute the CRC for the error word
+        * for each error word, compute the CRC
         * when the resulting remainder is identical to the remainder obtained with $\mathbf{r}$, we found the error word => correct errors
 
-### STOP HERE FOR IT20172018
+### Skip next slides for 2018-2019
 
-**This is where the lectures end for the class of 2017-2018.**
+**The remaining slides in this file are skipped for the class of 2018-2019.**
 
-**You only have to study until this point.**
-    
 ### 3. Coding and encoding - The hardware way
 
 * Coding = based on polynomial multiplications and divisions

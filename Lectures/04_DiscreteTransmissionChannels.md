@@ -1,5 +1,5 @@
 
-## Chapter II: Discrete transmission channels
+## Chapter IV: Discrete transmission channels
 
 ### What are they?
 
@@ -31,7 +31,13 @@ Naming:
 ### What do we want?
 
 * A successful communication = deduce the $X$ which was sent from the $Y$ that was received
+
+\smallskip
+
 * We are interested in **deducing X when knowing just Y**
+
+\smallskip
+
 * Main topic: How much does knowing $Y$ tell us about $X$? 
     * Depends on the relation between them
     * Is the same as how much $X$ tells us about $Y$ (symmetrical)
@@ -41,14 +47,20 @@ Naming:
 
 From a probabilistic point of view:
 
+\smallskip
+
 * A system of two related random variables
     * Input random variable $X \in \{x_1, x_2, ...\}$
     * Output random variable $Y \in \{y_1, y_2, ...\}$
     * It doesn't matter that one is *input* and other is *output*, we just
     care about the relation between the two random variables
 
+\smallskip
+
 * $X$ and $Y$ are *related* probabilistically, but still *random* (because of noise / errors / distortions)
     * All the probabilities are known
+
+\smallskip
 
 * We need to analyze the relation of $X$ with $Y$
 
@@ -57,11 +69,17 @@ From a probabilistic point of view:
 * Binary channel with errors
     * Send 0's and 1's, receive 0's and 1's, but with errors
 
+\smallskip
+
 * Pipe
     * Send colored balls over the pipe, but someone may be re-painting them
+
+\smallskip
     
 * Grandma calling!
     * She says *"cat"* / *"hat"* / *"pet"*, but sometimes you hear her wrong
+
+\smallskip
 
 * Living near stadium
     * You don't actually see the game, but try to deduce the score from the shouts you hear
@@ -69,10 +87,19 @@ From a probabilistic point of view:
 
 ### Nomenclature
 
-* Discrete: the input alphabet and the output alphabet are finite
+We only deal with discrete memoryless stationary channels
+
+\smallskip
+
+* Discrete: number of input and output symbols is finite
+
+\smallskip
+
 * Memoryless: the output symbol depends only on the current input symbol
-* Stationary: the noise arising on the channel is time invariant (i.e.
-its statistics do not vary in time)
+
+\smallskip
+
+* Stationary: the probabilities involved do not change in time
 
 ### Systems of two random variables
 
@@ -122,13 +149,19 @@ $$H(X,Y) = - \sum_i \sum_j p(x_i \cap y_j) \cdot \log(p(x_i \cap y_j))$$
 ### Marginal distributions
 
 * $p(x_i) = \sum_j p(x_i \cap y_j)$ = sum of row $i$ from P(X,Y)
+
+\smallskip
+
 * $p(y_j) = \sum_i p(x_i \cap y_j)$ = sum of column $j$ from P(X,Y)
+
+\smallskip
+
 * The distributions $p(x)$ and $p(y)$ are called **marginal distributions**
 ("summed along the margins")
 
 ### Examples [marginal distributions not enough]
 
-Marginal distributions are not enough:
+Marginal distributions don't tell everything about the system:
 
 * Example 1:
 
@@ -196,8 +229,17 @@ p(y_1 | x_N) & p(y_2 | x_N) & \cdots & p(y_M | x_N) \\
 ### Relation of channel matrix and joint probability matrix
 
 * $P(Y|X)$ is obtained from $P(X,Y)$ by dividing every row to its sum ($p(x_i)$)
+
+\smallskip
+
 * This is known as *normalization* of rows
+
+\smallskip
+
 * $P(X,Y)$ can be obtained back from $P(Y|X)$ by multiplying each row with $p(x_i)$
+
+\smallskip
+
 * $P(Y|X)$ contains less information than $P(X,Y)$
     * it doesn't tell us the probabilities $p(x_i)$ anymore
 
@@ -206,7 +248,13 @@ p(y_1 | x_N) & p(y_2 | x_N) & \cdots & p(y_M | x_N) \\
 **Definition**: A discrete transmission channel is defined by three items:
 
  1. The input alphabet $X = \{ x_1, x_2, \ldots \}$
+ 
+ \smallskip
+ 
  2. The output alphabet $Y = \{y_1, y_2, \ldots \}$
+ 
+ \smallskip
+ 
  3. The noise (channel) matrix $P(Y|X)$ which defines the conditional probabilities of 
  the outputs $y_j$ for every possible input $x_i$
 
@@ -223,22 +271,29 @@ p(y_1 | x_N) & p(y_2 | x_N) & \cdots & p(y_M | x_N) \\
 
 ### Conditional entropy H(Y|X) (mean error)
 
-* Since each row is a distribution, each row has an entropy
+* Since each row in $P(Y|X)$ is a distribution, each row has an entropy
+
+\smallskip
+
 * Entropy of row $x_i$:
 $$H(Y|x_i) = -\sum_j p(y_j|x_i) \log(p(y_j|x_i))$$
-* *"The uncertainty of the output message when the input message is $x_i$"*
+
+* $H(Y|x_i)$ = *"The uncertainty of the output symbol when the input symbol is $x_i$"*
+
+\smallskip
+
 * Example: lottery
 
 ### Conditional entropy H(Y|X) (mean error)
 
-* A different $H(Y|x_i)$ for every $x_i$
+* There may be a different value $H(Y|x_i)$ for every $x_i$
 * Compute the average over all $x_i$:
 $$\begin{aligned}
 H(Y|X) &= \sum_i p(x_i) H(Y|x_i) \\
        &= -\sum_i \sum_j p(x_i) p(y_j|x_i) \log(p(y_j|x_i)) \\
        &= -\sum_i \sum_j p(x_i \cap y_j) \log(p(y_j|x_i))
 \end{aligned}$$
-* **"The uncertainty of the output message when we know the input message"** (any input, in general)
+* $H(Y|X)$ = **"The uncertainty of the output symbol when we know the input symbol"** (any input, in general)
 * Also known as **average error**
 
 ### Equivocation matrix
@@ -262,18 +317,29 @@ p(x_N | y_1) & p(x_N | y_2) & \cdots & p(x_N | y_M) \\
 ### Relation of equivocation matrix and joint probability matrix
 
 * $P(X|Y)$ is obtained from $P(X,Y)$ by dividing every column to its sum ($p(y_j)$)
+
+\smallskip
+
 * This is known as *normalization* of columns
+
+\smallskip
+
 * $P(X,Y)$ can be obtained back from $P(X|Y)$ by multiplying each column with $p(y_j)$
+
+\smallskip
+
 * $P(X|Y)$ contains less information than $P(X,Y)$
     * it doesn't tell us the probabilities $p(y_i)$ anymore
 
 ### Conditional entropy H(X|Y) (equivocation)
 
 * Since each column is a distribution, each column has an entropy
+\smallskip
+
 * Entropy of column $y_j$:
 $$H(X|y_j) = -\sum_i p(x_i|y_j) \log(p(x_i|y_j))$$
-* *"The uncertainty of the input message when the output message is $y_j$"*
-* Example: ...
+
+* $H(X|y_j)$ = *"The uncertainty of the input symbol when the output symbol is $y_j$"*
 
 ### Conditional entropy H(X|Y) (equivocation)
 
@@ -284,7 +350,7 @@ H(X|Y) &= \sum_j p(y_j) H(X|y_j) \\
        &= -\sum_i \sum_j p(y_j) p(x_i|y_j) \log(p(x_i|y_j)) \\
        &= -\sum_i \sum_j p(x_i \cap y_j) \log(p(x_i|y_j))
 \end{aligned}$$
-* **"The uncertainty of the input message when we know the output message"** (any output, in general)
+* **"The uncertainty of the input symbol when we know the output symbol"** (any output, in general)
 * Also known as **equivocation**
 * Should be small for a good communication
 
@@ -365,7 +431,7 @@ $$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$$
 1. Channels with zero equivocation
 $$ H(X|Y) = 0$$
     * Each column of the noise (channel) matrix contains only one non-zero value
-    * No doubts on the input messages when the output messages are known
+    * No doubts on the input symbols when the output symbols are known
     * All input information is transmitted
 $$ I(X,Y) = H(X)$$
 
@@ -376,7 +442,7 @@ $$ I(X,Y) = H(X)$$
 2. Channels with zero mean error
 $$H(Y|X) = 0$$
     * Each row of the noise (channel) matrix contains only one non-zero value
-    * No doubts on the output messages when the input messages are known
+    * No doubts on the output symbols when the input symbols are known
     * *The converse is not necessary true!*
 
 * Example: AND gate
@@ -396,7 +462,7 @@ $$H(Y|x_i) = same$$
 4. Channels uniform with respect to the output
 
 * Each column of noise matrix contains the same values, possibly in different order
-* If the input messages are equiprobable, the output messages are also equiprobable
+* If the input symbols are equiprobable, the output symbols are also equiprobable
 
 * Attention: $$H(X|y_j) \neq same!$$
 
@@ -438,7 +504,7 @@ $$C = \max_{p(x_i)} \; (H(X) - H(X|Y))$$
 
 ### What channel capacity means
 * Channel capacity is the maximum information we can transmit on a channel, 
-on average, with one message
+on average, with one symbol
 * One of the most important notions in information theory
 * Its importance comes from Shannon's second theorem (noisy channel theorem)
 * It allows us to compare channels
@@ -507,13 +573,13 @@ $$ \rho_C = \frac{R_C}{C} = 1 - \frac{I(X,Y)}{C} = 1 - \eta_C$$
     * $p(y_j) = \sum_i p(y_j|x_i) p(x_i)$
     * if $p(x_i)$ = uniform = $\frac{1}{n}$, then $p(y_j) = \frac{1}{n} \sum_i p(y_j|x_i)$ = uniform 
     * therefore $p(y_j)$ are constant = uniform = H(Y) is maximized
-    * H(Y) is maximized when H(X) is maximized (equiprobable messages)
+    * H(Y) is maximized when H(X) is maximized (equiprobable symbols)
 
 ### Computing the capacity
 
 * If channel is symmetric: use both tricks
     * $C = \max_{p(x_i)} \; (H(Y)) - H(Y|X)$ 
-    * H(Y) is maximized when H(X) is maximized (equiprobable messages)
+    * H(Y) is maximized when H(X) is maximized (equiprobable symbols)
     
 ### Examples of channels and their capacity
 
@@ -561,7 +627,7 @@ $$\begin{aligned}
 
 ![$N$-th order symmetric channel](img/NthSC.png){width=25%}
 
-* Extension of binary symmetric channel for $n$ messages
+* Extension of binary symmetric channel for $n$ symbols
 * $1-p$ chances that symbol has no error
 * $p$ chances that symbol is changed, uniformly to any other (N-1) symbols ($\frac{p}{N-1}$ each)
 
