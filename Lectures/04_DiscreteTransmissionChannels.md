@@ -371,11 +371,15 @@ $$H(Y|X) = H(Y)$$
 ### Mutual information I(X,Y)
 
 * Mutual information I(X,Y) = the average information that one variable has about the other
+\smallskip
 * Mutual information I(X,Y) = the average information that is transmitted on the channel
+\smallskip
+\smallskip
 * Consider a communication channel with $X$ as input and $Y$ as output:
     * We are the receiver and we want to find out the $X$
     * When we don't know the output: H(X)
     * When we know the output: H(X|Y)
+\smallskip
 * How much information was transmitted?
     * Reduction of uncertainty: 
     $$I(X,Y) = H(X) - H(X|Y)$$
