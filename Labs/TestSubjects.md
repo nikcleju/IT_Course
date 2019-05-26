@@ -23,6 +23,8 @@ fontsize: 12pt
     * Show the result
 
 
+\newpage
+
 ### Lab 5
 
 1. Write a C program to perform decoding of the files encoded from the previous laboratory
@@ -59,7 +61,7 @@ typedef struct
 
   * **Note**: every time there is a **single codeword** that fully matches the next bits in the `data` array.
 
-
+\newpage
 ### Lab 6
 
 1. Write a C program that creates a Shannon code from an input data file.
@@ -84,6 +86,7 @@ The program shall be called as follows:
         * Display the codewords for all characters
         * Save the codeword vector to the output file
 
+\newpage
 ### Lab 7
 
 1. Write a C program that computes and appends the parity bit for every byte
@@ -108,6 +111,7 @@ The program shall be called as follows:
         * write the output vector to the output data file
 
 
+\newpage
 ### Lab 8
 
 1. Write a C program that checks the parity bit for every byte
@@ -139,6 +143,8 @@ in a data file.
             * if not, print a message
         * write the output vector to the output data file
 
+
+\newpage
 ### Lab 9
 
 1. Write a C program that performs encoding of a data file with the
@@ -179,6 +185,8 @@ c_4 = i_5 \oplus i_6 \oplus i_7\\
 \end{cases}
 $$
 
+
+\newpage
 ### Lab 10
 
 1. Write a C program that performs decoding of a data file previously
@@ -225,6 +233,8 @@ with the encoded Hamming (8,4) SECDED code.
     * $z_0 = 1$: 1 error on position given by ${z_1z_2z_3}_{(10)}$
     * $z_0 = 0$, other $z_i \neq 0$: 2 errors on unknown positions
 
+
+\newpage
 ### Lab 11
 
 1. Write a C program that performs CRC-16 computation and checking.
@@ -261,6 +271,8 @@ with the encoded Hamming (8,4) SECDED code.
                 * if the CRC-16 value is 0, display "File OK\\n", 
                 otherwise display "Data corrupted\\n"
 
+
+\newpage
 ### Lab 12
 
 1. Write a C program to simulate a BSC for a given file.
