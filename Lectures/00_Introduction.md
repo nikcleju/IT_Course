@@ -1,4 +1,4 @@
-# Lecture notes 2018-2019
+# Lecture notes 2019-2020
 
 ## Introduction
 
@@ -16,7 +16,7 @@ Time schedule
 
 * 14 weeks of lectures (3h each)
 * 14 weeks of laboratories (2h each)
-* Office hours: Tuesday 16:00 - 18:00 (best by appointment)
+* Office hours: Wednesdy 12:00 - 14:00 (best by appointment)
 
 ### Exercises & Tests
 

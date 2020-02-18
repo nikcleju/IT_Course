@@ -87,25 +87,29 @@ $$ i_b(s_i) =\frac{i_a(s_i)}{\log_a(b)}  $$
 
 ### Sequence of messages
 
-* An information source creates a sequence of messages
+* An information source creates a **sequence of messages**
    * e.g. like throwing a coin or a dice several times in a row
 
 \smallskip 
 
-* Each time, a new message is randomly selected according to some probabilities
+* The probabilities of the messages are known and fixed
+
+\smallskip 
+
+* Each time, a new message is randomly selected according to the probabilities
 
 ### Discrete memoryless source
 
 * A **discrete memoryless source** (DMS) is an information source which produces a sequence of **independent** messages
     * i.e. the choice of a message at one time does not depend on the previous messages
 
-* Each message has a fixed probability. The set of probabilities is the **distribution** of the source
+* Each message has a fixed probability. The set of probabilities is the **distribution** of the source:
 
 $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
 
 * Terminology:
 
-    * Discrete: it can take a value from a discrete set (alphabet)
+    * Discrete: it can take a value from a discrete set ("alphabet")
     * Complete: $\sum p(s_i) = 1$
     * Memoryless: succesive values are independent of previous values (e.g. successive throws of a coin)
 
