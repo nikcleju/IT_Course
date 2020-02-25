@@ -42,6 +42,4 @@ $$\sV{S}{\frac{1}{2}}{0}{\frac{1}{8}}{\frac{1}{4}}{\frac{1}{8}}$$
 
 5. Compute the KL distance between the following two probability distributions:
 
-	$$P = [0 0 0 1]$$
-	
-	$$Q = [0.1 0.05 0.05 0.8]$$
+	$$P = [0 \;\;\; 0 \;\;\; 0 \;\;\; 1], \;\;\;\;\;\;\;\;\; Q = [0.1 \;\;\; 0.05 \;\;\; 0.05 \;\;\; 0.8]$$
