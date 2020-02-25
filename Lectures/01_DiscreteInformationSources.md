@@ -468,6 +468,13 @@ $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log(p(s_i |
 * Source with memory $m=3$, frequency of 4-plets as in English:
 ![](img/EnglishFourthOrder.png){width=50%}\
 
+### Example application
+
+* Suppose we receive a text with random missing letters
+* We need to fill the blanks with the appropriate letters
+* How?
+  - build a model: source with memory of some order
+  - fill the missing letter with the most likely letter given by the model
 
 ### Chapter summary
 

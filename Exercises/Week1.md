@@ -28,15 +28,13 @@ yes/no questions.
     * What if the questions are not asked in the best way?
     * On average, what is the number of questions required to find the number?
 
-2. For the preceding problem, what if I choose a number according to the following distribution:
+2. Guess the number. Draw the optimal decision tree for guessing the number according to the following distribution:
 $$\sIV{S}{\fIoII}{\fIoIV}{\fIoVIII}{\fIoVIII}$$
 
-    * On average, what is the number of questions required to find the number? 
-    * What questions would you ask?
-    * What if the distribution is:
+3. Guess the number. Draw the optimal decision tree for guessing the number according to the following distribution:
 $$\sIV{S}{0.14}{0.29}{0.4}{0.17}$$
 
-3. A DMS has the following distribution
+4. A DMS has the following distribution
 $$\sV{S}{\frac{1}{2}}{0}{\frac{1}{8}}{\frac{1}{4}}{\frac{1}{8}}$$
     a. Compute the information of message $s_1$, $s_2$ and $s_3$
     b. Compute the average information of a message
