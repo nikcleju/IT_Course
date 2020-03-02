@@ -33,14 +33,16 @@ distribution.
     
         * the name of the output file (`data.txt`);
         * the number of bytes to generate (10000);
-        * the distribution (0.5 0.1 0.1, three different messages).
+        * the distribution (0.5 0.1 0.1, 0.3, four different messages). Note: the last probability is inferred automatically, equal to (1 - sum of all the others).
       
     * The program should follow the following steps:
         * Convert numerical data from command-line to actual number variables,
-    with `sscanf()`. The distribution must be stored as a vector;
+    with `sscanf()`, and display the probabilities. The distribution must be stored as a vector;
         * Allocate an array of `unsigned char` of necessary size;
-        * Generate numbers randomly using `rand()`, then bring to range 0 - 255
-    and make according to distribution;
+        * Generate numbers randomly using `rand()`, then bring them range 0 - N
+    and make according to distribution.
+		* Convert messages to characters, i.e. with three different messages, 
+		generate the letters `a`, `b`, `c`
         * Write the final array to file (in binary format).
 
 1. Generate a 10000-bytes long file with only two messages, with equal probability.
@@ -48,7 +50,7 @@ distribution.
     b. Compress the file using zip or 7zip. What is the compression ratio achieved?
     How is it related to the entropy?
   
-1. Repeat the previous exercise with a distribution of four messages, with equal probability.
+1. Repeat the previous exercise with a distribution of four messages and eight, with equal probability.
 
 ## Implementation hints
 
@@ -60,9 +62,11 @@ Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google sea
 
 * Use `sscanf()` to read numerical data from a string variable. The syntax is just
 like the usual `scanf()`, but with an extra parameter in front to indicate the string
-where the data is read from.
+where the data is read from. For example, to read a float number from a string `str`, use:
+	
+	`sscanf(str, "%f", &destination);`
 
-* The random number generator must be initialized with `srand(time(NULL))`.
+* The random number generator must be initialized with `srand(time(NULL))`, and then it is called like `x = rand()`.
 
 * The `rand()` function returns a random integer in range 0 to RAND_MAX, with
 uniform distribution. 
