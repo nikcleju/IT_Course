@@ -58,6 +58,7 @@ distribution.
 Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google search).
     * `fopen(...)`, to open a file for reading;
     * `fread(...)`, to read byte data from the file;
+    * `fwrite(...)`, to write byte data to the file;
     * `fclose()`, to close the file when finished.
 
 * Use `sscanf()` to read numerical data from a string variable. The syntax is just
@@ -71,12 +72,12 @@ where the data is read from. For example, to read a float number from a string `
 * The `rand()` function returns a random integer in range 0 to RAND_MAX, with
 uniform distribution. 
 The number can be made according to distribution by splitting
-the range 0 - RAND_MAX in subintervals proportionally with the probabilities.
+the range 0 - RAND_MAX in subintervals proportionally with the probabilities, and comparing.
 
 * Possible implementation: do `x = x - p(i) * RAND_MAX; i++;` until the result
 is negative. Then `i-1` is the final number. See explanations at blackboard.
 
-
+* 
 
 # Final questions
 
