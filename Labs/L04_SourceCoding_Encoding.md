@@ -39,14 +39,25 @@ typedef struct
   * The program will follow the following steps:
     * Read the full vector from the codebook file;
     * Allocate an array named `out` of `unsigned char` of max size 10MB (i.e. 10000000 bytes);
-    * The, open the input file and read every byte in a loop. For each byte do the following:
-	* Write the codeword for the byte, bit by bit, in the `out` vector. You need to keep track of the number of bits written,
-        in order to continue writing from where the previous codeword stopped.
-    * Write the output data to the output file, as follows:
-        * Open the second file for writing
-        * Write first the total number of bits
-        * Write afterwards the vector `out`, but not more than the number of bytes actually used for coding
-        * *Note: when decoding the file, we will read back the data in the same order*.
+    * Then, open the input file and read every byte in a loop. For each byte do the following:
+	  -  Write the codeword for the byte, bit by bit, in the `out` vector. Use the `VECWRITE_BIT()` macro, as follows:
+            
+         \ 
+         
+         ```
+         /* Write bit value "bit" in vector "vec" on bit position "pos" */
+         VECWRITE_BIT(vec, pos, bit); 
+         ```
+        
+         \ 
+         
+         You need to keep track of the number of bits written,
+             in order to continue writing from where the previous codeword stopped.
+    - Write the array `out` to the output file, as follows:
+        - Open the second file for writing
+        - Write first the total number of bits
+        - Write afterwards the vector `out`, but only the number of bytes actually used for coding
+        - *Note: when decoding the file, we will read back the data in the same order*.
 
 2. Encode the file `textro.txt` with the provided codebook `codero.dat`. Check the size of the output file and compute the compression ratio.
 
@@ -65,10 +76,12 @@ Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google sea
     * `fclose()`, to close the file when finished.
 
 * The following macros implement the basic bit operations:
-    * reading a single bit *i* from a number *x*;
-    * set bit *i* from a number *x* to 1;
-    * clear bit *i* from a number *x* (i.e. set to value 0);
-    * change the value of bit *i* from a number *x* (i.e. if 0 make 1, if 1 make 0).
+    * read a single bit `i` from a variable `x`;
+    * set bit `i` from a variable `x` to 1;
+    * clear bit `i` from a variable `x` (i.e. set to value 0);
+    * change the value of bit `i` from a variable `x` (i.e. if 0 make 1, if 1 make 0);
+    * read the value of bit `i` from a vector `v`;
+    * write the bit value `val` in vector `v` on position `i`.
     
 ```
 #define READ_BIT(x,i)       (((x) & (1U << (i))) != 0)
@@ -78,7 +91,7 @@ Look up their documentation on the Internet (e.g. *cplusplus.com*, or Google sea
 #define WRITE_BIT(x,i,val)  ((val) ? SET_BIT((x),(i)) : CLEAR_BIT((x),(i)))
 
 #define VECREAD_BIT(v,i)       (READ_BIT((v[(i)/8]),(i)%8))
-#define VECWRITE_BIT(v,i,val)  (WRITE_BIT((v[(i)/8]),)
+#define VECWRITE_BIT(v,i,val)  (WRITE_BIT((v[(i)/8]),((i)%8),val)
 ```
 
 * When writing the i-th bit in a large vector of bytes, `i/8` is the index of the byte and `i%8` is the bit inside that byte.
