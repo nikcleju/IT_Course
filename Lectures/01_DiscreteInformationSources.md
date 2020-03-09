@@ -410,63 +410,110 @@ where $p_k$ = probability that the source is in state $S_i$
 
 ### Ergodic sources
 
+- How to find out the weights $p_k$?
+
+- They are known as the **stationary probabilities**
+
+- $p_k$ = probability that the source is in state $S_i$, after running for a very long time
+    * (i.e. after a very long sequence of messages, the fraction of time when the source was in state $S_k$)
+
+- We need to answer the following question:
+    
+    If we know the state $S_k$ at time $n$, what will be the state at time $n+1$?
+    
+
+### Ergodic sources
+
 * Let $p_i^{(n)} =$ the probability that source $S$ is in state $S_i$ at time $n$.
 
 * In what state will it be at time $n+1$? (after one more message) 
     * i.e. what are the probabilities of the states at time $n+1$?
+
+* Just multiply with $T$
 $$[p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}] \cdot [T] = [p_1^{(n+1)}, p_2^{(n+1)}, ... , p_N^{(n+1)}]$$
 
 * After one more message:
 $$[p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}] \cdot [T] \cdot [T] = [p_1^{(n+2)}, p_2^{(n+2)}, ... , p_N^{(n+2)}]$$
+
+* For every new moment of time, one more multiplication with $T$
+
+### Ergodic sources
 
 * In general, starting from time $0$, after $n$ messages the probabilities that the source is in a certain state are:
 $$[p_1^{(0)}, p_2^{(0)}, ... , p_N^{(0)}] \cdot [T]^{n} = [p_1^{(n)}, p_2^{(n)}, ... , p_N^{(n)}]$$
 
 ### Ergodicity
 
-* A source is called **ergodic** if every state can be reached from every state, in a finite number of steps.
+- A source is called **ergodic** if every state can be reached from every state, in a finite number of steps.
 
-**Property of ergodic sources:** 
+- Property of ergodic sources:
 
-* After many messages, the probabilities of the states *become stationary* (converge to some fixed values), irrespective of the initial probabilities.
+  - After many messages, the probabilities of the states *become stationary* (converge to some fixed values), 
+  irrespective of the initial probabilities (no matter what state the source started from initially)
+  .
 $$\lim_{n \to \infty} [p_1^{(n)}, p_2^{(n)}, ... p_N^{(n)}] = [p_1, p_2, ... p_N]$$
 
-* These are the probabilities to be used in the entropy formula for memory sources
 
 ### Finding the stationary probabilties
 
-* How to find the stationary probabilities?
+* How to find the value of the stationary probabilities?
 
 * When $n$ is very large, after $n$ messages and after $n+1$ messages the probabilities are the same:
 $$[p_1, p_2, ... p_N] \cdot [T] = [p_1, p_2, ... p_N]$$
 
-* Also $p_1 + p_2 + ... + p_N = 1$.
+* This is an equation system in matrix form
 
-=> solve system of equations, find values.
+* One line should be removed (linear combination), and replaced with:
+$$p_1 + p_2 + ... + p_N = 1$$
+
+* Solve the resulting system of equations, find values of $p_k$
 
 ### Entropy of ergodic sources with memory 
 
 * The entropy of an ergodic source with memory is
 $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k)$$
 
+### Exercise
+
+1. Consider a discrete source with memory, with the graphical representation given below.
+The states are defined as follows: $S_1: s_1s_1$, $S_2: s_1s_2$, $S_3: s_2s_1$, $S_4: s_2s_2$.
+
+	![Graphical representation of the source](img/MemorySource3.png){.id width=35%}
+
+### Exercise (continued)
+
+Questions:
+    a. What are the values of $x$ and $y$?
+    b. Write the transition matrix $[T]$;
+    c. Compute the entropy in state $S_4$;
+    d. Compute the global entropy of the source;
+    e. What are the memory order, $m$, and the number of messages of the source, $n$?
+    f. If the source is initially in state $S_2$, in what states and with what probabilities 
+    will the source be after 2 messages?
+
 ### Example English text as sources with memory
 
 *(taken from Elements of Information Theory, Cover, Thomas)*
 
 * Memoryless source, equal probabilities:
-![](img/EnglishZeroOrder.png){width=50%}\
+
+![](img/EnglishZeroOrder.png){width=40%}\
 
 * Memoryless source, probabilities of each letter as in English:
-![](img/EnglishFirstOrder.png){width=50%}\
+
+![](img/EnglishFirstOrder.png){width=40%}\
 
 * Source with memory $m=1$, frequency of pairs as in English:
-![](img/EnglishSecondOrder.png){width=50%}\
+
+![](img/EnglishSecondOrder.png){width=40%}\
 
 * Source with memory $m=2$, frequency of triplets as in English:
-![](img/EnglishThirdOrder.png){width=50%}\
+
+![](img/EnglishThirdOrder.png){width=40%}\
 
 * Source with memory $m=3$, frequency of 4-plets as in English:
-![](img/EnglishFourthOrder.png){width=50%}\
+
+![](img/EnglishFourthOrder.png){width=40%}\
 
 ### Example application
 
