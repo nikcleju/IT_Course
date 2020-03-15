@@ -129,6 +129,7 @@ are not instantaneous
 ### Graph-based decoding of instantaneous codes
 
 * How to decode an instantaneous code: graph-based decoding
+  - Illustrate at whiteboard
 
 * Advantage on instantaneous code over uniquely decodable: simple decoding
 
