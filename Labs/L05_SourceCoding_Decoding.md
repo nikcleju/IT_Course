@@ -39,15 +39,17 @@ typedef struct
 ~~~
 	
   * The program will follow the following steps:
-    * Read the full vector from the codebook file;
-    * Read the full input encoded file into an array `data` of type `unsigned char`, of max size 1MB (i.e. 1.000.000 bytes);
-    * Store the number of bytes actually read (return value of `fread`), so that you know how much of the array
-    is actually used;
-    * Decode the characters from the `data` array, as follows:
-        * While we haven't processed all bytes actually read, do the following:
-            * For all characters, try and see which codeword matches the next bits in `data`;
-            * When a codeword matches, write that character in the output file;
-            * Advance in the `data` array with the size of the matched codeword;
+    1. Read the full vector from the codebook file;
+    2. Read the full input encoded file into an array `data` of type `unsigned char`, of max size 1MB (i.e. 1.000.000 bytes);
+       Store the number of bytes actually read (return value of `fread`), so that you know how much of the array
+       is actually used;
+    3. Decode the characters from the `data` array, as follows:
+         
+       While we haven't processed all bytes actually read, do the following:
+       
+         a) For all characters, try and see which codeword matches the next bits in `data`;
+         b) When a codeword matches, write that character in the output file;
+         c) Advance in the `data` array with the size of the matched codeword;
 
   * **Note**: every time there is a **single codeword** that fully matches the next bits in the `data` array.
 
