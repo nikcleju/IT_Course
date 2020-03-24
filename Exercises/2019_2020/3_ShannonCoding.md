@@ -33,10 +33,4 @@ fontsize: 12pt
 	  $s_3$        $100$		
 	  $s_4$        $11$		
 
-3. We perform Shannon coding on an information source with $H(S) = 20$b.
-    a. What are the possible values for the efficiency of the code?
-    b. What are the possible values for the redundancy of the code?
-    c. What is the minimum number of messages the source may possibly have?
-
-
     
