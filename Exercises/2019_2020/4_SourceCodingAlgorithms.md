@@ -1,5 +1,5 @@
 ---
-title: Shannon Coding
+title: Source Coding Algorithms
 subtitle: Information Theory Exercises
 documentclass: scrartcl
 fontsize: 12pt
