@@ -1,5 +1,5 @@
 ---
-title: Exercises Week 3
+title: Source Coding Basics
 subtitle: Information Theory
 documentclass: scrartcl
 fontsize: 12pt
