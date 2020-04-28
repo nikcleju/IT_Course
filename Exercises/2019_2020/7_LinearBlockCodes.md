@@ -14,7 +14,12 @@ $$[G] =
 0 & 0 & 0 & 1 & 0 & 1 & 1 \\
 \end{bmatrix}$$
 
+    a. Compute the codeword for sending the information bits $\mathbf{i_2} = [1 0 1 1]$
     a. Compute the parity-check matrix $[H]$;
+    c. We receive a sequence $\mathbf{r} = 1010111$, which was encoded with
+        this code. Find if there are errors in the
+        received data, and, if yes, perform correction and retrieve the 
+        transmitted information bits.
     b. Find out how many errors this code can detect, and how many it can correct.
     
 2. Compute the codewords for transmitting the information words
