@@ -6,7 +6,7 @@ Currently the 2018-2019 class is underway.
 
 ### Exam
 
-A sample exam sheet is here: [SampleExam\SampleExam.pdf](SampleExam/SampleExam.pdf)
+Sample exam sheets are here: [SampleExam](SampleExam)
 
 ### Grades for Laboratory and Tests
 
@@ -17,6 +17,8 @@ The Test grades are posted on the Faculty's Moodle site.
 ### Lectures
 
 All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
+
+The online lecture slides, with the annotations included, are in [Lectures/OnlineLectures](Lectures/OnlineLectures)
 
 Open the *.pdf* files, not the raw *.md* text files.
 
