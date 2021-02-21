@@ -1,36 +1,37 @@
-# Lecture notes 2019-2020
+# Lecture notes 2020-2021
 
 ## Introduction
 
 ### Organization
+
 Professors:
 
-* Lectures: Nicolae Cleju
-* Laboratories: Nicolae Cleju
+- Lectures: Nicolae Cleju
+- Laboratories: Nicolae Cleju
 
 Grades
 
-* Final grade = 0.6 Exam + 0.4 Applications during semester (Lab + Tests)
+- Final grade = 0.6 Exam + 0.4 Applications during semester (Lab + Tests)
 
 Time schedule
 
-* 14 weeks of lectures (3h each)
-* 14 weeks of laboratories (2h each)
-* Office hours: Wednesdy 12:00 - 14:00 (best by appointment)
+- 14 weeks of lectures (3h each)
+- 14 weeks of laboratories (2h each)
+- Office hours: --- (best by appointment)
 
 ### Exercises & Tests
 
-* 3rd hour of each lecture = exercises
+- 3rd hour of each lecture = exercises
 
-* There will be 3 semester tests, approximately in 4th, 7th and 10th week
-   - more precisely, after the first, second and third chapters
+- There will be 2 semester tests, approximately in 5th and 10th week
+   - we'll discuss the schedule during classes
 
-* Exam: half exercises, half theory questions
+- Exam: exercises & theory questions
 
 ### Course structure
 1. Chapter I:   Discrete Information Sources
-2. Chapter II: Source Coding
-3. Chapter III:  Discrete Transmission Channels
+2. Chapter II:  Source Coding
+3. Chapter III: Discrete Transmission Channels
 4. Chapter IV:  Error Control Coding 
 
 ### Bibliography

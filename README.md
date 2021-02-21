@@ -2,8 +2,6 @@
 
 Here you will find all the materials for the class of Information Theory taught during spring semester at ETTI, TUIASI.
 
-Currently the 2018-2019 class is underway.
-
 ### Exam
 
 Sample exam sheets are here: [SampleExam](SampleExam)
