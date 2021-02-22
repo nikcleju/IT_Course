@@ -24,6 +24,8 @@ Open the *.pdf* files, not the raw *.md* text files.
  
 All the laboratory documents are in the [Labs](Labs) folder.
 
+Please have some C/C++ IDE available (you can download Dev-C++ from [here](https://sourceforge.net/projects/orwelldevcpp/files/Setup%20Releases/Dev-Cpp%205.11%20TDM-GCC%204.9.2%20Setup.exe/download)
+
 ### Exercises
 
 The exercises done throughout the lectures are available in the [Exercises](Exercises) folder.
