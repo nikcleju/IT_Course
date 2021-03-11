@@ -7,7 +7,7 @@ Click on the `launch Binder` badge next to the lab to open it in live mode.
  
 <!-- Lab 03: [Random Data Generator](notebooks/L03_RandomDataGenerator.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/xeus-cling/HEAD?urlpath=/lab/tree/notebooks/L03_RandomDataGenerator.ipynb)-->
 
-Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course//HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
+Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
 
 ## About
 
