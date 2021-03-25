@@ -11,6 +11,8 @@ Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) 
 
 Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
 
+Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
+
 ## About
 
 These laboratories use `xeus-cling`, a Jupyter kernel for C++ based on the C++ interpreter [cling](https://github.com/root-project/cling) and
