@@ -19,7 +19,7 @@ List of laboratories filled with the code we wrote during the class. Click on th
 
 The applications done in Dev-C++ can be found in the [IT_Course/Work/](IT_Course/Work/) folder.
 
-Lab 03 worked in class: [Recognizing Language with Memory Sources](L03_RecognizeLanguage_WorkedInClass.ipynb.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_WorkedInClass.ipynb.ipynb)
+Lab 03 worked in class: [Recognizing Language with Memory Sources](L03_RecognizeLanguage_WorkedInClass.ipynb.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_WorkedInClass.ipynb)
 
 Lab 04 worked in class: [Source coding: Encoding data - Part 1](L04_SourceCoding_Encoding_WorkedInClassWeek04.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding_WorkedInClassWeek04.ipynb)
 
