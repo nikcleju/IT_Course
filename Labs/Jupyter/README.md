@@ -13,6 +13,13 @@ Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binde
 
 Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
 
+## List of laboratories
+
+List of laboratories filled with the code we wrote during the class
+
+Lab 05 worked in class: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb)
+
+
 ## About
 
 These laboratories use `xeus-cling`, a Jupyter kernel for C++ based on the C++ interpreter [cling](https://github.com/root-project/cling) and
