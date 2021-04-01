@@ -331,15 +331,18 @@ $$l_i = \lceil -\log(p(s_i)) \rceil$$
 * Shannon coding:
     1. Arrange probabilities in descending order
     2. Use codeword lengths $l_i = \lceil -\log(p(s_i)) \rceil$
-    3. Find any instantaneous code for these lengths $^{*}$
-        * $^{*}$ Note: simplified version
-        * Shannon actually prescribed the way to compute the codewords
+    3. ~~Find any instantaneous code for these lengths $^{*}$~~
+	3. For every message $s_i$:
+        1. compute the sum of all the probabilities up to this message
+        2. multiply this value with $2^{l_i}$
+		3. floor the result and convert to binary
 
 * The code obtained = a "*Shannon code*"
 
 * Simple scheme, better algorithms are available
     * Example: compute lengths for $S: (0.9, 0.1)$
 * But still enough to prove fundamental results
+
 
 ### Average length of Shannon code
 

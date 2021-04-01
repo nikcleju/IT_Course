@@ -13,6 +13,9 @@ Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binde
 
 Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
 
+Lab 06: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+
+
 ## List of laboratories with solutions
 
 List of laboratories filled with the code we wrote during the class. Click on the `launch Binder` badge next to the lab to open it in live mode.
