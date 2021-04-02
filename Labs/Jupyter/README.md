@@ -13,9 +13,9 @@ Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binde
 
 Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
 
-Lab 06: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+Lab 06 (not working?): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
 
-Lab 06 old interface: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+Lab 06 old interface (working): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
 
 
 ## List of laboratories with solutions
@@ -29,6 +29,8 @@ Lab 03 worked in class: [Recognizing Language with Memory Sources](L03_Recognize
 Lab 04 worked in class: [Source coding: Encoding data - Part 1](L04_SourceCoding_Encoding_WorkedInClassWeek04.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding_WorkedInClassWeek04.ipynb)
 
 Lab 05 worked in class: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb)
+
+Lab 06 worked in class: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding_WorkedInClass.ipynb)
 
 
 ## About
