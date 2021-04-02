@@ -15,6 +15,8 @@ Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.
 
 Lab 06: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
 
+Lab 06 old interface: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+
 
 ## List of laboratories with solutions
 
