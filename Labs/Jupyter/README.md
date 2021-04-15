@@ -17,6 +17,10 @@ Lab 06 (not working?): [Source coding: Decoding data](L06_SourceCoding_Decoding.
 
 Lab 06 old interface (working): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
 
+Lab 07: was done in Dev-C++
+
+Lab 08: [Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb)
+
 
 ## List of laboratories with solutions
 
