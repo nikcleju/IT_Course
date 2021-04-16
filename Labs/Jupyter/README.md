@@ -34,7 +34,7 @@ Lab 04 worked in class: [Source coding: Encoding data - Part 1](L04_SourceCoding
 
 Lab 05 worked in class: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2_WorkedInClass.ipynb)
 
-Lab 06 worked in class: [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding_WorkedInClass.ipynb)
+Lab 06 worked in class: [Source coding: Decoding data](L06_SourceCoding_Decoding_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding_WorkedInClass.ipynb)
 
 Lab 07: was done in Dev-C++
 
