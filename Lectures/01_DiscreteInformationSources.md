@@ -55,7 +55,7 @@ $$i(s_i) = -\log_2(p(s_i))$$
     - a certain event brings no information: $-\log(1) = 0$
     - an event with probability 0 brings infinite information (but it never happens...)
     - for two independent events, their information gets added 
-        $$i(p(s_i) \cdot p(s_j)) = i(s_i) + i(s_j)$$
+        $$i(s_i) \cap s_j) = i(s_i) + i(s_j)$$
 
 ### The choice of logarithm
 
