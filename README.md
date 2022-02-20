@@ -20,6 +20,14 @@ The online lecture slides, with the annotations included, are in [Lectures/Onlin
 
 Open the *.pdf* files, not the raw *.md* text files.
 
+### Lecture notes
+
+A draft version of a lecture notes book is available here:
+
+[IT Lecture Notes](https://nikcleju.github.io/IT_LectureNotes)
+
+**Warning:** It's still a work in progress.
+
 ### Laboratory
  
 All the laboratory documents are in the [Labs](Labs) folder.
