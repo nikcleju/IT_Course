@@ -1,4 +1,4 @@
-# Lecture notes 2020-2021
+# Lecture notes 2021-2022
 
 ## Introduction
 
