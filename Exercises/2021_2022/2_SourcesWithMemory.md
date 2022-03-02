@@ -28,6 +28,8 @@ The states are defined as follows: $S_1: s_1s_1$, $S_2: s_1s_2$, $S_3: s_2s_1$, 
 
     a. What are the values of $x$ and $y$?
     b. Write the transition matrix $[T]$;
+	c. What is the probability of generating $s_1 $ if the current state is $S_3$?
+	c. If the initial state is $S_4$, what is the probability of generating the sequence $s_1 s_2 s_2 s_1$?
     c. Compute the entropy in state $S_4$;
     d. Compute the global entropy of the source;
     e. What are the memory order, $m$, and the number of messages of the source, $n$?
