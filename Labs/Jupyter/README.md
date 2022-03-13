@@ -7,21 +7,24 @@ Click on the `launch Binder` badge next to the lab to open it in live mode.
  
 <!-- Lab 03: [Random Data Generator](notebooks/L03_RandomDataGenerator.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/xeus-cling/HEAD?urlpath=/lab/tree/notebooks/L03_RandomDataGenerator.ipynb)-->
 
-Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
+Week 3: Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
 
-Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
+Week 4: Lab 03, Part2: [Recognizing Language with Memory Sources, Part 2](L03_RecognizeLanguage_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_Part2.ipynb)
 
-Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
+Week 5: Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
 
-Lab 06 (not working?): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+Week 6: Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
 
-Lab 06 old interface (working): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+<!-- 
+Week 7: Lab 06 (not working?): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
+
+Week 8: Lab 06 old interface (working): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
 
 Lab 07: was done in Dev-C++
 
-Lab 08: [Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb)
+Lab 08: [Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb) -->
 
-
+<!-- 
 ## List of laboratories with solutions
 
 List of laboratories filled with the code we wrote during the class. Click on the `launch Binder` badge next to the lab to open it in live mode.
@@ -38,7 +41,7 @@ Lab 06 worked in class: [Source coding: Decoding data](L06_SourceCoding_Decoding
 
 Lab 07: was done in Dev-C++
 
-Lab 08 worked in class: [Parity bits: Encoding](L08_ParityBit_Encoding_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding_WorkedInClass.ipynb)
+Lab 08 worked in class: [Parity bits: Encoding](L08_ParityBit_Encoding_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding_WorkedInClass.ipynb) -->
 
 
 ## About
