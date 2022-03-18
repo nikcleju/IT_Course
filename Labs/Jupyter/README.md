@@ -44,7 +44,7 @@ Lab 07: was done in Dev-C++
 Lab 08 worked in class: [Parity bits: Encoding](L08_ParityBit_Encoding_WorkedInClass.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding_WorkedInClass.ipynb) -->
 
 ## Local server
-Connect to local Jupyter server by clinking [here](192.168.209.78/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fnikcleju%2FIT_Course&urlpath=lab%2Ftree%2FIT_Course%2F&branch=master&depth=1)
+Connect to local Jupyter server by clinking [here](http://192.168.209.78/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fnikcleju%2FIT_Course&urlpath=lab%2Ftree%2FIT_Course%2F&branch=master&depth=1)
 
 ## About
 
