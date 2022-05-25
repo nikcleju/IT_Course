@@ -33,6 +33,8 @@ $$P(y_j | x_i) =
 we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{3}{4}$ and $p(x_2) = \frac{1}{4}$.
     a. Draw the graph of the channel
     b. Find $H(X)$, $H(Y)$ and $I(X,Y)$
+    c. Compute the uncertainty remaining over the input $X$ when output symbol $y_2$ is received
+    c. Compute the channel capacity, the redundancy and the efficiency of the channel.
 	
 2. Consider a communication process with 2 inputs and 3 outputs. The inputs and output events have equal probabilities, and are independent. 
 
