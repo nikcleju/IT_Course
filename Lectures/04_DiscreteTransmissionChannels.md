@@ -354,6 +354,10 @@ H(X|Y) &= \sum_j p(y_j) H(X|y_j) \\
 * Also known as **equivocation**
 * Should be small for a good communication
 
+### The big picture
+
+![The big picture](img/ChannelProbs.jpg)
+
 ### Properties of conditional entropies
 
 For a general system with two random variables $X$ and $Y$:
@@ -367,6 +371,26 @@ $$H(Y|X) \leq H(Y)$$
 $$H(X|Y) = H(X)$$
 $$H(Y|X) = H(Y)$$
 (knowing the second variable does not help at all)
+
+
+### Relations between the informational measures
+
+![Relations between the informational measures](img/MutualInfoWiki.svg){width=75%}
+
+- *image from [Wikipedia](https://en.m.wikipedia.org/wiki/File:Entropy-mutual-information-relative-entropy-relation-diagram.svg)*
+
+### Relations between the informational measures
+
+* Six quantities: $H(X)$, $H(Y)$, $H(X,Y)$, $H(X|Y)$, $H(Y|X)$, $I(X,Y)$
+* All relations on the picture are valid relations:
+
+$$H(X,Y) = H(X) + H(Y) - I(X,Y)$$
+$$H(X,Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)$$
+$$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$$
+...
+
+* If know three, can find the other three
+* Simplest to find first H(X), H(Y), H(X,Y) ---> then find others
 
 ### Mutual information I(X,Y)
 
@@ -415,20 +439,6 @@ $$I(X,Y) = D_{KL}(p(x_i \cap y_j) || p(x_i) \cdot p(y_j))$$
     * Our mutual information = how far away are from being independent
     * Example: height of a point = how far is it from the point of 0 height
 
-
-### Relations between the informational measures
-
-* Nice picture with two circles :)
-* All six: $H(X)$, $H(Y)$, $H(X,Y)$, $H(X|Y)$, $H(Y|X)$, $I(X,Y)$
-* All relations on the picture are valid relations:
-
-$$H(X,Y) = H(X) + H(Y) - I(X,Y)$$
-$$H(X,Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)$$
-$$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$$
-...
-
-* If know three, can find the other three
-* Simplest to find first H(X), H(Y), H(X,Y) ---> then find others
 
 ### Types of communication channels
 
