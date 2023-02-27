@@ -1,4 +1,4 @@
-# Lecture notes 2021-2022
+# Lecture notes
 
 ## Introduction
 
@@ -25,6 +25,8 @@ Time schedule
 
 - There will be 2 semester tests, approximately in 5th and 10th week
    - we'll discuss the schedule during classes
+
+- Lab: practical test in final week
 
 - Exam: exercises & theory questions
 
