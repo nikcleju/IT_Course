@@ -1,19 +1,18 @@
 # Information Theory laboratories
 
-## List of laboratories
+## List of laboratories (2022-2023)
 
-Click on the `launch Binder` badge next to the lab to open it in live mode.
-
+Click on the `launch Binder` badge next to a lab file to open it in live mode.
  
-Lab 03: [Random Data Generator](L03_RandomDataGenerator.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RandomDataGenerator.ipynb)
+Weeks 03 - 04: [Lab 03: Random Data Generator](L03_RandomDataGenerator.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RandomDataGenerator.ipynb)
 
-Week 3: Lab 03: [Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
+Weeks 05 - 06: [Lab 04: Recognizing Language with Memory Sources](L03_RecognizeLanguage.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage.ipynb)
 
-Week 4: Lab 03, Part2: [Recognizing Language with Memory Sources, Part 2](L03_RecognizeLanguage_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_Part2.ipynb)
+<!-- Week 4: Lab 03, Part2: [Recognizing Language with Memory Sources, Part 2](L03_RecognizeLanguage_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_Part2.ipynb) -->
 
-Week 5: Lab 04: [Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
+Week 07 - 08: [Lab 04: Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
 
-Week 6: Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb)
+<!-- Week 6: Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb) -->
 
 <!-- 
 Week 7: Lab 06 (not working?): [Source coding: Decoding data](L06_SourceCoding_Decoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?filepath=Labs/Jupyter/L06_SourceCoding_Decoding.ipynb)
