@@ -23,7 +23,7 @@ Lab 07: was done in Dev-C++
 
 Lab 08: [Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb) -->
 
-Week 08: [Lab: Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb) -->
+Week 08: [Lab: Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb)
 
 <!-- 
 ## List of laboratories with solutions
