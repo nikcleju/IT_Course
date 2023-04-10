@@ -10,7 +10,7 @@ Weeks 05 - 06: [Lab 04: Recognizing Language with Memory Sources](L03_RecognizeL
 
 <!-- Week 4: Lab 03, Part2: [Recognizing Language with Memory Sources, Part 2](L03_RecognizeLanguage_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L03_RecognizeLanguage_Part2.ipynb) -->
 
-Week 07 - 08: [Lab 04: Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
+Week 07: [Lab 04: Source coding: Encoding data](L04_SourceCoding_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L04_SourceCoding_Encoding.ipynb)
 
 <!-- Week 6: Lab 05: [Source coding: Encoding data - Part 2](L05_SourceCoding_Encoding_Part2.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L05_SourceCoding_Encoding_Part2.ipynb) -->
 
@@ -22,6 +22,8 @@ Week 8: Lab 06 old interface (working): [Source coding: Decoding data](L06_Sourc
 Lab 07: was done in Dev-C++
 
 Lab 08: [Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb) -->
+
+Week 08: [Lab: Parity bits: Encoding](L08_ParityBit_Encoding.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikcleju/IT_Course/HEAD?urlpath=/lab/tree/Labs/Jupyter/L08_ParityBit_Encoding.ipynb) -->
 
 <!-- 
 ## List of laboratories with solutions
