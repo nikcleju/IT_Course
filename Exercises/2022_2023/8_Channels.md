@@ -12,9 +12,9 @@ fontsize: 12pt
 \newcommand{\sVIII}[9] {#1: \left( \begin{matrix} s_1 & s_2 & s_3 & s_4 & s_5 & s_6 & s_7 & s_8 \\ #2 & #3 & #4 & #5 & #6 & #7 & #8 & #9  \end{matrix} \right)}
 
 
-	
+
 1. Consider a communication process defined by the following **joint probability matrix**:
-$$P(x_i \cap y_j) = 
+$$P(x_i \cap y_j) =
 \begin{bmatrix}
 \frac{1}{2} & 0 & 0 \\
 0 & \frac{1}{4} & \frac{1}{4} \\
@@ -23,20 +23,20 @@ $$P(x_i \cap y_j) =
 	a. compute the marginal probabilities and the marginal entropies $H(X)$ and $H(Y)$;
 	b. Find the channel matrix $P(Y|X)$ and draw the graph of the channel;
 	c. compute the mutual information $I(X,Y)$, and draw the geometrical representation.
-	
+
 3. At the input of a binary symmetric channel with the following channel matrix
-$$P(y_j | x_i) = 
+$$P(y_j | x_i) =
 \begin{bmatrix}
-\frac{2}{3} & \frac{1}{3} \\
-\frac{1}{3} & \frac{2}{3} \\
+\frac{3}{4} & \frac{1}{4} \\
+\frac{1}{2} & \frac{1}{2} \\
 \end{bmatrix}$$
-we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{3}{4}$ and $p(x_2) = \frac{1}{4}$.
+we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{1}{2}$ and $p(x_2) = \frac{1}{2}$.
     a. Draw the graph of the channel
     b. Find $H(X)$, $H(Y)$ and $I(X,Y)$
     c. Compute the uncertainty remaining over the input $X$ when output symbol $y_2$ is received
     c. Compute the channel capacity, the redundancy and the efficiency of the channel.
-	
-2. Consider a communication process with 2 inputs and 3 outputs. The inputs and output events have equal probabilities, and are independent. 
+
+2. Consider a communication process with 2 inputs and 3 outputs. The inputs and output events have equal probabilities, and are independent.
 
     a. Write the joint probability matrix
     b. draw the graph of the channel (together with the probabilities)
