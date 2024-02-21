@@ -6,7 +6,7 @@
 
 ![Block diagram of a communication system](img/CommBlockDiagram.png){width=50%}
 
-- Source: creates information messages 
+- Source: creates information messages
 - Encoder: converts messages into symbols for transmission (i.e bits)
 - Channel: delivers the symbols, introduces errors
 - Decoder: detects/corrects the errors, rebuilds the information messages
@@ -15,22 +15,22 @@
 
 Example:
 
-- Consider the sentence: "your favorite football team lost the last match"
+- Suppose I roll a dice and tell you the result:
+
+  "The value is 6"
 
 - Does this message carry information? How, why, how much?
 
 - Consider the following facts:
 
-    - the message carries information only when you don't already know the result
-    - if you already known the result, the message is useless (brings no information)
-    - if the result was to be expected, there is little information. If the result
-      is highly unusual, there is more information in this message (think betting)
+  - the message carries information only when you don't already know the result
+  - if you already known the result, the message is useless (brings no information)
+  - if the result was to be expected, there is little information. If the result
+    is highly unusual, there is more information in this message.
 
 ### Information and events
 
 - We define the notion of **information** for a **probabilistic event**
-
-   - the happening of a probabilistic event = creation of information
 
 - Information brought by an event depends on the **probability** of the event
 
@@ -38,34 +38,37 @@ Example:
 
 - Questions:
 
-	- does a sure event (p = 1) bring any information?
-	- does an almost sure event (e.g. P = 0.9999)  bring little or much information?
-	- does a rare event (e.g. P = 0.0001) bring a little or much information?
+  - does a sure event (p = 1) bring any information?
+  - does an almost sure event (e.g. P = 0.9999)  bring little or much information?
+  - does a rare event (e.g. P = 0.0001) bring a little or much information?
 
 ### Information
 
 - The information attached to a particular event (known as "message") $s_i$ is rigorously defined as:
 $$i(s_i) = -\log_2(p(s_i))$$
 
-- Properties:
+- Consequences:
 
-    - $i(s_i) \geq 0$
-    - lower probability (rare events) means higher information
-    - higher probability (frequent events) means lower information
-    - a certain event brings no information: $-\log(1) = 0$
-    - an event with probability 0 brings infinite information (but it never happens...)
-    - for two independent events, their information gets added 
-        $$i(s_i) \cap s_j) = i(s_i) + i(s_j)$$
+  - $i(s_i) \geq 0$
+  - lower probability (rare events) means higher information
+  - higher probability (frequent events) means lower information
+  - a certain event brings no information: $-\log(1) = 0$
+  - an event with probability 0 brings infinite information (but it never happens...)
+  - for two independent events, their information gets added
+      $$i(s_i) \cap s_j) = i(s_i) + i(s_j)$$
+
+- Information is mathematical.
+  It does not depend on how you encode the message (letters, bits, language)
+  and neither on what you use it for.
 
 ### The choice of logarithm
 
 - Any base of logarithm can be used in the definition.
 
-- Usual convention: use binary logarithm $\log_2()$
+- Usual convention: use binary logarithm $\log_2()$.
+  In this case, the information $i(s_i)$ is measured in **bits**
 
-- In this case, the information $i(s_i)$ is measured in **bits**
-
-- If using natural logarithm $ln()$, it is measured in *nats*.
+- If using natural logarithm $\ln()$, it is measured in *nats*.
 
 - Logarithm bases can be converted to/from one another:
     $$ \log_b(x) = \frac{\log_a(x)}{\log_a(b)} $$
@@ -81,23 +84,18 @@ $$i(s_i) = -\log_2(p(s_i))$$
    - e.g: a football team can win/lose/draw a match (3 possible events)
    - each event has a certain probability. All probabilities are known beforehand
    - at a given time, only one of the events can happen
-    
+
 - An **information source**  = the set of all events together with their probabilities
 
 - One event is called a **message**
 
-- Each message carries the information that **it** happened, the quantity of information is dependent on its probability
-
-### Sequence of messages
+- Each message carries the information that **it** happened.
+  The amount of information depends on its probability.
 
 - An information source creates a **sequence of messages**
 
    - e.g. like throwing a coin or a dice several times in a row
 
-- The probabilities of the messages are known and fixed
-
-
-- Each time, a new message is randomly selected according to the probabilities
 
 ### Discrete memoryless source
 
@@ -105,10 +103,12 @@ $$i(s_i) = -\log_2(p(s_i))$$
 
     - i.e. the choice of a message at one time does not depend on the previous messages
 
-
-- Each message has a fixed probability. The set of probabilities is the **distribution** of the source:
+- The probabilities of the messages are known and fixed. The set of probabilities is the **distribution** of the source:
 
     $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
+
+- Each time, a new message is randomly selected according to the probabilities
+
 
 ### Discrete memoryless source
 
@@ -146,30 +146,28 @@ $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
 - A DMS produces a sequence of messages by randomly selecting a message every time,
 with the same fixed probabilities
 
-   - throwing a dice several times in a row you can get a sequence $4, 2, 3, 2, 1, 6, 1, 5, 4, 5$
+  - e.g. throwing a dice in a row you can get a sequence $4, 2, 3, 2, 1, 6, 1, 5, 4, 5,...$
 
+- If the sequence is very long (has $N$ messages, $N$ very large),
+each message $s_k$ appears approximately $p(s_k) \cdot N$ times in the sequence
 
-- If the sequence is very long (has $N$ messages, $N$ very large), 
-each message $s_i$ appears approximately $p(s_i) * N$ times in the sequence
-    
-    - gets more precise as $N \to \infty$
+  - this gets more precise as $N \to \infty$
+
+- The total information in the sequence is the sum for all messages:
+  $$I \approx \sum_{k} i(s_k) \cdot p(s_k) \cdot N = N \cdot \sum_{k} i(s_k) \cdot p(s_k) $$
+
+- We are interested in the *average* information of a message from a DMS:
+  $$\sum_{k} i(s_k) \cdot p(s_k)$$
 
 ### Entropy of a DMS
-
-- We usually don't care about a single message. We are interested in long sequences of messages
-(think millions of bits of data)
-
-- We are interested in the *average* information of a message from a DMS
 
 - Definition: the **entropy** of a DMS source $S$ is **the average information of a message**:
 $$H(S) = \sum_{k} p(s_k) i(s_k) = -\sum_{k} p(s_k) \log_2(p_k)$$
 where $p(s_k)$  is the probability of message $k$
 
-### Entropy of a DMS
-
 - Since information of a message is measured in bits, entropy is measured in **bits** (or **bits / message**, to indicate it is an average value)
- 
-- Entropies using information defined with different logarithms differ only in scaling:
+
+- Entropies using information defined with different logarithms $\log_a(), \log_b()$ differ only in scaling:
 $$ H_b(S) =\frac{H_a(S)}{\log_a(b)}  $$
 
 
@@ -194,7 +192,7 @@ All the following interpretations of entropy are true:
 
 - A long sequence of $N$ messages from $S$ has total information $\approx N \cdot H(S)$
 
-- H(S) is the minimum number of bits (0,1) required to uniquely represent an average message 
+- H(S) is the minimum number of bits (0,1) required to uniquely represent an average message
 from source S
 
 
@@ -217,13 +215,21 @@ The maximum value is $\max H(S) = \log(n)$
 
 ### The entropy of a binary source
 
-- Consider a general DMS with two messages:
+- Consider a general DMS with two messages (a **binary** source):
     $$\sII{S}{p}{1-p}$$
 
 - It's entropy is:
     $$H(S) = -p \cdot \log(p) - (1-p) \cdot \log(1-p)$$
 
-![Entropy of a binary source](img/EntropyBinary.png){height=40%}
+  ![Entropy of a binary source](img/EntropyBinary.png){height=40%}
+
+### The entropy of a binary source
+
+- When $p = \frac{1}{2}$, the entropy is maximum: $H(S) = 1 bit/message$
+
+- Definition of **1 bit of information**:
+  - it is the amount of information of by a message having probability $\frac{1}{2}$
+  - it is the entropy of a binary source with equal probabilities $\frac{1}{2}$, $\frac{1}{2}$
 
 ### Example - Game
 Game: I think of a number between 1 and 8. You have to guess it by asking
@@ -238,7 +244,7 @@ yes/no questions.
 - Suppose I choose a number according to the following distribution:
     $$\sIV{S}{\fIoII}{\fIoIV}{\fIoVIII}{\fIoVIII}$$
 
-    - On average, what is the number of questions required to find the number? 
+    - On average, what is the number of questions required to find the number?
     - What questions would you ask?
 
 - What if the distribution is:
@@ -248,6 +254,14 @@ $$\sIV{S}{0.14}{0.29}{0.4}{0.17}$$
 
     - What distribution makes guessing the number the most difficult?
     - What distribution makes guessing the number the easiest?
+
+### Optimal decision tree
+
+- An **optimal decision tree** is the best way to ask questions in a game like the one above,
+  i.e. the tree-like structure of questions that minimizes the average number of questions
+  needed to find the number
+
+- Examples: at whiteboard
 
 ### Efficiency and redundancy
 
@@ -260,6 +274,7 @@ $$\sIV{S}{0.14}{0.29}{0.4}{0.17}$$
 - Relative redundancy of a DMS:
     $$\rho = \frac{H_{max} - H(S)}{H_{max}} = 1 - \eta$$
 
+- They tell us how close is the source to having maximum entropy
 
 ### Information flow of a DMS
 
@@ -281,7 +296,7 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 
     - must have the same number of messages
     - example: $p(s_1), ... p(s_n)$ and $q(s_1), ... q(s_n)$
-  
+
 - **Definition**: the **Kullback–Leibler distance** of two distributions P and Q is
     $$D_{KL}(P || Q) = \sum_i p(s_i) \log(\frac{p(s_i)}{q(s_i)})$$
 
@@ -311,6 +326,8 @@ has as messages all the combinations of $n$ messages of $S$:
 - Since $S$ is DMS, probabilities multiply:
     $$p(\sigma_i) = p(s_j) \cdot p(s_k) \cdot ... \cdot p(s_l)$$
 
+- Proof: at whiteboard
+
 ### Extended DMS - Example
 
 - Examples:
@@ -325,7 +342,7 @@ $$0 1 0 0 1 1 0 0 1 1 1  0 0 1 0 1 0 0 ...$$
 
     - Can be grouped in bits, half-bytes, bytes, 16-bit words, 32-bit long words, and so on
 	- Can be considered:
-    
+
 		- N messages from a binary source (with 1 bit), or
 		- N/2 messages from a source with 4 messages (with 2 bits)...
 		- etc
@@ -344,15 +361,17 @@ $$H(S^n) = n H(S)$$
 
 - The distribution (frequencies) of letters in English:
 
-    ![](img/EngLetterProb.jpg){width=30%}\ 
+    ![](img/EngLetterProb.jpg){width=30%}\
 
-- Text from a memoryless source with these probabilities:
+- Text generated by a memoryless source with these probabilities:
 
     ![](img/EnglishFirstOrder.png){width=50%}\
 
     *(taken from Elements of Information Theory, Cover, Thomas)*
 
-- What's wrong? **Memoryless**
+- Are they similar? No
+
+- What's wrong? **Memoryless**. Langauge has memory, our model has not.
 
 ### Sources with memory
 
@@ -393,12 +412,12 @@ some state $S_u$ to another state $S_v$
 ### Transition matrix
 - The transition probabilities are organized in a **transition
 matrix** $[T]$
-    $$[T] = 
+    $$[T] =
     \begin{bmatrix}
-    p_{11} & p_{12} & ... & p_{1N} \\ 
-    p_{21} & p_{22} & ... & p_{2N} \\ 
-    ... & ... & ... & ... \\ 
-    p_{N1} & p_{N2} & ... & p_{NN} \\ 
+    p_{11} & p_{12} & ... & p_{1N} \\
+    p_{21} & p_{22} & ... & p_{2N} \\
+    ... & ... & ... & ... \\
+    p_{N1} & p_{N2} & ... & p_{NN} \\
     \end{bmatrix}$$
 
 - $p_{ij}$ is the transition probability from state $S_i$ to state
@@ -407,7 +426,7 @@ $S_j$
 - $N$ is the total number of states
 
 ### Graphical representation
-At whiteboard: draw states and transitions for previous example 
+At whiteboard: draw states and transitions for previous example
 (source with $n=4$ messages and memory $m=1$)
 
 ### Entropy of sources with memory
@@ -434,15 +453,15 @@ where $p_k$ = probability that the source is in state $S_i$
     - (i.e. after a very long sequence of messages, the fraction of time when the source was in state $S_k$)
 
 - We need to answer the following question:
-    
+
     If we know the state $S_k$ at time $n$, what will be the state at time $n+1$?
-    
+
 
 ### Ergodic sources
 
 - Let $p_i^{(n)} =$ the probability that source $S$ is in state $S_i$ at time $n$.
 
-- In what state will it be at time $n+1$? (after one more message) 
+- In what state will it be at time $n+1$? (after one more message)
 
     - i.e. what are the probabilities of the states at time $n+1$?
 
@@ -465,9 +484,9 @@ where $p_k$ = probability that the source is in state $S_i$
 
 - Property of ergodic sources:
 
-  - After many messages, the probabilities of the states *become stationary* (converge to some fixed values), 
+  - After many messages, the probabilities of the states *become stationary* (converge to some fixed values),
   irrespective of the initial probabilities (no matter what state the source started from initially)
-  
+
     $$\lim_{n \to \infty} [p_1^{(n)}, p_2^{(n)}, ... p_N^{(n)}] = [p_1, p_2, ... p_N]$$
 
 
@@ -485,7 +504,7 @@ where $p_k$ = probability that the source is in state $S_i$
 
 - Solve the resulting system of equations, find values of $p_k$
 
-### Entropy of ergodic sources with memory 
+### Entropy of ergodic sources with memory
 
 - The entropy of an ergodic source with memory is
     $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k)$$
@@ -506,7 +525,7 @@ Questions:
   c. Compute the entropy in state $S_4$;
   d. Compute the global entropy of the source;
   e. What are the memory order, $m$, and the number of messages of the source, $n$?
-  f. If the source is initially in state $S_2$, in what states and with what probabilities 
+  f. If the source is initially in state $S_2$, in what states and with what probabilities
     will the source be after 2 messages?
 
 ### Example English text as sources with memory
@@ -551,7 +570,7 @@ Questions:
 - Entropy of a memoryless source: $H(S) = \sum_{k} p_k i(s_k) = -\sum_{k} p_k \log_2(p_k)$
 
 - Properties of entropy:
-    
+
     1. $H(S) \geq  0$
 
     2. Is maximum when all messages have equal probability ($H_{max}(S) = \log(n)$)

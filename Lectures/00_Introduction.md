@@ -7,11 +7,11 @@
 Professors:
 
 - Lectures: Nicolae Cleju
-- Laboratories: Nicolae Cleju
+- Laboratories: Irina Pavel
 
 Grades
 
-- Final grade = 0.6 Exam + 0.4 Applications during semester (Lab + Tests)
+- Final grade = 0.6 Exam + 0.4 Overall semester grade (Lab + Tests)
 
 Time schedule
 
@@ -21,20 +21,19 @@ Time schedule
 
 ### Exercises & Tests
 
-- 3rd hour of each lecture = exercises
+- Exercises during 3rd hour of each lecture
 
-- There will be 2 semester tests, approximately in 5th and 10th week
-   - we'll discuss the schedule during classes
+- There will be 2 semester tests during lectures, approximately in 5th and 10th week
+  - we'll discuss the schedule during classes
 
-- Lab: practical test in final week
-
-- Exam: exercises & theory questions
+- Exam: exercises (two thirds) & theory questions (one third)
 
 ### Course structure
+
 1. Chapter I:   Discrete Information Sources
 2. Chapter II:  Source Coding
 3. Chapter III: Discrete Transmission Channels
-4. Chapter IV:  Error Control Coding 
+4. Chapter IV:  Error Control Coding
 
 ### Bibliography
 

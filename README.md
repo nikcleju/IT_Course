@@ -2,21 +2,11 @@
 
 Here you will find all the materials for the class of Information Theory taught during spring semester at ETTI, TUIASI.
 
-### Exam
-
-Sample exam sheets are here: [SampleExam](SampleExam)
-
-### Grades for Laboratory and Tests
-
-The Laboratory grades are posted on the Faculty's Moodle site
-
-The Test grades are posted on the Faculty's Moodle site.
-
-### Lectures
+### Lecture slides
 
 All lecture slides are available in pdf format in the [Lectures](Lectures) folder.
 
-The online lecture slides, with the annotations included, are in [Lectures/OnlineLectures](Lectures/OnlineLectures)
+<!-- The online lecture slides, with the annotations included, are in [Lectures/OnlineLectures](Lectures/OnlineLectures) -->
 
 Open the *.pdf* files, not the raw *.md* text files.
 
@@ -29,7 +19,7 @@ A draft version of a lecture notes book is available here:
 **Warning:** It's still a work in progress.
 
 ### Laboratory
- 
+
 All the laboratory documents are in the [Labs](Labs) folder.
 
 Please have some C/C++ IDE available (you can download Dev-C++ from [here](https://sourceforge.net/projects/orwelldevcpp/files/Setup%20Releases/Dev-Cpp%205.11%20TDM-GCC%204.9.2%20Setup.exe/download))
@@ -37,6 +27,16 @@ Please have some C/C++ IDE available (you can download Dev-C++ from [here](https
 ### Exercises
 
 The exercises done throughout the lectures are available in the [Exercises](Exercises) folder.
+
+### Exam
+
+Sample exam sheets are here: [SampleExam](SampleExam)
+
+### Grades for Laboratory and Tests
+
+The Laboratory grades are posted on the Faculty's Moodle site
+
+The Test grades are posted on the Faculty's Moodle site.
 
 Have fun!
 
