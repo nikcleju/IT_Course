@@ -13,11 +13,11 @@
 
 2. Error control
     * Protection against channel errors / Adds new (redundant) symbols
-    
+
 ### Source-channel separation theorem
 
 Source-channel separation theorem (informal):
- 
+
 * It is possible to obtain the best reliable communication by performing the
 two tasks separately:
 
@@ -48,7 +48,7 @@ two tasks separately:
 $$C = \left\lbrace c_1, c_2, ... c_N \right\rbrace$$
 
 Message    Codeword
--------    --------    
+-------    --------
 $s_1$        $c_1 = x_1x_2x_1...$
 $s_2$        $c_2 = x_1x_2x_2...$
 ...        ....
@@ -56,7 +56,7 @@ $s_N$        $c_N = x_2x_2x_2...$
 
 * Codeword length $l_i$ = the number of symbols in $c_i$
 
-### Encoding and decoding 
+### Encoding and decoding
 
 * **Encoding**: given a sequence of messages, replace each message with its codeword
 
@@ -70,7 +70,7 @@ $s_N$        $c_N = x_2x_2x_2...$
 
 ### Average code length
 
-* How to measure representation efficiency of a code? 
+* How to measure representation efficiency of a code?
 
 * **Average code length** = average of the codeword lengths:
 $$\overline{l} = \sum_i p(s_i) l_i$$
@@ -88,7 +88,7 @@ A code can be:
     * i.e. no sequence of messages produces the same sequence of symbols
     * i.e. there is never a confusion at decoding
 * **instantaneous** (also known as **prefix-free**): no codeword is prefix to another code
-    * A *prefix* = a codeword which is the beginning of another codeword    
+    * A *prefix* = a codeword which is the beginning of another codeword
 
 Examples: at the blackboard
 
@@ -100,7 +100,7 @@ Example at blackboard
 
 * Theorem:
     * An instantaneous code is uniquely decodable
-    
+
 * Proof:
     * There is exactly one codeword matching the beginning of the sequence
         * Suppose the true initial codeword is **c**
@@ -112,23 +112,10 @@ Example at blackboard
 * Note: the converse is not necessary true; there exist uniquely decodable codes which
 are not instantaneous
 
-### Uniquely decodable codes are non-singular
+### Decoding instantaneous codes using the graph
 
-* Theorem: 
-    * An uniquely decodable code is non-singular
-    
-* Proof:
-    * If the code is singular, some codewords are not unique (different messages, same codeword)
-    * Don't know which of those messages was there => not uniquely decodable
-    * So if the code is uniquely-decodable, it must also be non-singular ($A \rightarrow B \Leftrightarrow \overline{B} \rightarrow \overline{A}$)
-
-* Relation between code types:
-   * Instantaneous $\subset$ uniquely decodable $\subset$ non-singular
-
-
-### Graph-based decoding of instantaneous codes
-
-* How to decode an instantaneous code: graph-based decoding
+* How to decode an instantaneous code using the graph
+  - Start at the root, each bit means go left or go right
   - Illustrate at whiteboard
 
 * Advantage on instantaneous code over uniquely decodable: simple decoding
@@ -136,6 +123,25 @@ are not instantaneous
 * Why the name *instantaneous*?
     * The codeword can be decoded as soon as it is fully received
     * Counter-example: Uniquely decodable, non-instantaneous, delay 6: {0, 01, 011, 1110}
+
+
+### Uniquely decodable codes are non-singular
+
+- Theorem:
+    - An uniquely decodable code is non-singular
+
+- Proof: by contradiction
+    - Assume the uniquely-decodable code is singular
+    - This means some codewords are not unique (two different messages have same codeword)
+    - When decoding that codeword, you obviously can't decide which is the corresponding message
+    - Contradition: the code is not uniquely decodable
+    - So if the code is uniquely-decodable, it must be non-singular
+
+* Note: the converse is not necessary true; there exist some non-singular codes which
+are not uniquely-decodable
+
+* Relation between code types:
+   * Instantaneous $\subset$ uniquely decodable $\subset$ non-singular
 
 ### Existence of instantaneous codes
 
@@ -160,7 +166,7 @@ $$ \sum_i D^{-l_i} \leq 1.$$
 $$ \sum_i D^{-l_i} = 1$$
 only if the lowest level is fully covered <=> no unused branches
 
-* For an instantaneous code which satisfies Kraft with equality, 
+* For an instantaneous code which satisfies Kraft with equality,
 all the graph branches terminate with codewords (there are no unused branches)
     * This is most economical: codewords are as short as they can be
 
@@ -273,9 +279,9 @@ $$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log(p(s_i)) = H(S)$$
 
 * One can never represent messages, on average, with a code  having average length less than the entropy
 
-### Analogy of entropy and codes     
+### Analogy of entropy and codes
 
-* Analogy: 1 liter of water 
+* Analogy: 1 liter of water
     * 1 liter of water = the quantity of water that can fit in any bottle
     of size $\geq$ 1 liter, but not in any bottle $<$ 1 liter
     $$Bottle \geq water$$
@@ -295,10 +301,10 @@ $$\eta = \frac{H(S)}{\overline{l} \log{M}}$$
 * **Redundancy** of a code:
 $$\rho = 1- \eta$$
 
-* These measures indicate how close is the average length to the 
+* These measures indicate how close is the average length to the
 optimal value
 
-* When $\eta = 1$: **optimal code** 
+* When $\eta = 1$: **optimal code**
 
 ### Optimal codes
 
@@ -319,7 +325,7 @@ $\overline{l} = H(S)$
 
 * What if $-\log(p(s_i))$ is not a natural number?
     i.e. $p(s_i)$ is not a power of 2
-    
+
 * Shannon's solution: round to next largest natural number
 $$l_i = \lceil -\log(p(s_i)) \rceil$$
 
@@ -369,7 +375,7 @@ $$\overline{l} = \sum_i p(s_i) l_i = H(S) + \underbrace{\sum_i p(s_i) \epsilon_i
 * Average length of Shannon code is **at most 1 bit longer** than the minimum possible value
     * That's quite efficient
     * There exist even better codes, in general
-    
+
 * Q: Can we get even closer to the minimum length?
 * A: Yes, as close as we want!
     * In theory, at least ... :)
@@ -379,12 +385,12 @@ $$\overline{l} = \sum_i p(s_i) l_i = H(S) + \underbrace{\sum_i p(s_i) \epsilon_i
 
 Shannon's first theorem (coding theorem for noiseless channels):
 
-* It is possible to encode an infinitely long sequences of messages 
-from a source S with an average length 
-as close as desired to H(S), 
+* It is possible to encode an infinitely long sequences of messages
+from a source S with an average length
+as close as desired to H(S),
 but never below H(S)
 
-\ 
+\
 \
 
 Key points:
@@ -423,7 +429,7 @@ $$\overline{l_{S}} \to H(S)$$ \qed
 
 Comments:
 
- * Shannon's first theorem shows that we can approach H(S) 
+ * Shannon's first theorem shows that we can approach H(S)
  to any desired accuracy using extensions of large order of the source
      * This is not practical: the size of $S^n$ gets too large for large $n$
      * Other (better) algorithms than Shannon coding are used in practice to approach $H(S)$
@@ -435,13 +441,13 @@ Comments:
 * Consider a source with probabilities $p(s_i)$
 * We use a code designed for a different source: $l_i = -\log(q(s_i))$
 * The message probabilities are $p(s_i)$ but the code is designed for $q(s_i)$
-\ 
+\
 
 * Examples:
     * design a code based on a sample data file (like in lab)
     * but we use it to encode various other files => probabilities might differ slightly
     * e.g. design a code based a Romanian text, but encode a text in English
-\ 
+\
 
 * What happens?
 
@@ -453,7 +459,7 @@ Comments:
 * If code were optimal, best average length = entropy $H(S)$:
 $$\overline{l_{optimal}} = -\sum{p(s_i) \log{p(s_i)}}$$
 
-* But the actual average length we obtain is: 
+* But the actual average length we obtain is:
 $$\overline{l_{actual}} = \sum{p(s_i) l_i} = -\sum{p(s_i) \log{q(s_i)}}$$
 
 ### The Kullback–Leibler distance
@@ -465,8 +471,8 @@ $$\overline{l_{actual}} - \overline{l_{optimal}} = \sum_i{p(s_i) \log(\frac{p(s_
 * The difference  = **the Kullback-Leibler distance** between the two distributions
     * is always $\geq 0$ => improper code means increased $\overline{l}$ (bad)
     * distributions more different => larger average length (worse)
-    
-* The KL distance between the distributions = the number of extra bits used because 
+
+* The KL distance between the distributions = the number of extra bits used because
 of a code optimized for a different distribution $q(s_i)$ than the true distribution
 of our data $p(s_i)$
 
@@ -532,7 +538,7 @@ General Huffman coding procedure for codes with $M$ symbols:
 * **Important**: at the final step must have $M$ remaining values
     * May be necessary to add *virtual* messages with probability 0 at the end of the initial list,
     to end up with exactly $M$ messages in the last step
-    
+
 * Example : blackboard
 
 ### Example: compare Huffman and Shannon-Fano
@@ -558,17 +564,17 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 * Consider that the messages are already written in a binary code
     * Example: characters in ASCII code
 
-* Source coding  = remapping the original codewords to other codewords 
+* Source coding  = remapping the original codewords to other codewords
     * The new codewords are shorter, on average
-    
+
 * This means data **compression**
     * Just like the example in lab session
-    
+
 * What does data compression remove?
     * Removes **redundancy**: unused bits, patterns, regularities etc.
     * If you can guess somehow the next bit in a sequence, it means the bit is not really necessary,
     so compression will remove it
-    * The compressed sequence looks like random data: impossible to guess, 
+    * The compressed sequence looks like random data: impossible to guess,
     no discernable patterns
 
 ### Discussion: data compression with coding
