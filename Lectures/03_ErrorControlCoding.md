@@ -15,7 +15,7 @@ Chapter structure
 
 ![Communication system](img/CommBlockDiagram.png){width=40%}
 
-* The second main task of coding: error control 
+* The second main task of coding: error control
 * Protect information against channel errors
 
 ### The need for error control coding
@@ -32,13 +32,13 @@ Chapter structure
 * An **error** = a bit that has changed from 0 to 1 or viceversa while going through channel
 * Errors can appear:
     * **independently**: sporadic errors, each bit has a random chance of error, independent of all the others
-    * in **packets of errors**: groups of consecutive errors 
+    * in **packets of errors**: groups of consecutive errors
 
 ### Modelling the errors on the channel
 
 * Changing the value of a bit = modulo-2 sum with 1
 * Value of a bit remains the same = modulo-2 sum with 0
-    
+
 ![Channel error model](img/ChannelErrorModel.png){width=50%}
 
 * Channel model we use (simple):
@@ -63,7 +63,7 @@ $$a(b \oplus c) = ab \oplus ac$$
 
 * Subtraction = addition. There is no negativation. Each number is its own negative
 $$a \oplus a = 0$$
-    
+
 ### Error detection vs correction
 
 What can we do about errors?
@@ -77,7 +77,7 @@ What can we do about errors?
     * can correct all errored bits by inverting them
     * useful when can't retransmit (data is stored: on HDD, AudioCD etc.)
     * harder to do than mere detection
-    
+
 ### Overview of error control coding process
 
 The process of error control:
@@ -106,7 +106,7 @@ $$\hat{\mathbf{c}} = \hat{c_1}\hat{c_2}...\hat{c_n}$$
 * A code is a **block code** if it operates with words of *fixed size*
     * Size of information word $\mathbf{i} = k$, size of codeword $\mathbf{c} = n$, $n > k$
     * Otherwise it is a *non-block code*
-    
+
 * A code is **linear** if any linear combination of codewords is also a codeword
 
 ### Definitions
@@ -115,7 +115,7 @@ $$\hat{\mathbf{c}} = \hat{c_1}\hat{c_2}...\hat{c_n}$$
     * coding merely adds supplementary bits besides the information bits
     * codeword has two parts: the information bits and the parity bits
     * example: parity bit added after the information bits
-    
+
 * Otherwise the code is called **non-systematic**
     * the information bits are not explicitly visible in the codeword
 
@@ -139,7 +139,7 @@ $$R = k/n$$
     * detection algorithm: check if parity bit matches data
     * fails for 2 errors
     * cannot correct error (don't know where it is located)
-    
+
 * Add more parity bits to be able to locate the error
     * Example at blackboard
     * coding rate $R = 8/12$
@@ -151,7 +151,7 @@ $$R = k/n$$
     * want to send a $k$-bit information word
     * codeword to send = the information word repeated $n=5$ times
     * coding rate $R = k/n = 1/5$
-    * can detect and correct 2 errors, and maybe even more 
+    * can detect and correct 2 errors, and maybe even more
     if they do not affect the same bit
     * error correcting algorithm = majority rule
     * not very efficient
@@ -164,7 +164,7 @@ $$R = k/n$$
     b. *characterized by or containing an excess; specifically : using more words than necessary*
 
 * Because $k < n$, error control coding introduces **redundancy**
-    * to transmit $k$ bits of information we actually send more bits ($n$) 
+    * to transmit $k$ bits of information we actually send more bits ($n$)
 
 ### Redundancy
 
@@ -173,7 +173,7 @@ $$R = k/n$$
 * No:
     * Source coding reduces existing redundancy from the data, which served no purpose
     * Error control coding adds redundancy **in a controlled way**, with a purpose
-    
+
 * Source coding and error control coding in practice: do sequentially, independently
     1. First perform source coding, eliminating redundancy in representation of data
     2. Then perform error control coding, adding redundancy for protection
@@ -224,7 +224,7 @@ all errors)
     * If $R < C$, *in average for all possible codes*, the probability of error after decoding goes to 0
     * If the average for all codes goes to 0, there exists at least on code better than the average
     * That is the code we should use
-    
+
 ### Ideas behind channel coding theorem
 
 * **The theorem does not tell what code to use**, only that some code exists
@@ -232,7 +232,7 @@ all errors)
     * Only some general principles:
         * using longer information words is better
         * random codewords are generally good
-    
+
 * In practice, we cannot use infinitely long codewords, so we will only get a *good enough* code
 
 ### Chapter structure
@@ -271,7 +271,7 @@ $$d_H(\mathbf{a}, \mathbf{b}) = \sum_{i=1}^N a_i \oplus b_i$$
     2. $d_H(\mathbf{a},\mathbf{b}) = d_H(\mathbf{b},\mathbf{a}), \forall \mathbf{a},\mathbf{b}$
     3. $d_H(\mathbf{a},\mathbf{c}) \leq d_H(\mathbf{a},\mathbf{b}) + d_H(\mathbf{b},\mathbf{c}), \forall \mathbf{a},\mathbf{b},\mathbf{c}$
 
-\smallskip 
+\smallskip
 
 * The **minimum Hamming distance of a code**, ${d_H}_{min}$ = the minimum Hamming distance
 between any two codewords $\mathbf{c_1}$ and $\mathbf{c_2}$
@@ -282,12 +282,12 @@ Coding:
 
 * Design a code with large ${d_H}_{min}$
 * Send a codeword $\mathbf{c}$ of the code
-    
+
 Decoding:
 
 * Receive a word $\mathbf{r}$, that may have errors
 
-* Error detecting: 
+* Error detecting:
     * check if $r$ is part of the codewords of the code $C$:
     * if $r$ is part of the code, decide that there have been no errors
     * if $r$ is not a codeword, decide that there have been errors
@@ -296,7 +296,7 @@ Decoding:
 	* if $\mathbf{r}$ is a codeword, decide there are no errors
     * else, choose codeword **nearest** to the received $\mathbf{r}$, in terms of Hamming distance
     * this is known as **nearest-neighbor decoding**
-    
+
 ### Performance of nearest neighbor decoding
 
 Theorem:
@@ -327,18 +327,18 @@ Example: blackboard
 
 ### Computational complexity
 
-* **Computational complexity** = the amount of computational resources required 
-by an algorithm 
+* **Computational complexity** = the amount of computational resources required
+by an algorithm
     * only refers to the **order of magnitude of the dominant term**
         * neglects the other terms
         * neglects actual coefficient values in front
-    
+
 * Computational complexity with respect to number of information bits $k$,
 of the search-based nearest neighbor decoding
 (as presented earlier), is
 $$\mathcal{O}(k) = 2^k$$
 
-* Proof: Requires comparing with all codewords, and there are $2^k$ codewords 
+* Proof: Requires comparing with all codewords, and there are $2^k$ codewords
 in total
 
 ### Computational complexity
@@ -346,11 +346,11 @@ in total
 * This implementation is **very inefficient**
     * $k$ doubles => the amount of computations is squared
     * $k$ increases 10 times => computations are raised to a power of 10
-    * $k$ increases 100 times => computations are raised to a power of 1000 
+    * $k$ increases 100 times => computations are raised to a power of 1000
     * for $k = 256$ you'd need all the energy of the Sun
-    
+
 \smallskip
-    
+
 * Need to find ways to make it simpler
 
 ### Chapter structure
@@ -374,9 +374,9 @@ Informal definitions:
 
     * Examples: Euclidian vector spaces: a line, points in 2D, 3D
     * Elements are called "vectors"
-    
+
 * **Basis** = a set of $n$ independent vectors $\mathbf{e_1}, ...\mathbf{e_n}$
-    * Any vector $\mathbf{v}$ can be expressed as a linear combination of 
+    * Any vector $\mathbf{v}$ can be expressed as a linear combination of
     the basis elements
     $$\mathbf{v} = \mathbf{e_1} \cdot \alpha_1 +  ... + \mathbf{e_n} \cdot \alpha_n$$
 
@@ -388,7 +388,7 @@ vector space
         * sum of two vectors on a line = still on the line
         * size of subspace = 1
         * size of larger space = 2
-        
+
     * A plane in 3D space
         * sum of two vectors from the plane = still on the plane
         * size of subspace = 2
@@ -408,13 +408,13 @@ vector space
 * Matrix-vector multiplication
     * Output vector = linear combination of the matrix columns
 
-\smallskip 
+\smallskip
 
 * Vector-matrix multiplication
     * Output vector = linear combination of the matrix rows
 
-\smallskip 
-    
+\smallskip
+
 * Explain at the blackboard, draw picture
 
 ### How to look at matrix-vector multiplications
@@ -424,11 +424,11 @@ vector space
     * The output vector = the vector
     * The multiplicated vector = the coefficients of the linear combination
 
-* Any vector $\mathbf{v}$ can be expressed as a linear combination of 
+* Any vector $\mathbf{v}$ can be expressed as a linear combination of
 the basis elements
     $$\mathbf{v} = \mathbf{e_1} \cdot \alpha_1 +  ... + \mathbf{e_n} \cdot \alpha_n$$
 
-    $$\mathbf{v} = 
+    $$\mathbf{v} =
     \begin{bmatrix}
     \mathbf{e_1}  & \mathbf{e_2} & ... & \mathbf{e_n}
     \end{bmatrix}
@@ -452,28 +452,28 @@ of dimension $k$
     * total number of codewords is $2^k$ => dimension is $k$
 
 * Length of codewords is $n$, but size of space is $k$ =>
- they form a **subspace** of the larger space of all binary sequences 
+ they form a **subspace** of the larger space of all binary sequences
     of length $n$
-    
+
 ### Codewords form a vector space
-    
+
 * Since all codewords form a (sub)space => all codewords can be expressed as matrix-vector multiplications
 
 \smallskip
 
 * Need to find a basis for the codewords
 
-### Generator matrix 
+### Generator matrix
 
 * All codewords for a linear block code can be generated via a **matrix-vector multiplication**:
 $$\mathbf{i} \cdot [G] = \mathbf{c}$$
 
     ![Codeword construction with generator matrix](img/GeneratorMatrix.png){width=50%}
-    
+
 * $[G]$ = **generator matrix** of size $k \times n$ ("fat" matrix, $k < n$)
     * it is fixed, it fully defines the whole code
 
-### Generator matrix 
+### Generator matrix
 
 * Row-wise interpretation:
     * Any codeword $\mathbf{c}$ = a linear combination of rows in $[G]$
@@ -500,7 +500,7 @@ $$\mathbf{0} = [H] \cdot [G]^T$$
     * size of $[H]$ is $(n-k) \times n$
     * $[G]$ and $[H]$ are related, one can be deduced from the other
 
-* $[H]$ is very useful to check if a binary word is a codeword or not 
+* $[H]$ is very useful to check if a binary word is a codeword or not
 (i.e. for nearest neighbor error detection)
 
 ### Using the parity check matrix
@@ -520,7 +520,7 @@ $$[H] \cdot \mathbf{c}^T = [H] \cdot [G]^T \cdot \mathbf{i}^T = \mathbf{0}$$
 ### Relation between [G] and [H]
 
 * [G] and [H] are related
-    * The codewords form a $k$-dimensional subspace inside the larger $n$-dimensional 
+    * The codewords form a $k$-dimensional subspace inside the larger $n$-dimensional
 vector space
     * The rows of $[H]$ are the "missing" dimensions of the subspace (the "orthogonal complement")
 
@@ -570,7 +570,7 @@ $$[H]_{(n-k) \times n} = [Q^T_{(n-k) \times k} \;\; I_{(n-k) \times (n-k)}]$$
 \smallskip
 
 * If all parity bits match the data, the result of multiplying with $[H]$ is 0
-    * otherwise it is $\neq 0$ 
+    * otherwise it is $\neq 0$
 
 ### Interpretation as parity bits
 
@@ -696,9 +696,7 @@ are *the binary representation of all numbers from 1 to $2^r-1$*, $\forall r \ge
 * Systematic: arrange the bits in the codeword, such that the control bits correspond to the columns having a single 1
     * no big difference from the usual systematic case, just a rearrangement of bits
     * makes implementation easier
-    
-* Example codeword for Hamming(7,4):
-$$c_1c_2i_3c_4i_5i_6i_7$$
+
 
 ### Properties of Hamming codes
 
@@ -707,12 +705,52 @@ $$c_1c_2i_3c_4i_5i_6i_7$$
     2. $r$ bits are parity bits (also known as ***control bits***)
     3. $k = 2^r-r-1$ bits are information bits
 
-\smallskip 
+\smallskip
 
 * Notation: **(n,k) Hamming code**
-    * n = codeword length = $2^r-1$, 
+    * n = codeword length = $2^r-1$,
     * k = number of information bits  = $2^r - r - 1$
     * Example: (7,4) Hamming code, (15,11) Hamming code, $(127,120)$ Hamming code
+
+### Structure of a Hamming codeword
+
+- The codeword contains information bits and parity (control) bits
+- The control bits correspond to the columns of the parity-check matrix $[H]$
+  which have a single 1 (i.e. columns which form the identity matrix)
+- The information bits are placed in the remaining positions,
+  where the columns of $[H]$ have two or more 1s
+
+- Codeword for Hamming(7,4):
+$$c_1c_2i_3c_4i_5i_6i_7$$
+
+- Codeword for Hamming(15,11):
+$$c_1c_2i_3c_4i_5i_6i_7c_8i_9i_{10}i_{11}i_{12}i_{13}i_{14}i_{15}$$
+
+### Construction of Hamming codewords
+
+- Every Hamming code has a generator matrix $[G]$, but we
+  don't provide it explicitly, because it is hard to remember
+
+- Instead, we deduce the values from the equation system of the parity-check matrix $[H]$,
+  $\mathbf{0} = [H] \cdot \mathbf{c}^T$
+
+- For example, for Hamming(7,4), we have:
+
+  $$
+  \begin{cases}
+  0 = c_4 \oplus i_5 \oplus i_6 \oplus i_7 \\
+  0 = c_2 \oplus i_3 \oplus i_5 \oplus i_6 \\
+  0 = c_1 \oplus i_3 \oplus i_5 \oplus i_7
+  \end{cases}
+  $$
+  which means:
+  $$
+  \begin{cases}
+  c_4 = i_5 \oplus i_6 \oplus i_7 \\
+  c_2 = i_3 \oplus i_5 \oplus i_6 \\
+  c_1 = i_3 \oplus i_5 \oplus i_7
+  \end{cases}
+  $$
 
 ### Properties of Hamming codes
 
@@ -787,13 +825,13 @@ For a single error, the syndrome **is the binary representation of the location 
     * the syndrome $\mathbf{z} = [H] \cdot \mathbf{r}^T = \begin{bmatrix}0\\1\\1\end{bmatrix}$ can be caused by:
         * a single error in location 3 (bit $i_3$)
         * two errors in location 1 and 2 (bits $c_1$, bits $c_2$)
-    
+
     * if we know it is a single error, we can go ahead and correct it, then use the corrected data
     * if we know there are two errors, we should NOT attempt to correct them, because we cannot locate the errors correctly
 
 * Unfortunately, it is **not possible to differentiate** between the two cases.
 
-* **Solution?** Add additional parity bit $\rightarrow$ SECDED Hamming codes 
+* **Solution?** Add additional parity bit $\rightarrow$ SECDED Hamming codes
 
 
 ### SECDED Hamming codes
@@ -804,7 +842,7 @@ For a single error, the syndrome **is the binary representation of the location 
 * For (7,4) Hamming codes: $$\mathbf{c_0}c_1c_2i_3c_4i_5i_6i_7$$
 
 * The parity check matrix is extended by 1 row and 1 column
-$$\tilde{H} = 
+$$\tilde{H} =
 \begin{bmatrix}
 1 &1 \\
 0 &\mathbf{H} \\
@@ -842,11 +880,11 @@ $$\tilde{\mathbf{z}} = \begin{bmatrix}z_0\\\mathbf{z}\end{bmatrix} = [\tilde{H}]
 * Now can simultaneously differentiate between:
     * 1 error: $\rightarrow$ perform correction
     * 2 errors: $\rightarrow$ detect, but do not perform correction
-    
+
 * Also, if correction is never attempted, can detect up to 3 errors
     * minimum Hamming distance = 4 (no proof given)
     * don't know if 1 error, 2 errors or 3 errors, so can't try correction
-    
+
 
 
 ### Summary until now
@@ -884,7 +922,7 @@ for which *every cyclic shift of a codeword is also a codeword*
 
 * Are a particular class of linear block codes, so all the theory up to now still applies
     * they have a generator matrix, parity check matrix etc.
-    
+
 * But they can be implemented more efficient than general linear block codes (e.g. Hamming)
 
 * Used **everywhere** under the common name **CRC** (**C**yclic **R**edundancy **C**heck)
@@ -914,10 +952,10 @@ $$10010111 \rightarrow 1 \oplus x^3 \oplus x^5 \oplus x^6 \oplus x^7$$
 
 ### Generator polynomial
 
-**Theorem**: 
+**Theorem**:
 
 * All the codewords of a cyclic code are multiples of a certain polynomial $g(x)$,
-known as **generator polynomial**. 
+known as **generator polynomial**.
 
 
 ### Properties of generator polynomial
@@ -970,7 +1008,7 @@ $$c_{n-1}c_0c_1...c_{n-2} \rightarrow \mathbf{c'(x)} = c_{n-1} \oplus c_0x \oplu
 
 * We can rewrite:
 $$\begin{split}
-\mathbf{c'(x)} 
+\mathbf{c'(x)}
 =& x \cdot \mathbf{c(x)} \oplus c_{n-1}x^n \oplus c_{n-1}\\
 =& x \cdot \mathbf{c(x)} \oplus c_{n-1}(x^n \oplus 1)\\
 \end{split}$$
@@ -981,18 +1019,18 @@ Proof (continued):
 
 * Since $\mathbf{c(x)}$ is a multiple of $g(x)$, so is $x \cdot \mathbf{c(x)}$
 * Also $(x^n \oplus 1)$ is always a multiple of $g(x)$
-* => It follows that their sum $\mathbf{c'(x)}$ is a also a multiple of $g(x)$, which means it is a codeword. 
+* => It follows that their sum $\mathbf{c'(x)}$ is a also a multiple of $g(x)$, which means it is a codeword.
 
 QED
 
 * Note that we relied on two properties mentioned before:
     * that a codeword $\mathbf{c(x)}$ is always a multiple of $g(x)$
     * that $g(x)$ is a factor of $(x^n \oplus 1)$
-    
+
 ### Coding and decoding of cyclic codes
 
 * Cyclic codes can be used for detection or correction
-    
+
 * In practice, they are used mostly for **detection only** (e.g. in Ethernet)
     * because there are other codes with better performance for correection
 
@@ -1008,7 +1046,7 @@ QED
 
 Reminder: polynomial multiplication and division
 
-* Two polynomials $a(x)$ and $b(x)$ can be multiplied 
+* Two polynomials $a(x)$ and $b(x)$ can be multiplied
     * the result has degree = degree of $a(x)$ + degree of $b(x)$
 * A polynomials $a(x)$ can be divided to another polynomial $b(x)$:
 $$a(x) = b(x) q(x) \oplus r(x)$$
@@ -1021,7 +1059,7 @@ $$a(x) = b(x) q(x) \oplus r(x)$$
 
 Coding
 
-* We want to encode the **information word** with $k$ bits 
+* We want to encode the **information word** with $k$ bits
 $$i_0i_1i_2...i_{k-1} \rightarrow i(x) = i_0 \oplus i_1x \oplus ... \oplus i_{k-1}x^{k-1}$$
 
 * **Non-systematic** codeword generation:
@@ -1046,7 +1084,7 @@ $$c(x) = x^{n-k} \cdot i(x) \oplus b(x) = a(x) g(x) \oplus b(x) \oplus b(x) = a(
 
 ### Interpretation
 
-* Why is the code systematic? 
+* Why is the code systematic?
 
 * Let's analyze the systematic codeword generation step by step
 
@@ -1066,7 +1104,7 @@ $$\begin{aligned}
 &\mathbf{c} =  [\underbrace{b_0b_1...b_{n-k}}_{n-k} \underbrace{i_0i_1...i_{k-1}}] \rightarrow \\
 &\rightarrow c(x) = b_0 \oplus b_1 x \oplus ... \oplus b_{n-k-1} x^{n-k-1} \oplus i_0 x^{n-k} \oplus i_1 x^{n-k+1} \oplus ... \oplus i_{k-1} x^{n-1}
 \end{aligned}$$
-    
+
 * Hence the code is systematic: the information bits are in the codeword
 
 * The code adds $b(x)$ (the remainder) = the **CRC value**
@@ -1087,7 +1125,7 @@ $$\begin{aligned}
 
 ### Decoding - The mathematical way
 
-Decoding 
+Decoding
 
 * We receive $\mathbf{r} = r_0r_1r_2...r_{n-1} \rightarrow \mathbf{r(x)} = r_0 \oplus r_1x \oplus ... \oplus r_{n-1}x^{n-1}$$
 
@@ -1107,12 +1145,12 @@ Decoding
     * build a lookup table for all possible error words (like with matrix codes)
     * for each error code, divide by $g(x)$ and compute the remainder
     * when the remainder is identical to the remainder obtained with $\mathbf{r(x)}$, we found the error word => correct errors
-    
-\smallskip    
-    
+
+\smallskip
+
 * Example: at blackboard
 
-    
+
 ### 2. Coding and decoding - The programming way
 
 * Only for systematic codes (mostly used)
@@ -1120,9 +1158,9 @@ Decoding
 * Steps:
 
     * 1. Compute the CRC = $b(x)$ = remainder of $x^{n-k} i(x)$ divided to $g(x)$
-   
+
     * 2. Put the CRC in front of the information word, mirrored
-        
+
 * Good reference: *"A Painless Guide to CRC Error Detection Algorithms"*, Ross N. Williams
     * http://www.ross.net/crc/download/crc_v3.txt
 
@@ -1149,7 +1187,7 @@ Decoding
 
 * Step 1: Mirror the sequence $\mathbf{r}$ (CRC must be at the end!)
 
-* Error detection: 
+* Error detection:
     * compute the CRC of all sequence $\mathbf{r}$
         * If the remainder is 0 => no errors
         * If the remainder is non-zero => errors detected!
@@ -1175,7 +1213,7 @@ Decoding
 
 ### Operation of multiplication circuits
 
-- The circuits multiply an input polynomial $a(x)$ with a polynomial $g(x)$ 
+- The circuits multiply an input polynomial $a(x)$ with a polynomial $g(x)$
 defined by their structure
 
 - The input polynomial is applied at the input, 1 bit at a time, starting from highest degree
@@ -1190,7 +1228,7 @@ defined by their structure
 
 ### Operation of division circuits
 
-- The circuits divide an input polynomial $a(x)$ to a polynomial $g(x)$ 
+- The circuits divide an input polynomial $a(x)$ to a polynomial $g(x)$
 defined by their structure
 - The input polynomial is applied at the input, 1 bit at a time, starting from highest degree
 - The output polynomial is obtained at the output, 1 bit at a time, starting from highest degree
@@ -1225,7 +1263,7 @@ Operation of the cyclic encoder circuit:
     - the input bits are applied to the division circuit
 
 * Switch in position II:
-    - some output bits are put at the ouput 
+    - some output bits are put at the ouput
     - the same output bits are also applied to the input of the division circuit
 
 * **In the end all cells end up with value 0**
@@ -1244,13 +1282,13 @@ Operation of the cyclic encoder circuit:
         * in both phases of operation
     * after division, the cells end up in 0, which means there is no remainder of division
 
-* Side note: we haven't really explained *why* the output $c(x)$ is a codeword, 
+* Side note: we haven't really explained *why* the output $c(x)$ is a codeword,
 we just showed that it is so
 
 
 ### The parity-check matrix for systematic cyclic codes
 
-* Requires a more in-depth anaysis of Linear Feedback Shift Registers (LFSR) 
+* Requires a more in-depth anaysis of Linear Feedback Shift Registers (LFSR)
 
 ### Linear-Feedback Shift Registers (LFSR)
 
@@ -1263,7 +1301,7 @@ we just showed that it is so
 
 * A **shift register** = a register where the output of a flip-flop is connected
 to the input of the next one
-    - the bit sequence is shifted to the right 
+    - the bit sequence is shifted to the right
     - has an input (for the first cell)
 
 * A  **linear feedback shift register** (LFSR) =  a shift register for which
@@ -1276,7 +1314,7 @@ the input is a computed as a linear combination of the flip-flops values
 
 ### States and transitions of LFSR
 
-* **State** of the LFSR = the sequence of bit values it holds at a certain 
+* **State** of the LFSR = the sequence of bit values it holds at a certain
 moment (in order: right to left)
 
 * The state at the next moment, $S(k+1)$,  can be computed by multiplication
@@ -1284,7 +1322,7 @@ of the current state $S(k)$ with the **companion matrix** (or **transition matri
 $$S(k+1) = [T]*S(k)$$
 
 * The companion matrix is defined based on the feedback coefficients $g_i$:
-$$T = 
+$$T =
 \begin{bmatrix}
 0 & 1 & 0 & ... & 0 \\
 0 & 0 & 1 & ... & 0 \\
@@ -1318,7 +1356,7 @@ polynomial $g(x)$ is called **primitive polynomial**
     * assume the input is a sequence $a_{N-1}, ... a_0$
 
 * Since a LFSR is a **linear circuit**, the effect is added:
-$$S(1) = [T] \cdot S(0) \oplus 
+$$S(1) = [T] \cdot S(0) \oplus
 \begin{bmatrix}
 0\\
 0\\
@@ -1342,7 +1380,7 @@ $$[U] = \begin{bmatrix}
 * Cyclic codes are linear block codes, so they have a parity-check and a generator matrix
     * but it is more efficient to implement them with polynomial multiplication / division circuits
 
-* The parity-check matrix $[H]$ can be deduced by analyzing the states of the LFSR (divider) inside 
+* The parity-check matrix $[H]$ can be deduced by analyzing the states of the LFSR (divider) inside
 the encoder:
     * it is a LFSR with feedback and input
     * the input is the codeword $c(x)$
@@ -1355,7 +1393,7 @@ the encoder:
 $$[H] = [U, TU, T^2U, ... T^{n-1}U]$$
 
 * The cyclic codeword satisfies the usual relation
-$$S(n) = 0 = [H] \mathbf{c^T}$$ 
+$$S(n) = 0 = [H] \mathbf{c^T}$$
 
 * In case of an error, the state at time $n$ will be the syndrome (non-zero):
 $$S(n) = [H] \mathbf{r^T} \neq 0$$
@@ -1386,7 +1424,7 @@ Any (n,k) cyclic code with $g(x)$ being a primitive polynomial is capable of det
 
 ### Condition on columns of [H] for packets of errors
 
-* Conditions for packets of **e** errors are less restrictive than for 
+* Conditions for packets of **e** errors are less restrictive than for
 **e** independent errors
 
 * Error **detection** of $e$ independent errors:
@@ -1478,7 +1516,7 @@ will remain 0, the error locator will always output 0,
     - reasoning on the circuit
     - using the definition of $T^{-1}$
 
-$$T = 
+$$T =
 \begin{bmatrix}
 g_1 & g_2 & ...g_{m-1} & 1 \\
 1 & 0 & ... & 0 & 0 \\
@@ -1487,7 +1525,7 @@ g_1 & g_2 & ...g_{m-1} & 1 \\
 0 & 0 & ... & 1 & 0 \\
 \end{bmatrix}$$
 
-* The error locator is designed to detect this state $T^{-1}U$, 
+* The error locator is designed to detect this state $T^{-1}U$,
 i.e. it is designed as shown on blackboard
 
 * Therefore, the error locator will correct an error
