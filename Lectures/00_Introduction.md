@@ -40,5 +40,7 @@ Time schedule
 1. *Transmisia si codarea informatiei*, lectures at ETTI (Romanian)
 1. *Information and Coding Theory*, Gareth A. Jones, J. Mary Jones, Springer 2000
 
+- Lecture notes (draft version) are available on Github.
+- All materials are on Github.
 
 
