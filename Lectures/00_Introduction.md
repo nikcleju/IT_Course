@@ -21,8 +21,6 @@ Time schedule
 
 ### Exercises & Tests
 
-- Exercises during 3rd hour of each lecture
-
 - There will be 2 semester tests during lectures, approximately in 5th and 10th week
   - we'll discuss the schedule during classes
 
