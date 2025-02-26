@@ -326,6 +326,40 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 
 [^1]: Image from *Y. Zhou, X. Wang, M. Zhang, J. Zhu, R. Zheng and Q. Wu, "MPCE: A Maximum Probability Based Cross Entropy Loss Function for Neural Network Classification," 2019, IEEE Access*
 
+### Computing probability of a sequence
+
+- Suppose we have a DMS source $$\sIV{S}{\fIoII}{\fIoIV}{\fIoVIII}{\fIoVIII}$$
+
+- What is the probability that the source $S$ generates a sequence $U = s_1s_3 s_2s_4s_4s_1$?
+
+- Answer:
+
+$$
+P(U) = P(s_1) \cdot P(s_3) \cdot P(s_2) \cdot P(s_4) \cdot P(s_4) \cdot P(s_1)
+$$
+
+### Comparing sequence probabilities for different sources
+
+- Suppose we have two DMS sources:
+
+$$\sIV{S_A}{\fIoII}{\fIoIV}{\fIoVIII}{\fIoVIII} \qquad \qquad \sIV{S_B}{\fIoIV}{\fIoVIII}{\fIoII}{\fIoVIII}$$
+
+- Which is the most likely source to have generated a sequence $U = s_1s_3 s_2s_4s_4s_1$?
+
+- Answer: Compare the probability of the sequence with source $S_A$, $P(U | S_A)$,
+with the one for the second source, $P(U | S_B)$
+
+- We decide between sources based on which is more likely to have generated the sequence
+
+### Maximum Likelihood principle
+
+- **Maximum Likelihood** decision: Choose the variant which has a higher probability of having generated the results
+
+- More of this in DEDP course in 3rd year...
+
+- Application: Decide which is the language of a given text,
+given two DMS sources for the letters, with the probabilities of the letters in Romanian and in English.
+
 
 ### Extended DMS
 
