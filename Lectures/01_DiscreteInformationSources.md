@@ -302,7 +302,7 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 
 - It is a way to measure the **distance (difference)** between two distributions
 
-- Also known as *relative entropy*, or the Kullback-Leibler *divergence*
+- Also known as *cross-entropy*, *relative entropy*, or the Kullback-Leibler *divergence*
 
 ### Properties of Kullback-Leibler distance
 
@@ -315,6 +315,17 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 - Example: at whiteboard
 
 - Example usage: classification systems (cross-entropy loss)
+
+### Usage in machine learning classification tasks
+
+- Cross-entropy is used to measure the output of a classification algorithm against the ground truth
+
+  ![Cross-entropy in neural networks [^1]](img/cross-entropy.png){width=50%}
+
+- See PyTorch documentation: [https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
+
+[^1]: Image from *Y. Zhou, X. Wang, M. Zhang, J. Zhu, R. Zheng and Q. Wu, "MPCE: A Maximum Probability Based Cross Entropy Loss Function for Neural Network Classification," 2019, IEEE Access*
+
 
 ### Extended DMS
 
