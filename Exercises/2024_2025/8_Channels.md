@@ -27,10 +27,10 @@ $$P(x_i \cap y_j) =
 3. At the input of a binary symmetric channel with the following channel matrix
 $$P(y_j | x_i) =
 \begin{bmatrix}
-\frac{3}{4} & \frac{1}{4} \\
-\frac{1}{2} & \frac{1}{2} \\
+\frac{2}{3} & \frac{1}{3} \\
+\frac{1}{3} & \frac{2}{3} \\
 \end{bmatrix}$$
-we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{1}{2}$ and $p(x_2) = \frac{1}{2}$.
+we apply two inputs $x_1$ and $x_2$ with probabilities $p(x_1) = \frac{3}{4}$ and $p(x_2) = \frac{1}{4}$.
     a. Draw the graph of the channel
     b. Find $H(X)$, $H(Y)$ and $I(X,Y)$
     c. Compute the uncertainty remaining over the input $X$ when output symbol $y_2$ is received
