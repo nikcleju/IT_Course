@@ -15,7 +15,7 @@
 
 Example:
 
-- Suppose I roll a dice and tell you the result:
+- Suppose I roll a die and tell you the result:
 
   "The value is 6"
 
@@ -25,7 +25,7 @@ Example:
 
   - the message carries information only when you don't already know the result
   - if you already know the result, the message is useless (brings no information)
-  - if the result was to be expected, there is little information. If the result
+  - if the result was expected, there is little information. If the result
     is highly unusual, there is more information in this message.
 
 ### Information and events
@@ -34,7 +34,7 @@ Example:
 
 - Information brought by an event depends on the **probability** of the event
 
-- Rule of thumb: if you can guess something most of the times, it has little information
+- Rule of thumb: if you can guess something most of the time, it has little information
 
 - Questions:
 
@@ -85,7 +85,7 @@ $$i(s_i) = -\log_2(p(s_i))$$
    - each event has a certain probability. All probabilities are known beforehand
    - at a given time, only one of the events can happen
 
-- An **information source**  = the set of all events together with their probabilities
+- An **information source** is the set of all events together with their probabilities
 
 - One event is called a **message**
 
@@ -94,7 +94,7 @@ $$i(s_i) = -\log_2(p(s_i))$$
 
 - An information source creates a **sequence of messages**
 
-   - e.g. like throwing a coin or a dice several times in a row
+   - e.g. like throwing a coin or a die several times in a row
 
 
 ### Discrete memoryless source
@@ -127,7 +127,7 @@ $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
 - A coin is a discrete memoryless source (DMS) with two messages:
     $$\snII{S}{heads}{\fIoII}{tails}{\fIoII}$$
 
-- A dice is a discrete memoryless source (DMS) with six messages:
+- A die is a discrete memoryless source (DMS) with six messages:
     $$\sVI{S}{\fIoVI}{\fIoVI}{\fIoVI}{\fIoVI}{\fIoVI}{\fIoVI}$$
 
 - Playing the lottery can be modeled as DMS:
@@ -146,7 +146,7 @@ $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
 - A DMS produces a sequence of messages by randomly selecting a message every time,
 with the same fixed probabilities
 
-  - e.g. throwing a dice in a row you can get a sequence $4, 2, 3, 2, 1, 6, 1, 5, 4, 5,...$
+  - e.g. throwing a die repeatedly can produce a sequence like $4, 2, 3, 2, 1, 6, 1, 5, 4, 5,\dots$
 
 - If the sequence is very long (has $N$ messages, $N$ very large),
 each message $s_k$ appears approximately $p(s_k) \cdot N$ times in the sequence
@@ -163,7 +163,7 @@ each message $s_k$ appears approximately $p(s_k) \cdot N$ times in the sequence
 
 - Definition: the **entropy** of a DMS source $S$ is **the average information of a message**:
 $$H(S) = \sum_{k} p(s_k)\, i(s_k) = -\sum_{k} p(s_k)\, \log_2\!\big(p(s_k)\big)$$
-where $p(s_k)$  is the probability of message $k$
+where $p(s_k)$ is the probability of message $s_k$
 
 - Since information of a message is measured in bits, entropy is measured in **bits** (or **bits / message**, to indicate it is an average value)
 
@@ -186,14 +186,14 @@ $$ H_b(S) =\frac{H_a(S)}{\log_a(b)}  $$
 
 All the following interpretations of entropy are true:
 
-- H(S) is the *average uncertainty* of the source S
+- $H(S)$ is the *average uncertainty* of source $S$
 
-- H(S) is the *average information* of the messages from source S
+- $H(S)$ is the *average information* of messages from source $S$
 
 - A long sequence of $N$ messages from $S$ has total information $\approx N \cdot H(S)$
 
-- H(S) is the minimum number of bits (0,1) required to uniquely represent an average message
-from source S
+- $H(S)$ is the minimum number of bits (0,1) required to uniquely represent an average message
+from source $S$
 
 
 ### Properties of entropy
@@ -213,7 +213,7 @@ The maximum value is $\max H(S) = \log_2(n)$
 
     Proof: compare entropies in both cases
 
-### The entropy of a binary source
+### Entropy of a binary source
 
 - Consider a general DMS with two messages (a **binary** source):
     $$\sII{S}{p}{1-p}$$
@@ -223,7 +223,7 @@ The maximum value is $\max H(S) = \log_2(n)$
 
   ![Entropy of a binary source](img/EntropyBinary.png){height=40%}
 
-### The entropy of a binary source
+### Entropy of a binary source
 
 - When $p = \frac{1}{2}$, the entropy is maximum: $H(S) = 1 bit/message$
 
@@ -236,7 +236,7 @@ Game: I think of a number between 1 and 8. You have to guess it by asking
 yes/no questions.
 
 - How much uncertainty does the problem have?
-- How is the best way to ask questions? Why?
+- What is the best way to ask questions? Why?
 - What if the questions are not asked in the best way?
 - On average, what is the number of questions required to find the number?
 
@@ -266,7 +266,7 @@ $$\sIV{S}{0.14}{0.29}{0.4}{0.17}$$
 ### Efficiency and redundancy
 
 - Efficiency of a DMS:
-    $$\eta = \frac{H(S)}{H_{max}} = \frac{H(S)}{\log(n)}$$
+    $$\eta = \frac{H(S)}{H_{max}} = \frac{H(S)}{\log_2(n)}$$
 
 - Absolute redundancy of a DMS:
     $$R = H_{max} - H(S)$$
@@ -274,7 +274,7 @@ $$\sIV{S}{0.14}{0.29}{0.4}{0.17}$$
 - Relative redundancy of a DMS:
     $$\rho = \frac{H_{max} - H(S)}{H_{max}} = 1 - \eta$$
 
-- They tell us how close is the source to having maximum entropy
+- They indicate how close the source is to maximum entropy
 
 ### Information flow of a DMS
 
@@ -318,7 +318,7 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 
 ### Usage in machine learning classification tasks
 
-- In machine learning, cross-entropy is used to measure the output of a classification algorithm against the ground truth
+- In machine learning, cross-entropy is used to compare classifier outputs with ground-truth labels
 
 - Cross-entropy = the KL distance between the ideal result and the output of the neural network
 
@@ -418,7 +418,7 @@ $$H(S^n) = n H(S)$$
 
 - Are they similar? No
 
-- What's wrong? **Memoryless**. Langauge has memory, our model has not.
+- What's wrong? **Memoryless**. Language has memory, our model does not.
 
 ### Sources with memory
 
@@ -427,10 +427,10 @@ of a message depends on the last $m$ messages.
 
 - The last $m$ messages = the **state** of the source (notation $S_i$).
 
-- A source with $n$ messages and memory $m$ => has $n^m$ states in all.
+- A source with $n$ messages and memory $m$ has $n^m$ states.
 
 - For every state, messages can have a different set of
-probabilities. Notation: $p(s_i | S_k)$ = *"probability of $s_i$ in state $S_k$"*.
+probabilities. Notation: $p(s_i \mid S_k)$ = *"probability of $s_i$ in state $S_k$"*.
 
 - Also known as *Markov sources*.
 
@@ -481,7 +481,7 @@ At whiteboard: draw states and transitions for previous example
 - What entropy does a source with memory have?
 
 - Each state $S_k$ has a different distribution --> each state has a different entropy $H(S_k)$
-$$H(S_k) = - \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
+$$H(S_k) = - \sum_i p(s_i \mid S_k) \cdot \log_2\!\big(p(s_i \mid S_k)\big)$$
 
 - Global entropy = average entropy
 $$H(S) = \sum_k p_k H(S_k)$$
@@ -554,7 +554,7 @@ where $p_k$ = probability that the source is in state $S_k$
 ### Entropy of ergodic sources with memory
 
 - The entropy of an ergodic source with memory is
-    $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
+    $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i \mid S_k) \cdot \log_2\!\big(p(s_i \mid S_k)\big)$$
 
 ### Exercise
 
@@ -614,7 +614,7 @@ Questions:
 
 - Information of a message: $i(s_k) = -\log_2(p(s_k))$
 
-- Entropy of a memoryless source: $H(S) = \sum_{k} p_k i(s_k) = -\sum_{k} p_k \log_2(p_k)$
+- Entropy of a memoryless source: $H(S) = \sum_{k} p(s_k)\, i(s_k) = -\sum_{k} p(s_k)\, \log_2\!\big(p(s_k)\big)$
 
 - Properties of entropy:
 
@@ -630,4 +630,4 @@ Questions:
 $[p_1, p_2, ... p_N] \cdot [T] = [p_1, p_2, ... p_N]$, $\sum_i p_i = 1$.
 
 - Entropy of sources with memory:
-$$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
+$$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i \mid S_k) \cdot \log_2\!\big(p(s_i \mid S_k)\big)$$
