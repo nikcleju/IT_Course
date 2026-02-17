@@ -24,12 +24,12 @@ Chapter structure
 	* The transmission channel is not ideal, it introduces some bit errors
     * Usually it is required that *all* bits are received correctly, no errors are allowed
 
-* So what do to? **Error control coding**
+* So what to do? **Error control coding**
 
 ### Modelling the errors on the channel
 
 * We consider only binary codes/ channels (symbols = $\left\lbrace 0,1 \right\rbrace$)
-* An **error** = a bit that has changed from 0 to 1 or viceversa while going through channel
+* An **error** = a bit that has changed from 0 to 1 or vice versa while going through channel
 * Errors can appear:
     * **independently**: sporadic errors, each bit has a random chance of error, independent of all the others
     * in **packets of errors**: groups of consecutive errors
@@ -61,7 +61,7 @@ $$\mathbf{r} = \mathbf{c} \oplus \mathbf{e}$$
 * Multiplication is distributive just like in normal case
 $$a(b \oplus c) = ab \oplus ac$$
 
-* Subtraction = addition. There is no negativation. Each number is its own negative
+* Subtraction = addition. There is no negation. Each number is its own negative
 $$a \oplus a = 0$$
 
 ### Error detection vs correction
@@ -184,7 +184,7 @@ $$R = k/n$$
 is handled from the sender to the receiver
 
 * Each channel has a certain **capacity** value = the maximum amount of information
-than can be sent over the channel
+that can be sent over the channel
     * e.g. a channel may have capacity $C = 0.8$ bits
 
 * More about this in Chapter IV
@@ -258,7 +258,7 @@ Practical ideas for error correcting codes:
 
 * The **Hamming distance** of two binary sequences **a**, **b** of length $n$ = the total number
 of bit differences between them
-$$d_H(\mathbf{a}, \mathbf{b}) = \sum_{i=1}^N a_i \oplus b_i$$
+$$d_H(\mathbf{a}, \mathbf{b}) = \sum_{i=1}^n a_i \oplus b_i$$
 
 * We need at least $d_H(a, b)$ bit changes to convert one sequence into another
 
@@ -336,7 +336,7 @@ by an algorithm
 * Computational complexity with respect to number of information bits $k$,
 of the search-based nearest neighbor decoding
 (as presented earlier), is
-$$\mathcal{O}(k) = 2^k$$
+$$\mathcal{O}(2^k)$$
 
 * Proof: Requires comparing with all codewords, and there are $2^k$ codewords
 in total
@@ -638,7 +638,7 @@ Example: at blackboard
 
 * Computational complexity for error detection
     * Error detection = multiplication with $[H]$
-    * Complexity is $\mathcal{O}(n^2)$ (size of $[H]$ is $(n-k) \times n$
+    * Complexity is $\mathcal{O}(n^2)$ (size of $[H]$ is $(n-k) \times n$)
     * Much more efficient!
 
 \smallskip
@@ -656,7 +656,7 @@ Example: at blackboard
 * Conditions on [H] for successful error **detection**:
     * We can detect errors if the syndrome is **non-zero**
     * To detect a single error: every column of $[H]$ must be non-zero
-    * To detect two error: sum of any two columns of $[H]$ cannot be zero
+    * To detect two errors: sum of any two columns of $[H]$ cannot be zero
         * that means all columns are different
     * To detect $n$ errors: sum of any $n$ or less columns of $[H]$ cannot be zero
 
@@ -667,7 +667,7 @@ Example: at blackboard
     * To correct a single error: all columns of $[H]$ are different
         * so the syndromes, for a single error, are all different
     * To correct $n$ errors: sum of any $n$ or less columns of $[H]$ are all different
-        * much more difficult to obtain than for decoding
+        * much more difficult to obtain than for detection
 
 * Conditions for error correction are more demanding than for detection
 
@@ -804,15 +804,15 @@ For a single error, the syndrome **is the binary representation of the location 
 
 * Components:
     * A **shift register** to hold the codeword
-    * Logic OR gates to compute the parity bits
+    * Logic XOR gates to compute the parity bits
 
 ### Circuit for decoding Hamming(7,4)
 
-![Hamming Encoder](img/HammingDecoder.png){width=40%}
+![Hamming Decoder](img/HammingDecoder.png){width=40%}
 
 * Components:
     * A **shift register** to hold the received word
-    * Logic OR gates to compute the bits of the syndrome ($z_i$)
+    * Logic XOR gates to compute the bits of the syndrome ($z_i$)
     * **Binary decoder**: activates the output corresponding to the binary input value, fixing the error
 
 
@@ -932,7 +932,7 @@ for which *every cyclic shift of a codeword is also a codeword*
 
 * CRC codes are used in Ethernet frames:
 
-![CRC value in an Ethernet frame](img/EthernetFrame.png){widht=50%}
+![CRC value in an Ethernet frame](img/EthernetFrame.png){width=50%}
 
 ### Binary polynomials
 
@@ -963,7 +963,7 @@ known as **generator polynomial**.
 The generator polynomial $g(x)$ must satisfy the following:
 
 * $g(x)$ must have first and last coefficient equal to 1
-* $g(x)$ must be a factor of $X^n \oplus 1$
+* $g(x)$ must be a factor of $x^n \oplus 1$
 * The *degree* of $g(x)$ is $n-k$, where:
     * n = the size of codeword (codeword polynomial has degree $n-1$)
     * k = the size of the information word (information polynomial has degree $k-1$)
@@ -974,7 +974,7 @@ $$ (k-1) + (n-k) = n-1$$
 
 Example:
 
-$$1 \oplus x^7 = (1 \oplus x)(1 \oplus x + \oplus x^3)(1 \oplus x^2 \oplus x^3)$$
+$$1 \oplus x^7 = (1 \oplus x)(1 \oplus x \oplus x^3)(1 \oplus x^2 \oplus x^3)$$
 
 Each factor can generate a code:
 
@@ -984,7 +984,7 @@ Each factor can generate a code:
 
 ### Popular polynomials
 
-![Popular generator polynomials $g(x)$](img/PopularPolys.png){widght=80%}
+![Popular generator polynomials $g(x)$](img/PopularPolys.png){width=80%}
 
 * Image from *http://www.ross.net/crc/download/crc_v3.txt*
 
@@ -1032,7 +1032,7 @@ QED
 * Cyclic codes can be used for detection or correction
 
 * In practice, they are used mostly for **detection only** (e.g. in Ethernet)
-    * because there are other codes with better performance for correection
+    * because there are other codes with better performance for correction
 
 * Can be systematic / non-systematic
     * In practice, the systematic variant is much preferred
@@ -1048,7 +1048,7 @@ Reminder: polynomial multiplication and division
 
 * Two polynomials $a(x)$ and $b(x)$ can be multiplied
     * the result has degree = degree of $a(x)$ + degree of $b(x)$
-* A polynomials $a(x)$ can be divided to another polynomial $b(x)$:
+* A polynomial $a(x)$ can be divided by another polynomial $b(x)$:
 $$a(x) = b(x) q(x) \oplus r(x)$$
     * $q(x)$ = the quotient ("câtul")
     * $r(x)$ = the remainder ("restul")
@@ -1166,7 +1166,7 @@ Decoding
 
 ### Coding
 
-* The mathematical polynomial division = just like XOR-ing succesively with $g(x)$
+* The mathematical polynomial division = just like XOR-ing successively with $g(x)$
     * align the binary sequence of $g(x)$ under the leftmost 1
     * XOR the sequences
     * repeat
@@ -1178,7 +1178,7 @@ Decoding
 
 ### Example
 
-![Polynomial division = XORing succesively with $g(x)$](img/CRCAlgoXORing.png){height=60%}
+![Polynomial division = XORing successively with $g(x)$](img/CRCAlgoXORing.png){height=60%}
 
 
 ### Decoding
@@ -1202,7 +1202,7 @@ Decoding
 
 **The remaining slides in this file are skipped for the class of 2018-2019.**
 
-### 3. Coding and encoding - The hardware way
+### 3. Coding and decoding - The hardware way
 
 * Coding = based on polynomial multiplications and divisions
 * Efficient circuits for multiplication / division exist, that can be used for systematic or non-systematic codeword generation (draw on blackboard)
@@ -1263,7 +1263,7 @@ Operation of the cyclic encoder circuit:
     - the input bits are applied to the division circuit
 
 * Switch in position II:
-    - some output bits are put at the ouput
+    - some output bits are put at the output
     - the same output bits are also applied to the input of the division circuit
 
 * **In the end all cells end up with value 0**
@@ -1288,7 +1288,7 @@ we just showed that it is so
 
 ### The parity-check matrix for systematic cyclic codes
 
-* Requires a more in-depth anaysis of Linear Feedback Shift Registers (LFSR)
+* Requires a more in-depth analysis of Linear Feedback Shift Registers (LFSR)
 
 ### Linear-Feedback Shift Registers (LFSR)
 
@@ -1319,7 +1319,7 @@ moment (in order: right to left)
 
 * The state at the next moment, $S(k+1)$,  can be computed by multiplication
 of the current state $S(k)$ with the **companion matrix** (or **transition matrix**) $[T]$:
-$$S(k+1) = [T]*S(k)$$
+$$S(k+1) = [T] \cdot S(k)$$
 
 * The companion matrix is defined based on the feedback coefficients $g_i$:
 $$T =
@@ -1468,7 +1468,7 @@ Any (n,k) cyclic code is capable of detecting any error packet of length $n-k$ o
 * Operation phases:
 
 1. Input phase: SW on position I, validation gate V1 blocked
-    - The received codeword $r(x)$ is received one by one, starting with largest power of $x^n$
+    - The received codeword $r(x)$ is received one by one, starting with largest power of $x^{n-1}$
     - The received codeword enters the MSR and first LFSR (divider)
     - The first divider computes $r(x) : g(x)$
     - The validation gate V1 is blocked, no output
@@ -1505,7 +1505,7 @@ will remain 0, the error locator will always output 0,
     $$S(n) = [H]\mathbf{r}^T = [H] \mathbf{e}^T = T^{n-k}U$$
     3. after another $k-1$ moments, the state will be
     $$T^{k-1}T^{n-k}U = T^{n-1}U$$
-    4. since $T^n = I_n$ --> $T^{n-1} = T^{-1}$
+    4. since $T^n = I_m$ --> $T^{n-1} = T^{-1}$
     5. $T^{-1}U$ is the state preceding state U, which is state
     $$\begin{bmatrix} 1 \\ 0 \\ ... \\ 0 \end{bmatrix}$$
 
