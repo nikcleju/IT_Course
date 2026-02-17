@@ -12,7 +12,7 @@
     * (Adapt probabilities of symbols to maximize mutual information)
 
 2. Error control
-    * Protection against channel errors / Adds new (redundant) symbols
+    * Protection against channel errors / adds new (redundant) symbols
 
 ### Source-channel separation theorem
 
@@ -36,7 +36,7 @@ two tasks separately:
 * Advantages:
     * Efficiency
     * Short communication times
-    * Can decode easily
+    * Easy decoding
 
 ### Definitions
 
@@ -109,7 +109,7 @@ Example at blackboard
     * Remove first codeword from sequence
     * By the same argument, there is exactly one codeword matching the new beginning, and so on ...
 
-* Note: the converse is not necessary true; there exist uniquely decodable codes which
+* Note: the converse is not necessarily true; there exist uniquely decodable codes which
 are not instantaneous
 
 ### Decoding instantaneous codes using the graph
@@ -118,7 +118,7 @@ are not instantaneous
   - Start at the root, each bit means go left or go right
   - Illustrate at whiteboard
 
-* Advantage on instantaneous code over uniquely decodable: simple decoding
+* Advantage of instantaneous codes over non-instantaneous uniquely decodable codes: simple decoding
 
 * Why the name *instantaneous*?
     * The codeword can be decoded as soon as it is fully received
@@ -128,16 +128,16 @@ are not instantaneous
 ### Uniquely decodable codes are non-singular
 
 - Theorem:
-    - An uniquely decodable code is non-singular
+    - A uniquely decodable code is non-singular
 
 - Proof: by contradiction
     - Assume the uniquely-decodable code is singular
     - This means some codewords are not unique (two different messages have same codeword)
     - When decoding that codeword, you obviously can't decide which is the corresponding message
-    - Contradition: the code is not uniquely decodable
+    - Contradiction: the code is not uniquely decodable
     - So if the code is uniquely-decodable, it must be non-singular
 
-* Note: the converse is not necessary true; there exist some non-singular codes which
+* Note: the converse is not necessarily true; there exist some non-singular codes which
 are not uniquely-decodable
 
 * Relation between code types:
@@ -158,7 +158,7 @@ $$ \sum_i D^{-l_i} \leq 1.$$
     * If lengths do not satisfy this, no instantaneous code exists
     * If the lengths of a code satisfy this, that code can be instantaneous or not (there exists an instantaneous code,
     but not necessarily that one)
-    * Kraft inequality means that the codewords lengths cannot be all very small
+    * Kraft inequality means that the codeword lengths cannot all be very small
 
 ### Instantaneous codes with equality in Kraft
 
@@ -181,7 +181,7 @@ all the graph branches terminate with codewords (there are no unused branches)
 $$ \sum_i D^{-l_i} \leq 1.$$
 
 * Consequence:
-    * For every uniquely decodable code, there exists in instantaneous code
+    * For every uniquely decodable code, there exists an instantaneous code
     with the same lengths!
     * Even though the class of uniquely decodable codes is larger than that of
     instantaneous codes, it brings no benefit in codeword length
@@ -218,7 +218,7 @@ $$\begin{aligned} \textbf{minimize } &\sum_i p(s_i) l_i \\
 $$\begin{aligned} \textbf{minimize } & f(x) \\
 \textrm{subject to } & g(x) = 0
 \end{aligned}$$
-	one must build a new function $L(x, \lambda)$ (the **Lagrangean function**):
+	one must build a new function $L(x, \lambda)$ (the **Lagrangian function**):
 $$L(x, \lambda) = f(x) - \lambda g(x)$$
 	and the solution $x$ is among the solutions of the system:
 $$\begin{aligned} & \frac{\partial L(x, \lambda)}{\partial x} = 0 \\
@@ -237,15 +237,15 @@ $$\begin{aligned} & \frac{\partial L(x, \lambda)}{\partial x} = 0 \\
 * (Solve at blackboard)
 
 * The optimal values are:
-$$\boxed{l_i = -\log(p(s_i))}$$
+$$\boxed{l_i = -\log_D(p(s_i))}$$
 
-* Intuition: using $l_i = -\log(p(s_i))$ satisfies Kraft with equality,
+* Intuition: using $l_i = -\log_D(p(s_i))$ satisfies Kraft with equality,
 so the lengths cannot be any shorter, in general
 
 ### Optimal lengths
 
 * The optimal codeword lengths are:
-$$\boxed{l_i = -\log(p(s_i))}$$
+$$\boxed{l_i = -\log_D(p(s_i))}$$
 
 * Higher probability => smaller codeword
     * more efficient
@@ -257,10 +257,10 @@ $$\boxed{l_i = -\log(p(s_i))}$$
 ### Entropy = minimal codeword average length
 
 * If the optimal values are:
-$$l_i = -\log(p(s_i))$$
+$$l_i = -\log_D(p(s_i))$$
 
-* Then the minimal average length is:
-$$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log(p(s_i)) = H(S)$$
+* For binary coding ($D=2$), the minimal average length is:
+$$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log_2(p(s_i)) = H(S)$$
 
 * The **entropy** of a source = the **minimum average length** necessary to encode the messages
     * e.g. the minimum number of bits required to represent the data in binary form
@@ -273,7 +273,7 @@ $$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log(p(s_i)) = H(S)$$
     * Large entropy => requires more bits for encoding
 
 * This tells us something about the average length of codes
-    * The average length of an uniquely decodable code must be at least as large
+    * The average length of a uniquely decodable code must be at least as large
     as the source entropy
     $$H(S) \leq \overline{l}$$
 
@@ -292,23 +292,23 @@ $$\min \overline{l} = \sum_i p(s_i) l_i = -\sum_i p(s_i) \log(p(s_i)) = H(S)$$
 ### Efficiency and redundancy of a code
 
 * **Efficiency** of a code ($M$ = size of code alphabet):
-$$\eta = \frac{H(S)}{\overline{l} \log{M}}$$
+$$\eta = \frac{H(S)}{\overline{l}\, \log_2(M)}$$
 
     * usually $M$ = 2 so $\eta = \frac{H(S)}{\overline{l}}$
-    * but if $M>2$ a factor of $\log{M}$ is needed because $H(S)$ in bits (binary)
+    * but if $M>2$ a factor of $\log_2(M)$ is needed because $H(S)$ is in bits (binary)
     but $\overline{l}$ not in bits (M symbols)
 
 * **Redundancy** of a code:
 $$\rho = 1- \eta$$
 
-* These measures indicate how close is the average length to the
+* These measures indicate how close the average length is to the
 optimal value
 
 * When $\eta = 1$: **optimal code**
 
 ### Optimal codes
 
-* Problem: $l_i = -\log(p(s_i))$ might not be an integer number
+* Problem: $l_i = -\log_2(p(s_i))$ might not be an integer number
     * but the codeword lengths must be natural numbers
 
 * An **optimal code** = a code that attains the minimum average length
@@ -316,32 +316,31 @@ $\overline{l} = H(S)$
 
 * An optimal code can always be found for a source where all $p(s_i)$ are powers of 2
     * e.g. $1/2$, $1/4$, $1/2^n$, known as *dyadic distribution*
-    * the lengths $l_i = -\log(p(s_i))$ are all natural numbers => can be
+    * the lengths $l_i = -\log_2(p(s_i))$ are all natural numbers => can be
     attained
     * the code with lengths $l_i$ can be found with the graph-based procedure
 
 
 ### Non-optimal codes
 
-* What if $-\log(p(s_i))$ is not a natural number?
+* What if $-\log_2(p(s_i))$ is not a natural number?
     i.e. $p(s_i)$ is not a power of 2
 
 * Shannon's solution: round to next largest natural number
-$$l_i = \lceil -\log(p(s_i)) \rceil$$
+$$l_i = \lceil -\log_2(p(s_i)) \rceil$$
 
-    i.e. $-\log(p(s_i)) = 2.15$ => $l_i = 3$
+    i.e. $-\log_2(p(s_i)) = 2.15$ => $l_i = 3$
 
 
 ### Shannon coding
 
 * Shannon coding:
     1. Arrange probabilities in descending order
-    2. Use codeword lengths $l_i = \lceil -\log(p(s_i)) \rceil$
-    3. ~~Find any instantaneous code for these lengths $^{*}$~~
-	3. For every message $s_i$:
+    2. Use codeword lengths $l_i = \lceil -\log_2(p(s_i)) \rceil$
+    3. For every message $s_i$:
         1. compute the sum of all the probabilities up to this message
         2. multiply this value with $2^{l_i}$
-		3. floor the result and convert to binary
+        3. floor the result and convert to binary
 
 * The code obtained = a "*Shannon code*"
 
@@ -364,7 +363,7 @@ Proof:
 1. The first inequality is because H(S) is minimum length
 2. The second inequality:
     a. Use Shannon code:
-$$l_i = \lceil -\log(p(s_i)) \rceil = -\log(p(s_i)) + \epsilon_i$$ where $0 \leq \epsilon_i < 1$
+$$l_i = \lceil -\log_2(p(s_i)) \rceil = -\log_2(p(s_i)) + \epsilon_i$$ where $0 \leq \epsilon_i < 1$
 
     a. Compute average length:
 $$\overline{l} = \sum_i p(s_i) l_i = H(S) + \underbrace{\sum_i p(s_i) \epsilon_i}_{< 1}$$
@@ -385,7 +384,7 @@ $$\overline{l} = \sum_i p(s_i) l_i = H(S) + \underbrace{\sum_i p(s_i) \epsilon_i
 
 Shannon's first theorem (coding theorem for noiseless channels):
 
-* It is possible to encode an infinitely long sequences of messages
+* It is possible to encode infinitely long sequences of messages
 from a source S with an average length
 as close as desired to H(S),
 but never below H(S)
@@ -439,7 +438,7 @@ Comments:
 ### Coding with the wrong code
 
 * Consider a source with probabilities $p(s_i)$
-* We use a code designed for a different source: $l_i = -\log(q(s_i))$
+* We use a code designed for a different source: $l_i = -\log_2(q(s_i))$
 * The message probabilities are $p(s_i)$ but the code is designed for $q(s_i)$
 \
 
@@ -454,19 +453,19 @@ Comments:
 ### Coding with the wrong code
 
 * We lose some efficiency:
-    * Codeword lengths $\overline{l_i}$ are not optimal for our source => increased $\overline{l}$
+    * Codeword lengths $l_i$ are not optimal for our source => increased $\overline{l}$
 
 * If code were optimal, best average length = entropy $H(S)$:
-$$\overline{l_{optimal}} = -\sum{p(s_i) \log{p(s_i)}}$$
+$$\overline{l_{optimal}} = -\sum_i p(s_i)\log_2(p(s_i))$$
 
 * But the actual average length we obtain is:
-$$\overline{l_{actual}} = \sum{p(s_i) l_i} = -\sum{p(s_i) \log{q(s_i)}}$$
+$$\overline{l_{actual}} = \sum_i p(s_i)l_i = -\sum_i p(s_i)\log_2(q(s_i))$$
 
 ### The Kullback–Leibler distance
 
 * Difference between average lengths is:
 
-$$\overline{l_{actual}} - \overline{l_{optimal}} = \sum_i{p(s_i) \log(\frac{p(s_i)}{q(s_i)})} = D_{KL}(p || q)$$
+$$\overline{l_{actual}} - \overline{l_{optimal}} = \sum_i p(s_i)\log_2\!\left(\frac{p(s_i)}{q(s_i)}\right) = D_{KL}(p\|q)$$
 
 * The difference  = **the Kullback-Leibler distance** between the two distributions
     * is always $\geq 0$ => improper code means increased $\overline{l}$ (bad)
@@ -481,11 +480,11 @@ of our data $p(s_i)$
 Reminder: where is the Kullback–Leibler distance used
 
 * Here: Using a code optimized for a different distribution:
-    * Average length is increased with $D_{KL}(p || q)$
+    * Average length is increased with $D_{KL}(p\|q)$
 
 * In chapter IV (Channels): Definition of mutual information:
     * Distance between $p(x_i \cap y_j)$ and the distribution of two independent variables $p(x_i) \cdot p(y_j)$
-$$I(X,Y) = \sum_{i,j} p(x_i \cap y_j) \log(\frac{p(x_i \cap y_j)}{p(x_i)p(y_j)})$$
+$$I(X,Y) = \sum_{i,j} p(x_i \cap y_j)\log_2\!\left(\frac{p(x_i \cap y_j)}{p(x_i)p(y_j)}\right)$$
 
 
 ### Shannon-Fano coding (binary)
@@ -526,14 +525,14 @@ Properties of Huffman coding:
     * we can insert above, below or in-between equal values
     * leads to codes with different *individual* lengths, but same *average* length
 * Some better algorithms exist which do not assign a codeword to every single message
-(they code a while sequence at once, not every message)
+(they code a whole sequence at once, not every message)
 
 ### Huffman coding (M symbols)
 
 General Huffman coding procedure for codes with $M$ symbols:
 
 * Have $M$ symbols $\left\lbrace x_1, x_2, ... x_M \right\rbrace$
-* Add together the last $M$ symbols
+* Add together the last $M$ probabilities
 * When assigning symbols, assign all $M$ symbols
 * **Important**: at the final step must have $M$ remaining values
     * May be necessary to add *virtual* messages with probability 0 at the end of the initial list,
@@ -550,13 +549,13 @@ $$p(s_i) = \left\lbrace 0.35, 0.17, 0.17, 0.16, 0.15 \right\rbrace$$
 
 * For every symbol $x_i$
 we can compute the average number of symbols $x_i$ in a code
-$$\overline{l_{x_i}} = \sum_i p(s_i) l_{x_i}(s_i)$$
+$$\overline{l_{x_i}} = \sum_k p(s_k)\, l_{x_i}(s_k)$$
     * $l_{x_i}(s_i) =$ number of symbols $x_i$ in the codeword of $s_i$
     * e.g.: average number of 0's and 1's in a code
 * Divide by average length => probability (frequency) of symbol $x_i$
 $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 
-* These are the probabilities of the input symbols for the transmission channel
+* These are the probabilities of the channel input symbols
     * they play an important role in Chapter IV (transmission channels)
 
 ### Source coding as data compression
@@ -575,7 +574,7 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
     * If you can guess somehow the next bit in a sequence, it means the bit is not really necessary,
     so compression will remove it
     * The compressed sequence looks like random data: impossible to guess,
-    no discernable patterns
+    no discernible patterns
 
 ### Discussion: data compression with coding
 
@@ -583,7 +582,7 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
     * What property do we *exploit* in order to obtain compression?
     * How does *compressible data* look like?
     * How does *incompressible data* look like?
-    * What are the limitation of our data compression method?
+    * What are the limitations of our data compression method?
     * How could it be improved?
 
 ### Other codes: arithmetic coding
@@ -597,13 +596,13 @@ $$p(x_i) = \frac{\overline{l_{x_i}}}{\overline{l}}$$
 
 * Average length: $\overline{l} = \sum_i p(s_i) l_i$
 * Code types: instantaneous $\subset$ uniquely decodable $\subset$ non-singular
-* All instantaneous or uniqualy decodable code must obey Kraft:
+* All instantaneous or uniquely decodable codes must obey Kraft:
 $$ \sum_i D^{-l_i} \leq 1$$
-* Optimal codes: $l_i = -\log(p(s_i))$, $\overline{l_{min}} = H(S)$
+* Optimal codes: $l_i = -\log_D(p(s_i))$, $\overline{l_{min}} = H(S)$
 * Shannon's first theorem: use $n$-th order extension of $S$, $S^n$:
 $$\boxed{H(S) \leq \overline{l_{S}} < H(S) + \frac{1}{n}}$$
-    * average length always larger, but as close as desired to $H(S)$
+    * average length is never smaller than $H(S)$, but as close as desired
 * Coding techniques:
-    * Shannon: ceil the optimal codeword lengths (round to upper)
+    * Shannon: ceil the optimal codeword lengths (round up)
     * Shannon-Fano: split in two groups approx. equal
-    * Huffman: group last two. Is best of all.
+    * Huffman: repeatedly merge the least probable messages. Is best of all.
