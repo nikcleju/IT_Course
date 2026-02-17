@@ -24,7 +24,7 @@ Example:
 - Consider the following facts:
 
   - the message carries information only when you don't already know the result
-  - if you already known the result, the message is useless (brings no information)
+  - if you already know the result, the message is useless (brings no information)
   - if the result was to be expected, there is little information. If the result
     is highly unusual, there is more information in this message.
 
@@ -52,10 +52,10 @@ $$i(s_i) = -\log_2(p(s_i))$$
   - $i(s_i) \geq 0$
   - lower probability (rare events) means higher information
   - higher probability (frequent events) means lower information
-  - a certain event brings no information: $-\log(1) = 0$
+  - a certain event brings no information: $-\log_2(1) = 0$
   - an event with probability 0 brings infinite information (but it never happens...)
   - for two independent events, their information gets added
-      $$i(s_i) \cap s_j) = i(s_i) + i(s_j)$$
+      $$i(s_i \cap s_j) = i(s_i) + i(s_j)$$
 
 - Information is mathematical.
   It does not depend on how you encode the message (letters, bits, language)
@@ -118,9 +118,9 @@ $$\sIII{S}{\fIoII}{\fIoIV}{\fIoIV}$$
 
     - Discrete: it can take a value from a discrete set ("alphabet")
     - Complete: $\sum p(s_i) = 1$
-    - Memoryless: succesive values are independent of previous values (e.g. successive throws of a coin)
+    - Memoryless: successive values are independent of previous values (e.g. successive throws of a coin)
 
-- A message from a DMS is also called a **random variable** in probabilistics.
+- A message from a DMS is also called a **random variable** in probability theory.
 
 
 ### Examples
@@ -162,7 +162,7 @@ each message $s_k$ appears approximately $p(s_k) \cdot N$ times in the sequence
 ### Entropy of a DMS
 
 - Definition: the **entropy** of a DMS source $S$ is **the average information of a message**:
-$$H(S) = \sum_{k} p(s_k) i(s_k) = -\sum_{k} p(s_k) \log_2(p_k)$$
+$$H(S) = \sum_{k} p(s_k)\, i(s_k) = -\sum_{k} p(s_k)\, \log_2\!\big(p(s_k)\big)$$
 where $p(s_k)$  is the probability of message $k$
 
 - Since information of a message is measured in bits, entropy is measured in **bits** (or **bits / message**, to indicate it is an average value)
@@ -175,9 +175,9 @@ $$ H_b(S) =\frac{H_a(S)}{\log_a(b)}  $$
 
 - Coin: $H(S) = 1 bit/message$
 
-- Dice: $H(S) = \log(6) bits/message$
+- Dice: $H(S) = \log_2(6)\ bits/message$
 
-- Lottery: $H(S) = -0.9999 \log(0.9999) - 0.0001 \log(0.0001)$
+- Lottery: $H(S) = -0.9999 \log_2(0.9999) - 0.0001 \log_2(0.0001)$
 
 - Receiving 1 bit: $H(S) = 1 bit/message$ (hence the name!)
 
@@ -205,7 +205,7 @@ We prove the following **properties of entropy**:
     Proof: via definition
 
 2. $H(S)$ is maximum when all $n$ messages have equal probability $\frac{1}{n}$.
-The maximum value is $\max H(S) = \log(n)$
+The maximum value is $\max H(S) = \log_2(n)$
 
     Proof: only for the case of 2 messages, use derivative in definition
 
@@ -218,8 +218,8 @@ The maximum value is $\max H(S) = \log(n)$
 - Consider a general DMS with two messages (a **binary** source):
     $$\sII{S}{p}{1-p}$$
 
-- It's entropy is:
-    $$H(S) = -p \cdot \log(p) - (1-p) \cdot \log(1-p)$$
+- Its entropy is:
+    $$H(S) = -p \cdot \log_2(p) - (1-p) \cdot \log_2(1-p)$$
 
   ![Entropy of a binary source](img/EntropyBinary.png){height=40%}
 
@@ -228,7 +228,7 @@ The maximum value is $\max H(S) = \log(n)$
 - When $p = \frac{1}{2}$, the entropy is maximum: $H(S) = 1 bit/message$
 
 - Definition of **1 bit of information**:
-  - it is the amount of information of by a message having probability $\frac{1}{2}$
+  - it is the amount of information brought by a message having probability $\frac{1}{2}$
   - it is the entropy of a binary source with equal probabilities $\frac{1}{2}$, $\frac{1}{2}$
 
 ### Example - Game
@@ -298,11 +298,11 @@ $$\overline{t} = \sum_{i} p_i t_i $$
     - example: $p(s_1), ... p(s_n)$ and $q(s_1), ... q(s_n)$
 
 - **Definition**: the **Kullback–Leibler distance** of two distributions P and Q is
-    $$D_{KL}(P || Q) = \sum_i p(s_i) \log(\frac{p(s_i)}{q(s_i)})$$
+    $$D_{KL}(P || Q) = \sum_i p(s_i)\, \log_2\!\left(\frac{p(s_i)}{q(s_i)}\right)$$
 
 - It is a way to measure the **distance (difference)** between two distributions
 
-- Also known as *cross-entropy*, *relative entropy*, or the Kullback-Leibler *divergence*
+- Also known as *relative entropy* or the Kullback-Leibler *divergence*
 
 ### Properties of Kullback-Leibler distance
 
@@ -318,9 +318,11 @@ $$\overline{t} = \sum_{i} p_i t_i $$
 
 ### Usage in machine learning classification tasks
 
-- Cross-entropy is used to measure the output of a classification algorithm against the ground truth
+- In machine learning, cross-entropy is used to measure the output of a classification algorithm against the ground truth
 
-  ![Cross-entropy in neural networks [^1]](img/cross-entropy.png){width=50%}
+- Cross-entropy = the KL distance between the ideal result and the output of the neural network
+
+  ![Cross-entropy in neural networks [^1]](img/cross-entropy.png){width=45%}
 
 - See PyTorch documentation: [https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
 
@@ -476,14 +478,14 @@ At whiteboard: draw states and transitions for previous example
 
 ### Entropy of sources with memory
 
-- What entropy does s source with memory have?
+- What entropy does a source with memory have?
 
 - Each state $S_k$ has a different distribution --> each state has a different entropy $H(S_k)$
-$$H(S_k) = - \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k))$$
+$$H(S_k) = - \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
 
 - Global entropy = average entropy
 $$H(S) = \sum_k p_k H(S_k)$$
-where $p_k$ = probability that the source is in state $S_i$
+where $p_k$ = probability that the source is in state $S_k$
 
     - (i.e. after a very long sequence of messages, the fraction of time when the source was in state $S_k$)
 
@@ -493,7 +495,7 @@ where $p_k$ = probability that the source is in state $S_i$
 
 - They are known as the **stationary probabilities**
 
-- $p_k$ = probability that the source is in state $S_i$, after running for a very long time
+- $p_k$ = probability that the source is in state $S_k$, after running for a very long time
 
     - (i.e. after a very long sequence of messages, the fraction of time when the source was in state $S_k$)
 
@@ -535,7 +537,7 @@ where $p_k$ = probability that the source is in state $S_i$
     $$\lim_{n \to \infty} [p_1^{(n)}, p_2^{(n)}, ... p_N^{(n)}] = [p_1, p_2, ... p_N]$$
 
 
-### Finding the stationary probabilties
+### Finding the stationary probabilities
 
 - How to find the value of the stationary probabilities?
 
@@ -552,7 +554,7 @@ where $p_k$ = probability that the source is in state $S_i$
 ### Entropy of ergodic sources with memory
 
 - The entropy of an ergodic source with memory is
-    $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k)$$
+    $$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
 
 ### Exercise
 
@@ -618,9 +620,9 @@ Questions:
 
     1. $H(S) \geq  0$
 
-    2. Is maximum when all messages have equal probability ($H_{max}(S) = \log(n)$)
+    2. Is maximum when all messages have equal probability ($H_{max}(S) = \log_2(n)$)
 
-    3. *Diversfication* of the source always increases the entropy
+    3. *Diversification* of the source always increases the entropy
 
 - Sources with memory: definition, transitions
 
@@ -628,4 +630,4 @@ Questions:
 $[p_1, p_2, ... p_N] \cdot [T] = [p_1, p_2, ... p_N]$, $\sum_i p_i = 1$.
 
 - Entropy of sources with memory:
-$$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log(p(s_i | S_k)$$
+$$H(S) = \sum_k p_k H(S_k) = - \sum_k p_k \sum_i p(s_i | S_k) \cdot \log_2\!\big(p(s_i | S_k)\big)$$
