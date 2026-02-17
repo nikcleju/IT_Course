@@ -52,7 +52,7 @@ From a probabilistic point of view:
 * A system of two related random variables
     * Input random variable $X \in \{x_1, x_2, ...\}$
     * Output random variable $Y \in \{y_1, y_2, ...\}$
-    * It doesn't matter that one is *input* and other is *output*, we just
+    * It doesn't matter that one is *input* and the other is *output*, we just
     care about the relation between the two random variables
 
 \smallskip
@@ -168,20 +168,20 @@ Marginal distributions don't tell everything about the system:
 $$P(X,Y) = 
 \begin{bmatrix}
 0.3 & 0 \\ 
-0 & 0.7 &
+0 & 0.7
 \end{bmatrix}$$
 
 * Example 2:
 
 $$P(X,Y) = 
 \begin{bmatrix}
-0.15 & 15 \\ 
+0.15 & 0.15 \\ 
 0.15 & 0.55 
 \end{bmatrix}$$
 
 * Both have identical $p(x)$ and $p(y)$, but are completely different
 * Which one is better for a transmission?
-* Marginal distribution are useful, but not enough. Essential is the 
+* Marginal distributions are useful, but not enough. Essential is the 
 *relation* between X and Y.
 
 ### Bayes formula
@@ -190,7 +190,7 @@ $$p(A \cap B) = p(A) \cdot p(B | A)$$
 
 $$p(B | A) = \frac{p(A \cap B)}{p(A)}$$
 
-* "The conditional probability of B **given A** " (i.e. given that event A happened)
+* "The conditional probability of B **given A**" (i.e. given that event A happened)
 
 * Examples: listen to the lecture 
 
@@ -224,7 +224,7 @@ p(y_1 | x_N) & p(y_2 | x_N) & \cdots & p(y_M | x_N) \\
 * Each row  = a separate distribution that indicates the probability of the outputs
 **if the input is $x_i$**
 
-* The sum of each row is 1 (there must be some output if the input is $x_i$
+* The sum of each row is 1 (there must be some output if the input is $x_i$)
 
 ### Relation of channel matrix and joint probability matrix
 
@@ -312,7 +312,7 @@ p(x_N | y_1) & p(x_N | y_2) & \cdots & p(x_N | y_M) \\
 * Each column  = a separate distribution that indicates the probability of the inputs
 **if the output is $y_j$**
 
-* The sum of each column is 1 (there must be some input if the output is $y_j$
+* The sum of each column is 1 (there must be some input if the output is $y_j$)
 
 ### Relation of equivocation matrix and joint probability matrix
 
@@ -329,7 +329,7 @@ p(x_N | y_1) & p(x_N | y_2) & \cdots & p(x_N | y_M) \\
 \smallskip
 
 * $P(X|Y)$ contains less information than $P(X,Y)$
-    * it doesn't tell us the probabilities $p(y_i)$ anymore
+    * it doesn't tell us the probabilities $p(y_j)$ anymore
 
 ### Conditional entropy H(X|Y) (equivocation)
 
@@ -457,7 +457,7 @@ $$ I(X,Y) = H(X)$$
 $$H(Y|X) = 0$$
     * Each row of the noise (channel) matrix contains only one non-zero value
     * No doubts on the output symbols when the input symbols are known
-    * *The converse is not necessary true!*
+    * *The converse is not necessarily true!*
 
 * Example: AND gate
 
@@ -525,9 +525,9 @@ on average, with one symbol
 
 ### Preview of the channel coding theorem
 
-* For transmission with no errors, we use **error coding** of data before transmission
-* How error coding usually works:
-    * For each $k$ symbols of data, coder appends additional $m$ symbols, computed via some coding algorithm
+* For transmission with no errors, we use **error control coding** of data before transmission
+* How error control coding usually works:
+    * For each $k$ symbols of data, the coder appends additional $m$ symbols, computed via some coding algorithm
     * All of them are sent on the channel
     * The decoder detects/corrects errors based on the additional $m$ bits
 * Coding rate: $$R = \frac{k}{k+m}$$
@@ -556,7 +556,7 @@ all errors)
 Example:
 
 * Send binary digits (0,1) on a channel with capacity 0.7 bits/message
-* There exists coding schemes with R < 0.7 that allow perfect recovery
+* There exist coding schemes with R < 0.7 that allow perfect recovery
     * i.e. for every 7 bits of data coding adds 3 or more bits, on average => $R = \frac{7}{7+3}$
 * With less than 3 bits for every 7 bits of data => impossible to recover all the data
 
@@ -633,7 +633,7 @@ $$\begin{aligned}
 
 ![Binary erasure channel](img/BinaryErasureChannel.png){width=25%}
 
-* Different from BSC: here we know when errors happened\
+* Different from BSC: here we know when errors happened
 * Capacity = $1 - p$
 * Intuitive meaning: lose $p$ bits, remaining bits = capacity = $1-p$
 
@@ -643,18 +643,18 @@ $$\begin{aligned}
 
 * Extension of binary symmetric channel for $n$ symbols
 * $1-p$ chances that symbol has no error
-* $p$ chances that symbol is changed, uniformly to any other (N-1) symbols ($\frac{p}{N-1}$ each)
+* $p$ chances that symbol is changed, uniformly to any other $(n-1)$ symbols ($\frac{p}{n-1}$ each)
 
 ### Symmetric channel of $n$-th order
 
 * Channel is symmetric => 
 $$C = \max_{p(x_i)} \; I(X,Y) = \max_{p(x_i)} \; (H(Y) - H(Y|X)) = \max_{p(x_i)} \; (H(Y)) - H(Y|X)$$
-* $\max_{p(x_i)} \; (H(Y))  = \log(N)$
+* $\max_{p(x_i)} \; (H(Y))  = \log(n)$
 * $H(Y|X) = H(Y|x_i)$ = entropy of any row (same values)
 
 ==>
 
-$$C = \log(N) + (1-p)\log(1-p) + p \log(\frac{p}{N-1})$$
+$$C = \log(n) + (1-p)\log(1-p) + p \log(\frac{p}{n-1})$$
 
 * Capacity is reached when input probabilities are uniform
 
@@ -674,7 +674,7 @@ $$C = \log(N) + (1-p)\log(1-p) + p \log(\frac{p}{N-1})$$
 * Examples:
     * Binary symmetric channel: $C = 1 - H_p$
     * Binary erasure channel: $C = 1 - p$
-    * $N$-th symmetric channel: $C = \log(N) - H(of \; a \; row \; of \; channel \; matrix )$
+    * $n$-th symmetric channel: $C = \log(n) - H(\text{a row of the channel matrix})$
 
 ### History
 
