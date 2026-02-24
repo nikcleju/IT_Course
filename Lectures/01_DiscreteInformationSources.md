@@ -610,6 +610,33 @@ Questions:
   - build a model: source with memory of some order
   - fill the missing letter with the most likely letter given by the model
 
+### Example application 2
+
+- Trajectory anomaly detection using Markov models
+
+- Images: All trajectories | Anomalous trajectories
+
+- How to detect anomalous trajectories?
+
+![All trajectories](img/Trajectories_all.png){width=45%} ![Anomalous trajectories](img/Trajectories_cat3.png){width=45%}
+
+
+### Example application 2
+
+How to detect anomalous trajectories? One solution: Markov model (states & transitions)
+
+- Define a rectangular grid of cells on the map
+- Define state = the last cell where the trajectory was (or maybe last 2 cells, etc)
+- A trajectory = going from cell to cell = going from state to state
+
+Do the same as before:
+
+- compute the transition matrix
+- for each trajectory, compute the probability of the sequence of states
+- if the probability is very low, it is an anomalous trajectory
+
+
+
 ### Chapter summary
 
 - Information of a message: $i(s_k) = -\log_2(p(s_k))$
